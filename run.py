@@ -142,15 +142,27 @@ if month_or_day == "y":
     if month == "10":
         chosen_month = "October"
         exact_days = 31
-        table4.rows.append(["MONTH", d_color + chosen_month, ])
+        detail_table.rows.append(["MONTH", d_color + chosen_month, ])
     if month == "11":
         chosen_month = "November"
         exact_days = 31
-        table4.rows.append(["MONTH", d_color + chosen_month, ])
+        detail_table.rows.append(["MONTH", d_color + chosen_month, ])
     if month == "12":
         chosen_month = "December"
         exact_days = 31
-        table4.rows.append(["MONTH", d_color + chosen_month, ])
+        detail_table.rows.append(["MONTH", d_color + chosen_month, ])
 if month_or_day == "n":
     days = (input(q_color + "Then how many days do you want to budget for?: " + reset_all))
-    table4.rows.append(["Days", d_color + days, ])
+    detail_table.rows.append(["Days", d_color + days, ])
+
+currency = (input(q_color + "\nWhat currency would you like to use?($ or (need to find the others): " + reset_all))
+detail_table.rows.append(["CURRENCY", d_color + currency])
+
+goal_question =  (input(q_color + "\nDo you want to set a budget goal? ie: a desired amount you want after all expenses(y/n): " + reset_all))
+if goal_question == "y":
+    goal = (input((q_color + "Enter the amount of your goal: " + reset_all)))
+    detail_table.rows.append(["Goal", d_color + goal ])
+
+print(reset_all + "\nSo these are the details you have given to me so far...\n")
+print(detail_table)
+(input(q_color + "\nAre you happy with the details or would you like to start over?(y/n): "))
