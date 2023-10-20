@@ -180,3 +180,8 @@ print(reset_all + textwrap.fill('\nNow lets get cracking with the financial asse
                         'or other institutions like that. Cash on hand may be another one you want to put in here '
                         'In the end its all up to you to decide what you want in here, but try leave nothing out '
                         'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+
+def asset_calculate():
+    '''
+   Takes in data of the financial assets plugged in
+    '''
