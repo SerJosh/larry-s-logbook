@@ -245,3 +245,9 @@ def expense_calculate():
         print("ok") 
 
 print(expense_calculate())
+
+inco_total = sum(add_income)
+expe_total = sum(add_expense)
+asset_total = sum(add_asset)
+
+surplus = asset_total + inco_total - expe_total
