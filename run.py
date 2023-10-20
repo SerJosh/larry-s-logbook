@@ -139,3 +139,18 @@ if month_or_day == "y":
         chosen_month = "September"
         exact_days = 31
         detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    if month == "10":
+        chosen_month = "October"
+        exact_days = 31
+        table4.rows.append(["MONTH", d_color + chosen_month, ])
+    if month == "11":
+        chosen_month = "November"
+        exact_days = 31
+        table4.rows.append(["MONTH", d_color + chosen_month, ])
+    if month == "12":
+        chosen_month = "December"
+        exact_days = 31
+        table4.rows.append(["MONTH", d_color + chosen_month, ])
+if month_or_day == "n":
+    days = (input(q_color + "Then how many days do you want to budget for?: " + reset_all))
+    table4.rows.append(["Days", d_color + days, ])
