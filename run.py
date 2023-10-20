@@ -32,7 +32,7 @@ def welcome_message():
 ███▌    ▄ ███    ███   ███    ███   ███    ███ ███    ███ ███    ███   ███ ▀███▄
 █████▄▄██  ▀██████▀    ████████▀  ▄█████████▀   ▀██████▀   ▀██████▀    ███   ▀█▀
 ▀                                                                      ▀        \n''')
-print('''   ____________________________________________________
+    print('''   ____________________________________________________
   |____________________________________________________|
   | __     __   ____   ___ ||  ____    ____     _  __  |
   ||  |__ |--|_| || |_|   |||_|**|*|__|+|+||___| ||  | |
@@ -62,5 +62,15 @@ __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
   |___\_/   /________//   ________         /  / ||_|_|_|
   |___ /   (|________/   |\_______\       /  /| |______|
       /                  \|________)     /  / | |\n''')
+
+    print(reset_all +'Welcome to Larrys LogBook!\n')
+    print(textwrap.fill('Hi! Im Larry, your personal budgeting tool! '
+                        'I may not be as fancy as those AI thingy majigs you kids use nowadays '
+                        'but I get my job done just fine :). Im here to help you with your personal budgeting '
+                        'projections, be it for the month, a couple of days for a holiday or '
+                        'even the whole year if you up to it. Just give me all the information I need and '
+                        'Il do all the magic for you in my trusty logbook, revealing some more insight into your '
+                        'budget rather than just how many pennys you have left over ;).', 80))
+
 
 print(welcome_message())
