@@ -92,3 +92,10 @@ print(reset_all + textwrap.fill('Ok... So first I am going to ask a few question
                     'the actual incomes and expenditures, just some information that might '
                     'be useful to me in regards to your budgeting so hear me out :).', 80))
 print()
+
+detail_table = BeautifulTable()
+detail_table.columns.header = ["", ""]
+
+name = str(input(q_color + "What is your name?: " + reset_all))
+detail_table.rows.append([ "NAME", d_color + name])
+print(f"Hello {name} :).")
