@@ -230,3 +230,8 @@ expense_table.columns.header = ["expense", "amount", "total"]
 add_expense = []
 
 def expense_calculate():
+    expense = (input(q_color + "Enter The name of your expense: " + reset_all))
+    amount_exp = float(input(q_color + "Enter your amount of that expense: " + reset_all))
+    add_expense.append(amount_exp)
+    total = sum(add_expense)
+    expense_table.rows.append([d_color + expense, amount_exp, total])
