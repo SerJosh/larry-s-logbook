@@ -87,3 +87,8 @@ __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
 
 
 print(welcome_message())
+
+print(reset_all + textwrap.fill('Ok... So first I am going to ask a few questions before we go on to '
+                    'the actual incomes and expenditures, just some information that might '
+                    'be useful to me in regards to your budgeting so hear me out :).', 80))
+print()
