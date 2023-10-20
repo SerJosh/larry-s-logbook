@@ -166,3 +166,17 @@ if goal_question == "y":
 print(reset_all + "\nSo these are the details you have given to me so far...\n")
 print(detail_table)
 (input(q_color + "\nAre you happy with the details or would you like to start over?(y/n): "))
+
+asset_table = BeautifulTable()
+asset_table.columns.header = ["asset", "amount", "total"]
+add_asset = []
+
+print()
+print(reset_all + textwrap.fill('\nNow lets get cracking with the financial assets :). '
+                        'By financial assets I mean money that you already have on you that you are willing '
+                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
+                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
+                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
+                        'or other institutions like that. Cash on hand may be another one you want to put in here '
+                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
+                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
