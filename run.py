@@ -71,6 +71,19 @@ __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
                         'even the whole year if you up to it. Just give me all the information I need and '
                         'Il do all the magic for you in my trusty logbook, revealing some more insight into your '
                         'budget rather than just how many pennys you have left over ;).', 80))
+    print()
+    print(textwrap.fill('So the information that my logbook needs to work with are your financial assets, '
+                        'incomes, expenses and the timeframe in which you want to budget for. There is additional '
+                        'information which is completely optional for you to provide me with but wouldnt it be fun '
+                        'to just go all out and discover you financial budgeting story!? '
+                        'None the less try out the LogBook and lets see where it takes us.', 80))
+    print(Style.BRIGHT + Fore.BLUE +'''\n      __...--~~~~~-._   _.-~~~~~--...__
+    //               `V'               \\ 
+   //                 |                 \\ 
+  //__...--~~~~~~-._  |  _.-~~~~~~--...__\\ 
+ //__.....----~~~~._\ | /_.~~~~----.....__\\
+====================\\|//====================
+                    `---`\n''')
 
 
 print(welcome_message())
