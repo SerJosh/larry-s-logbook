@@ -251,3 +251,14 @@ expe_total = sum(add_expense)
 asset_total = sum(add_asset)
 
 surplus = asset_total + inco_total - expe_total
+
+print(table3)
+print()
+print(table)
+print()
+print(table2)
+print()
+print(" Your financial assets are " + str(asset_total))
+print(" Your total income is " + str(inco_total))
+print(" Your total expense is " + str(expe_total))
+print("your gross amount will be " + str(surplus))
