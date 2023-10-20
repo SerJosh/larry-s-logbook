@@ -190,3 +190,13 @@ def asset_calculate():
     add_asset.append(amount)
     total = sum(add_asset)
     asset_table.rows.append([d_color + asset, amount, total])
+
+    print(table3)
+    continue1 = (input(q_color + "Do you want to add another financial asset? y/n: " + reset_all))
+    if continue1 =="y":
+        asset_calculate()
+        print(table3)
+    if continue1 == "n":
+        return table3  
+
+print(asset_calculate())
