@@ -185,3 +185,8 @@ def asset_calculate():
     '''
    Takes in data of the financial assets plugged in
     '''
+    asset = (input(q_color + "\nEnter The name of your financial asset: " + reset_all))
+    amount = float(input(q_color + "Enter the amount of that financial asset: " + reset_all))
+    add_asset.append(amount)
+    total = sum(add_asset)
+    asset_table.rows.append([d_color + asset, amount, total])
