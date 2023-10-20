@@ -235,3 +235,13 @@ def expense_calculate():
     add_expense.append(amount_exp)
     total = sum(add_expense)
     expense_table.rows.append([d_color + expense, amount_exp, total])
+
+    print(expense_table)
+    continue1 = (input(q_color + "Do you want to add another expense? y/n: " + reset_all))
+    if continue1 =="y":
+        expense_calculate()
+        print(expense_table)
+    if continue1 == "n":
+        print("ok") 
+
+print(expense_calculate())
