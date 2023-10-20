@@ -211,6 +211,16 @@ def income_calculate():
     '''
     income = (input(q_color + "Enter The name of your income: " + reset_all))
     amount = float(input(q_color + "Enter your amount of that income: " + reset_all))
-    add.append(amount)
-    total = sum(add)
-    table.rows.append([d_color + income, amount,  total])
+    add_income.append(amount)
+    total = sum(add_income)
+    income_table.rows.append([d_color + income, amount,  total])
+
+    print(table)
+    continue1 = (input(q_color + "Do you want to add another income? y/n: " + reset_all))
+    if continue1 =="y":
+        income_calculate()
+        print(table)
+    if continue1 == "n":
+        return table  
+
+print(income_calculate())
