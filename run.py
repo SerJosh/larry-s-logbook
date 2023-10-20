@@ -191,12 +191,21 @@ def asset_calculate():
     total = sum(add_asset)
     asset_table.rows.append([d_color + asset, amount, total])
 
-    print(table3)
+    print(asset_table)
     continue1 = (input(q_color + "Do you want to add another financial asset? y/n: " + reset_all))
     if continue1 =="y":
         asset_calculate()
-        print(table3)
+        print(asset_table)
     if continue1 == "n":
-        return table3  
+        return asset_table  
 
 print(asset_calculate())
+
+income_table = BeautifulTable()
+income_table.columns.header = ["income", "amount",  "total"]
+add_income = []
+
+def income_calculate():
+    '''
+   Takes in data of the incomes plugged in
+    '''
