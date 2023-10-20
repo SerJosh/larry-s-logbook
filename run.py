@@ -209,3 +209,8 @@ def income_calculate():
     '''
    Takes in data of the incomes plugged in
     '''
+    income = (input(q_color + "Enter The name of your income: " + reset_all))
+    amount = float(input(q_color + "Enter your amount of that income: " + reset_all))
+    add.append(amount)
+    total = sum(add)
+    table.rows.append([d_color + income, amount,  total])
