@@ -161,7 +161,7 @@ detail_table.rows.append(["CURRENCY", d_color + currency])
 goal_question =  (input(q_color + "\nDo you want to set a budget goal? ie: a desired amount you want after all expenses(y/n): " + reset_all))
 if goal_question == "y":
     goal = (input((q_color + "Enter the amount of your goal: " + reset_all)))
-    detail_table.rows.append(["Goal", d_color + goal ])
+    detail_table.rows.append(["Goal", d_color + goal])
 
 print(reset_all + "\nSo these are the details you have given to me so far...\n")
 print(detail_table)
@@ -215,12 +215,18 @@ def income_calculate():
     total = sum(add_income)
     income_table.rows.append([d_color + income, amount,  total])
 
-    print(table)
+    print(income_table)
     continue1 = (input(q_color + "Do you want to add another income? y/n: " + reset_all))
     if continue1 =="y":
         income_calculate()
-        print(table)
+        print(income_table)
     if continue1 == "n":
-        return table  
+        return income_table  
 
 print(income_calculate())
+
+expense_table = BeautifulTable()
+expense_table.columns.header = ["expense", "amount", "total"]
+add_expense = []
+
+def expense_calculate():
