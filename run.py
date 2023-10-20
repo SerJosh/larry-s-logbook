@@ -99,3 +99,43 @@ detail_table.columns.header = ["", ""]
 name = str(input(q_color + "What is your name?: " + reset_all))
 detail_table.rows.append([ "NAME", d_color + name])
 print(f"Hello {name} :).")
+
+month_or_day = (input(q_color + "\nWould you like to budget for a given month(y/n): " + reset_all))
+if month_or_day == "y":
+    month = (input(q_color + "Please give me the number of the month eg: 1 is January and so on: " + reset_all))
+    if month == "1":
+        chosen_month = "January"
+        exact_days = 31
+        detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    if month == "2":
+        chosen_month = "Febuary"
+        exact_days = 31
+        detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    if month == "3":
+        chosen_month = "March"
+        exact_days = 31
+        detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    if month == "4":
+        chosen_month = "April"
+        exact_days = 31
+        detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    if month == "5":
+        chosen_month = "May"
+        exact_days = 31
+        detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    if month == "6":
+        chosen_month = "June"
+        exact_days = 31
+        detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    if month == "7":
+        chosen_month = "July"
+        exact_days = 31
+        detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    if month == "8":
+        chosen_month = "August"
+        exact_days = 31
+        detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    if month == "9":
+        chosen_month = "September"
+        exact_days = 31
+        detail_table.rows.append(["MONTH", d_color + chosen_month, ])
