@@ -14,7 +14,7 @@ def welcome_message():
     '''
     Display the logo, image and welcome message
     '''
-    print(Style.BRIGHT + Fore.BLUE +''' ▄█          ▄████████    ▄████████    ▄████████ ▄██   ▄      ▄████████         
+    print(h_color + ''' ▄█          ▄████████    ▄████████    ▄████████ ▄██   ▄      ▄████████         
 ███         ███    ███   ███    ███   ███    ███ ███   ██▄   ███    ███         
 ███         ███    ███   ███    ███   ███    ███ ███▄▄▄███   ███    █▀          
 ███         ███    ███  ▄███▄▄▄▄██▀  ▄███▄▄▄▄██▀ ▀▀▀▀▀▀███   ███                
@@ -76,8 +76,10 @@ __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
                         'incomes, expenses and the timeframe in which you want to budget for. There is additional '
                         'information which is completely optional for you to provide me with but wouldnt it be fun '
                         'to just go all out and discover you financial budgeting story!? '
+                        'To simply put it, you are dealing with a simple formula of financial assets + income - expenses. '
+                        'Use that formula as you wish in any way you want, but walking it with me may give you more insightful results. '
                         'None the less try out the LogBook and lets see where it takes us.', 80))
-    print(Style.BRIGHT + Fore.BLUE +'''\n      __...--~~~~~-._   _.-~~~~~--...__
+    print(h_color + '''\n      __...--~~~~~-._   _.-~~~~~--...__
     //               `V'               \\ 
    //                 |                 \\ 
   //__...--~~~~~~-._  |  _.-~~~~~~--...__\\ 
@@ -252,11 +254,11 @@ asset_total = sum(add_asset)
 
 surplus = asset_total + inco_total - expe_total
 
-print(table3)
+print(asset_table)
 print()
-print(table)
+print(income_table)
 print()
-print(table2)
+print(expense_table)
 print()
 print(" Your financial assets are " + str(asset_total))
 print(" Your total income is " + str(inco_total))
