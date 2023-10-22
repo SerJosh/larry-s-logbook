@@ -9,6 +9,7 @@ reset_all = Style.RESET_ALL           # Reset to normal
 d_color = Fore.LIGHTYELLOW_EX         # Data color
 q_color = Style.BRIGHT + Fore.GREEN   # Question color
 h_color = Style.BRIGHT + Fore.BLUE    # Header and Image color
+e_color = Back.RED                    # Error color
 
 def welcome_message():
     '''
@@ -63,7 +64,7 @@ __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
   |___ /   (|________/   |\_______\       /  /| |______|
       /                  \|________)     /  / | |\n''')
 
-    print(reset_all +'Welcome to Larrys LogBook!\n')
+    print(reset_all + 'Welcome to Larrys LogBook!\n')
     print(textwrap.fill('Hi! Im Larry, your personal budgeting tool! '
                         'I may not be as fancy as those AI thingy majigs you kids use nowadays '
                         'but I get my job done just fine :). Im here to help you with your personal budgeting '
@@ -102,9 +103,10 @@ def name_questions():
         # Validate that name contains any characters
         if len(name) <= 0:
             raise ValueError("The name can't be left empty.")
+        if len(name) >= 10:
+            raise ValueError("The name has too many characters.")
     except ValueError as e:
-        print('\n'
-              f'Invalid name. {e} Please provide your name again.' +
+        print(e_color + f'Invalid name. {e} Please provide your name again.' +
               reset_all)
         print(name_questions())
     else:
@@ -112,7 +114,11 @@ def name_questions():
 
     detail_table.rows.append([ "NAME", d_color + name])
 
-# This is the main function, this is where everything runs
+# This is the main function, this is where everything runs---->
+# And these are my global variables-->
+name = "x"
+table4 = "y"
+# And these are my global variables-->
 
 def main():
     welcome_message()
@@ -125,7 +131,7 @@ def main():
 main()
 
 
-# This is the main function, this is where everything runs
+# This is the main function, this is where everything runs---->
 
 month_or_day = (input(q_color + "\nWould you like to budget for a given month(y/n): " + reset_all))
 if month_or_day == "y":
