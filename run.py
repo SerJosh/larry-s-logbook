@@ -95,10 +95,14 @@ print(reset_all + textwrap.fill('Ok... So first I am going to ask a few question
                     'be useful to me in regards to your budgeting so hear me out :).', 80))
 print()
 
+def name_questions():
+    global table4
+    global name
+
 detail_table = BeautifulTable()
 detail_table.columns.header = ["", ""]
 
-name = str(input(q_color + "What is your name?: " + reset_all))
+name = (input(q_color + "What is your name?: " + reset_all))
 detail_table.rows.append([ "NAME", d_color + name])
 print(f"Hello {name} :).")
 
