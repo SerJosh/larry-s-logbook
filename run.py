@@ -11,6 +11,8 @@ q_color = Style.BRIGHT + Fore.GREEN   # Question color
 h_color = Style.BRIGHT + Fore.BLUE    # Header and Image color
 e_color = Back.RED                    # Error color
 
+# OUTPUT FUNCTIONS
+
 def welcome_message():
     '''
     Display the logo, image and welcome message
@@ -88,17 +90,19 @@ __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
 ====================\\|//====================
                     `---`\n''')
 
+
 def name_questions():
     '''
     Display, append and validate name question
     '''
     global detail_table
     global name
-
+    
     detail_table = BeautifulTable()
     detail_table.columns.header = ["", ""]
 
     name = str(input(q_color + "What is your name?: " + reset_all))
+    detail_table.rows.append([ "NAME", d_color + name])
     try:
         # Validate that name contains any characters
         if len(name) <= 0:
@@ -112,12 +116,12 @@ def name_questions():
     else:
         return f"Hello {name} :)."
 
-    detail_table.rows.append([ "NAME", d_color + name])
+    
 
 # This is the main function, this is where everything runs---->
 # And these are my global variables-->
 name = "x"
-table4 = "y"
+detail_table = "y"
 # And these are my global variables-->
 
 def main():
