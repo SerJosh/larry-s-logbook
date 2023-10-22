@@ -87,24 +87,45 @@ __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
 ====================\\|//====================
                     `---`\n''')
 
-
-print(welcome_message())
-
-print(reset_all + textwrap.fill('Ok... So first I am going to ask a few questions before we go on to '
-                    'the actual incomes and expenditures, just some information that might '
-                    'be useful to me in regards to your budgeting so hear me out :).', 80))
-print()
-
 def name_questions():
-    global table4
+    '''
+    Display, append and validate name question
+    '''
+    global detail_table
     global name
 
-detail_table = BeautifulTable()
-detail_table.columns.header = ["", ""]
+    detail_table = BeautifulTable()
+    detail_table.columns.header = ["", ""]
 
-name = (input(q_color + "What is your name?: " + reset_all))
-detail_table.rows.append([ "NAME", d_color + name])
-print(f"Hello {name} :).")
+    name = str(input(q_color + "What is your name?: " + reset_all))
+    try:
+        # Validate that name contains any characters
+        if len(name) <= 0:
+            raise ValueError("The name can't be left empty.")
+    except ValueError as e:
+        print('\n'
+              f'Invalid name. {e} Please provide your name again.' +
+              reset_all)
+        print(name_questions())
+    else:
+        return f"Hello {name} :)."
+
+    detail_table.rows.append([ "NAME", d_color + name])
+
+# This is the main function, this is where everything runs
+
+def main():
+    welcome_message()
+    print(reset_all + textwrap.fill('Ok... So first I am going to ask a few questions before we go on to '
+                    'the actual incomes and expenditures, just some information that might '
+                    'be useful to me in regards to your budgeting so hear me out :).', 80))
+    print()
+    name_questions()
+
+main()
+
+
+# This is the main function, this is where everything runs
 
 month_or_day = (input(q_color + "\nWould you like to budget for a given month(y/n): " + reset_all))
 if month_or_day == "y":
