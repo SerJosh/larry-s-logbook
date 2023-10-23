@@ -122,7 +122,15 @@ def month_question():
     global detail_table
     global chosen_month
     global exact_days 
-    month_or_day = (input(q_color + "\nWould you like to budget for a given month(y/n): " + reset_all)) 
+    month_or_day = (input(q_color + "\nWould you like to budget for a given month(y/n): " + reset_all))
+    try:
+        # Validate that name contains any characters
+        if month_or_day != "y" or "n":
+            raise ValueError("You can only select y or n.")
+    except ValueError as e:
+        print(e_color + f'Invalid choice. {e} Please try again.' +
+              reset_all)
+        return month_question() 
     if month_or_day=='y':
 	    month = (input(q_color + "Please give me the number of the month eg: 1 is January and so on: " + reset_all))
 	    if month=='1':chosen_month='January';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
@@ -146,7 +154,7 @@ def month_question():
 name = "x"
 detail_table = "y"
 exact_days = "z"
-days = "a"
+days = "x"
 # And these are my global variables-->
 
 def main():
