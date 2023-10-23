@@ -112,9 +112,8 @@ def name_questions():
     except ValueError as e:
         print(e_color + f'Invalid name. {e} Please provide your name again.' +
               reset_all)
-        print(name_questions())
-    else:
-        return f"Hello {name} :)."
+        return name_questions()
+ 
 
     
 
