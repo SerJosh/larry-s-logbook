@@ -91,7 +91,7 @@ __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
                     `---`\n''')
 
 
-def name_questions():
+def name_question():
     '''
     Display, append and validate name question
     '''
@@ -112,15 +112,41 @@ def name_questions():
     except ValueError as e:
         print(e_color + f'Invalid name. {e} Please provide your name again.' +
               reset_all)
-        return name_questions()
+        return name_question()
  
 
-    
+def month_question():
+    '''
+    Display, append and validate month question
+    '''
+    global detail_table
+    global chosen_month
+    global exact_days 
+    month_or_day = (input(q_color + "\nWould you like to budget for a given month(y/n): " + reset_all)) 
+    if month_or_day=='y':
+	    month = (input(q_color + "Please give me the number of the month eg: 1 is January and so on: " + reset_all))
+	    if month=='1':chosen_month='January';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+	    if month=='2':chosen_month='Febuary';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+	    if month=='3':chosen_month='March';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+	    if month=='4':chosen_month='April';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+	    if month=='5':chosen_month='May';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+	    if month=='6':chosen_month='June';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+	    if month=='7':chosen_month='July';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+	    if month=='8':chosen_month='August';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+	    if month=='9':chosen_month='September';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+	    if month=='10':chosen_month='October';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+	    if month=='11':chosen_month='November';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+	    if month=='12':chosen_month='December';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    if month_or_day == "n":
+        days = (input(q_color + "Then how many days do you want to budget for?: " + reset_all))
+        detail_table.rows.append(["Days", d_color + days, ])
 
 # This is the main function, this is where everything runs---->
 # And these are my global variables-->
 name = "x"
 detail_table = "y"
+exact_days = "z"
+days = "a"
 # And these are my global variables-->
 
 def main():
@@ -129,31 +155,16 @@ def main():
                     'the actual incomes and expenditures, just some information that might '
                     'be useful to me in regards to your budgeting so hear me out :).', 80))
     print()
-    name_questions()
+    name_question()
+    month_question()
 
 main()
 
 
 # This is the main function, this is where everything runs---->
 
-month_or_day = (input(q_color + "\nWould you like to budget for a given month(y/n): " + reset_all)) 
-if month_or_day=='y':
-	month = (input(q_color + "Please give me the number of the month eg: 1 is January and so on: " + reset_all))
-	if month=='1':chosen_month='January';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-	if month=='2':chosen_month='Febuary';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-	if month=='3':chosen_month='March';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-	if month=='4':chosen_month='April';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-	if month=='5':chosen_month='May';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-	if month=='6':chosen_month='June';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-	if month=='7':chosen_month='July';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-	if month=='8':chosen_month='August';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-	if month=='9':chosen_month='September';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-	if month=='10':chosen_month='October';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-	if month=='11':chosen_month='November';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-	if month=='12':chosen_month='December';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-if month_or_day == "n":
-    days = (input(q_color + "Then how many days do you want to budget for?: " + reset_all))
-    detail_table.rows.append(["Days", d_color + days, ])
+
+
 
 currency = (input(q_color + "\nWhat currency would you like to use?($ or (need to find the others): " + reset_all))
 detail_table.rows.append(["CURRENCY", d_color + currency])
