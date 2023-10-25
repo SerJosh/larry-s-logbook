@@ -169,6 +169,14 @@ def currency_question():
               reset_all)
         return currency_question()
 
+
+def goal_question():
+    goal_question =  (input(q_color + "\nDo you want to set a budget goal? ie: a desired amount you want after all expenses(y/n): " + reset_all))
+    if goal_question == "y":
+        goal = (input((q_color + "Enter the amount of your goal: " + reset_all)))
+        detail_table.rows.append(["Goal", d_color + goal ])
+
+
 # This is the main function, this is where everything runs---->
 # And these are my global variables-->
 name = "x"
@@ -186,6 +194,7 @@ def main():
     name_question()
     month_question()
     currency_question()
+    goal_question()
 
 main()
 
