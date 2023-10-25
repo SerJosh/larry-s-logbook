@@ -171,10 +171,22 @@ def currency_question():
 
 
 def goal_question():
+    '''
+    Display, append and validate goal question
+    '''
     goal_question =  (input(q_color + "\nDo you want to set a budget goal? ie: a desired amount you want after all expenses(y/n): " + reset_all))
     if goal_question == "y":
         goal = (input((q_color + "Enter the amount of your goal: " + reset_all)))
         detail_table.rows.append(["Goal", d_color + goal ])
+
+
+def question_summary():
+    '''
+    Display all results from questions asked and giving the option to start over
+    '''
+    print(reset_all + "\nSo these are the details you have given to me so far...\n")
+    print(detail_table)
+    (input(q_color + "\nAre you happy with the details or would you like to start over?(y/n): "))
 
 
 # This is the main function, this is where everything runs---->
@@ -195,21 +207,13 @@ def main():
     month_question()
     currency_question()
     goal_question()
+    question_summary()
 
 main()
 
 
 # This is the main function, this is where everything runs---->
 
-
-goal_question =  (input(q_color + "\nDo you want to set a budget goal? ie: a desired amount you want after all expenses(y/n): " + reset_all))
-if goal_question == "y":
-    goal = (input((q_color + "Enter the amount of your goal: " + reset_all)))
-    detail_table.rows.append(["Goal", d_color + goal])
-
-print(reset_all + "\nSo these are the details you have given to me so far...\n")
-print(detail_table)
-(input(q_color + "\nAre you happy with the details or would you like to start over?(y/n): "))
 
 asset_table = BeautifulTable()
 asset_table.columns.header = ["asset", "amount", "total"]
