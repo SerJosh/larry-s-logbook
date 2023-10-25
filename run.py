@@ -104,7 +104,7 @@ def name_question():
     name = str(input(q_color + "What is your name?: " + reset_all))
     detail_table.rows.append([ "NAME", d_color + name])
     try:
-        # Validate that name contains any characters
+        # Validate that name contains the right amount of characters
         if len(name) <= 0:
             raise ValueError("The name can't be left empty.")
         if len(name) >= 10:
@@ -124,15 +124,15 @@ def month_question():
     global exact_days 
     month_or_day = str(input(q_color + "\nWould you like to budget for a given month(y/n): " + reset_all))
     try:
-        # Validate that name contains any characters
+        # Validate that the input given is "y" or "n"
         if month_or_day == "y" or month_or_day == "n":
             accept = True
         else:
             accept = False
             if accept == False:
-                raise ValueError("The name can't be left empty.")
+                raise ValueError("Please only type 'y' or 'n'.")
     except ValueError as e:
-        print(e_color + f'Invalid name. {e} Please provide your name again.' +
+        print(e_color + f'Invalid answer. {e} Please try again.' +
               reset_all)
         return month_question() 
     if month_or_day=='y':
@@ -158,14 +158,14 @@ def currency_question():
     '''
     Display, append and validate currency question
     '''
-    currency = (input(q_color + "\nWhat currency would you like to use?($ or (need to find the others): " + reset_all))
+    currency = (input(q_color + "\nWhat currency would you like to use?(Only one character/symbol neccessary): " + reset_all))
     detail_table.rows.append(["CURRENCY", d_color + currency])
     try:
-        # Validate that name contains any characters
+        # Validate that the currency has the rigght amount of characters
         if len(currency) >= 2:
-            raise ValueError("The name can't be left empty.")
+            raise ValueError("You can only use one symbol/character.")
     except ValueError as e:
-        print(e_color + f'Invalid name. {e} Please provide your name again.' +
+        print(e_color + f'Invalid currency. {e} Please try again.' +
               reset_all)
         return currency_question()
 
