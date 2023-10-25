@@ -134,7 +134,8 @@ def month_question():
     except ValueError as e:
         print(e_color + f'Invalid answer. {e} Please try again.' +
               reset_all)
-        return month_question() 
+        return month_question()
+
     if month_or_day=='y':
 	    month = (input(q_color + "Please give me the number of the month eg: 1 is January and so on: " + reset_all))
 	    if month=='1':chosen_month='January';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
@@ -174,8 +175,21 @@ def goal_question():
     '''
     Display, append and validate goal question
     '''
-    goal_question =  (input(q_color + "\nDo you want to set a budget goal? ie: a desired amount you want after all expenses(y/n): " + reset_all))
-    if goal_question == "y":
+    goal_set_question =  (input(q_color + "\nDo you want to set a budget goal? ie: a desired amount you want after all expenses(y/n): " + reset_all))
+    try:
+        # Validate that the input given is "y" or "n"
+        if goal_set_question == "y" or goal_set_question == "n":
+            accept = True
+        else:
+            accept = False
+            if accept == False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(e_color + f'Invalid answer. {e} Please try again.' +
+              reset_all)
+        return goal_question()
+        
+    if goal_set_question == "y":
         goal = (input((q_color + "Enter the amount of your goal: " + reset_all)))
         detail_table.rows.append(["Goal", d_color + goal ])
 
