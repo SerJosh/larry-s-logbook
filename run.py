@@ -153,6 +153,22 @@ def month_question():
         days = (input(q_color + "Then how many days do you want to budget for?: " + reset_all))
         detail_table.rows.append(["Days", d_color + days, ])
 
+
+def currency_question():
+    '''
+    Display, append and validate currency question
+    '''
+    currency = (input(q_color + "\nWhat currency would you like to use?($ or (need to find the others): " + reset_all))
+    detail_table.rows.append(["CURRENCY", d_color + currency])
+    try:
+        # Validate that name contains any characters
+        if len(currency) >= 2:
+            raise ValueError("The name can't be left empty.")
+    except ValueError as e:
+        print(e_color + f'Invalid name. {e} Please provide your name again.' +
+              reset_all)
+        return currency_question()
+
 # This is the main function, this is where everything runs---->
 # And these are my global variables-->
 name = "x"
@@ -169,17 +185,13 @@ def main():
     print()
     name_question()
     month_question()
+    currency_question()
 
 main()
 
 
 # This is the main function, this is where everything runs---->
 
-
-
-
-currency = (input(q_color + "\nWhat currency would you like to use?($ or (need to find the others): " + reset_all))
-detail_table.rows.append(["CURRENCY", d_color + currency])
 
 goal_question =  (input(q_color + "\nDo you want to set a budget goal? ie: a desired amount you want after all expenses(y/n): " + reset_all))
 if goal_question == "y":
