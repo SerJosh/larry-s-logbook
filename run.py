@@ -122,13 +122,17 @@ def month_question():
     global detail_table
     global chosen_month
     global exact_days 
-    month_or_day = (input(q_color + "\nWould you like to budget for a given month(y/n): " + reset_all))
+    month_or_day = str(input(q_color + "\nWould you like to budget for a given month(y/n): " + reset_all))
     try:
         # Validate that name contains any characters
-        if month_or_day != "y" or "n":
-            raise ValueError("You can only select y or n.")
+        if month_or_day == "y" or month_or_day == "n":
+            accept = True
+        else:
+            accept = False
+            if accept == False:
+                raise ValueError("The name can't be left empty.")
     except ValueError as e:
-        print(e_color + f'Invalid choice. {e} Please try again.' +
+        print(e_color + f'Invalid name. {e} Please provide your name again.' +
               reset_all)
         return month_question() 
     if month_or_day=='y':
