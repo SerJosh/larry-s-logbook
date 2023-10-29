@@ -239,49 +239,6 @@ def reset_table():
     return first_questions()
 
 
-# This is the main function, this is where everything runs---->
-# And these are my global variables-->
-name = "x"
-detail_table = "y"
-exact_days = "z"
-days = "x"
-# And these are my global variables-->
-
-def first_questions():
-    name_question()
-    month_question()
-    currency_question()
-    goal_question()
-    question_summary()
-
-def main():
-    welcome_message()
-    print(reset_all + textwrap.fill('Ok... So first I am going to ask a few questions before we go on to '
-                    'the actual incomes and expenditures, just some information that might '
-                    'be useful to me in regards to your budgeting so hear me out :).', 80))
-    print()
-    first_questions()
-
-main()
-
-
-# This is the main function, this is where everything runs---->
-
-
-asset_table = BeautifulTable()
-asset_table.columns.header = ["asset", "amount", "total"]
-add_asset = []
-
-print()
-print(reset_all + textwrap.fill('\nNow lets get cracking with the financial assets :). '
-                        'By financial assets I mean money that you already have on you that you are willing '
-                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
-                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
-                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
-                        'or other institutions like that. Cash on hand may be another one you want to put in here '
-                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
-                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
-
 def asset_calculate():
     '''
    Takes in data of the financial assets plugged in
@@ -311,11 +268,6 @@ def asset_calculate():
     if continue1 == "n":
         return asset_table  
 
-print(asset_calculate())
-
-income_table = BeautifulTable()
-income_table.columns.header = ["income", "amount",  "total"]
-add_income = []
 
 def income_calculate():
     '''
@@ -346,11 +298,6 @@ def income_calculate():
     if continue1 == "n":
         return income_table  
 
-print(income_calculate())
-
-expense_table = BeautifulTable()
-expense_table.columns.header = ["expense", "amount", "total"]
-add_expense = []
 
 def expense_calculate():
     expense = (input(q_color + "Enter The name of your expense: " + reset_all))
@@ -364,7 +311,7 @@ def expense_calculate():
         print(e_color + f'Invalid name. {e} Please provide your income name again.' +
               reset_all)
         return expense_calculate()
-        
+
     amount_exp = float(input(q_color + "Enter your amount of that expense: " + reset_all))
     add_expense.append(amount_exp)
     total = sum(add_expense)
@@ -378,7 +325,64 @@ def expense_calculate():
     if continue1 == "n":
         print("ok") 
 
-print(expense_calculate())
+
+# This is the main function, this is where everything runs---->
+
+# And these are my global variables-->
+name = "x"
+detail_table = "y"
+exact_days = "z"
+days = "x"
+
+asset_table = BeautifulTable()
+asset_table.columns.header = ["asset", "amount", "total"]
+add_asset = []
+
+income_table = BeautifulTable()
+income_table.columns.header = ["income", "amount",  "total"]
+add_income = []
+
+expense_table = BeautifulTable()
+expense_table.columns.header = ["expense", "amount", "total"]
+add_expense = []
+# And these are my global variables-->
+
+
+
+#----condensed functions--------->
+def first_questions():
+    name_question()
+    month_question()
+    currency_question()
+    goal_question()
+    question_summary()
+# ----condensed functions------->
+
+def main():
+    welcome_message()
+    print(reset_all + textwrap.fill('Ok... So first I am going to ask a few questions before we go on to '
+                    'the actual incomes and expenditures, just some information that might '
+                    'be useful to me in regards to your budgeting so hear me out :).', 80))
+    print()
+    first_questions()
+    print()
+    print(reset_all + textwrap.fill('\nNow lets get cracking with the financial assets :). '
+                        'By financial assets I mean money that you already have on you that you are willing '
+                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
+                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
+                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
+                        'or other institutions like that. Cash on hand may be another one you want to put in here '
+                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
+                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+    asset_calculate()
+    income_calculate()
+    expense_calculate()
+
+
+main()
+
+# This is the main function, this is where everything runs---->
+
 
 inco_total = sum(add_income)
 expe_total = sum(add_expense)
