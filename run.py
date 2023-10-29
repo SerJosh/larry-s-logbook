@@ -150,7 +150,7 @@ def choose_month():
     global exact_days
     month = int(input(q_color + "Please give me the number of the month eg: 1 is January and so on: " + reset_all))
     try:
-        # Validate that name contains any characters
+        # Validate that name contains the right amount of characters
         if month <= 0:
             raise ValueError("This cannot be left empty.")
         if month >= 13:
@@ -188,7 +188,7 @@ def currency_question():
     '''
     currency = (input(q_color + "\nWhat currency would you like to use?(Only one character/symbol neccessary): " + reset_all))
     try:
-        # Validate that the currency has the rigght amount of characters
+        # Validate that the currency has the right amount of characters
         if len(currency) >= 2:
             raise ValueError("You can only use one symbol/character.")
     except ValueError as e:
@@ -248,10 +248,10 @@ days = "x"
 # And these are my global variables-->
 
 def first_questions():
-    name_questions()
+    name_question()
     month_question()
     currency_question()
-    goal_questionn()
+    goal_question()
     question_summary()
 
 def main():
@@ -287,6 +287,17 @@ def asset_calculate():
    Takes in data of the financial assets plugged in
     '''
     asset = (input(q_color + "\nEnter The name of your financial asset: " + reset_all))
+    try:
+        # Validate that the asset name contains the right amount of characters
+        if len(asset) <= 0:
+            raise ValueError("The asset name can't be left empty.")
+        if len(asset) >= 20:
+            raise ValueError("The asset name has too many characters.")
+    except ValueError as e:
+        print(e_color + f'Invalid name. {e} Please provide your asset name again.' +
+              reset_all)
+        return asset_calculate()
+        
     amount = float(input(q_color + "Enter the amount of that financial asset: " + reset_all))
     add_asset.append(amount)
     total = sum(add_asset)
