@@ -203,6 +203,7 @@ def goal_question():
     Display, append and validate goal question
     '''
     global goal
+    global goal_set_question
     goal_set_question =  (input(q_color + "\nDo you want to set a budget goal? ie: a desired amount you want after all expenses(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
@@ -333,6 +334,7 @@ name = "x"
 detail_table = "y"
 exact_days = "z"
 days = "x"
+goal_set_question = "a"
 
 asset_table = BeautifulTable()
 asset_table.columns.header = ["asset", "amount", "total"]
@@ -389,18 +391,21 @@ expe_total = sum(add_expense)
 asset_total = sum(add_asset)
 calc_days = (int(f"{exact_days}"))
 
-if goal_question == "y":
-    goalz = (float(f"{goal}"))
+if goal_set_question == "y":
+    goal_result = (float(f"{goal}"))
 
 # Calculations
 surplus = asset_total + inco_total - expe_total
 day_result = surplus / calc_days
 
 print(f'Budget Summary of {name}')
+print()
 print(h_color + "Financial Assets" + reset_all)
 print(asset_table)
+print()
 print(h_color + "Income" + reset_all)
 print(income_table)
+print()
 print(h_color + "Expenses" + reset_all)
 print(expense_table)
 print()
@@ -408,3 +413,12 @@ print(" Your financial assets are " + str(asset_total))
 print(" Your total income is " + str(inco_total))
 print(" Your total expense is " + str(expe_total))
 print("your gross amount will be " + str(surplus))
+print(f"you will be able to spend {day_result} per day")
+
+if goal_set_question == "y":
+
+    target_goal = surplus - goal_result 
+    if target_goal >= 0:
+        print("You are over your goal by: " + str(target_goal) + "\n")
+    else:
+        print("You are under your goal by: " + str(target_goal) + " short \n")
