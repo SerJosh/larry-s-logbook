@@ -135,6 +135,7 @@ def month_question():
         print(e_color + f'Invalid answer. {e} Please try again.' +
               reset_all)
         return month_question()
+
     # Direct to functions on choice of "y" or "n"  
     if month_or_day=='y':
         return choose_month()
@@ -151,11 +152,11 @@ def choose_month():
     try:
         # Validate that name contains any characters
         if month <= 0:
-            raise ValueError("The name can't be left empty.")
+            raise ValueError("This cannot be left empty.")
         if month >= 13:
-            raise ValueError("The name has too many characters.")
+            raise ValueError("Please choose the months between 1 and 12.")
     except ValueError as e:
-        print(e_color + f'Invalid name. {e} Please provide your name again.' +
+        print(e_color + f'Invalid input. {e} Please try again.' +
               reset_all)
         return choose_month()
     if month== 1 :chosen_month='January';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
@@ -186,7 +187,6 @@ def currency_question():
     Display, append and validate currency question
     '''
     currency = (input(q_color + "\nWhat currency would you like to use?(Only one character/symbol neccessary): " + reset_all))
-    detail_table.rows.append(["CURRENCY", d_color + currency])
     try:
         # Validate that the currency has the rigght amount of characters
         if len(currency) >= 2:
@@ -195,12 +195,14 @@ def currency_question():
         print(e_color + f'Invalid currency. {e} Please try again.' +
               reset_all)
         return currency_question()
+    detail_table.rows.append(["CURRENCY", d_color + currency])
 
 
 def goal_question():
     '''
     Display, append and validate goal question
     '''
+    global goal
     goal_set_question =  (input(q_color + "\nDo you want to set a budget goal? ie: a desired amount you want after all expenses(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
@@ -226,7 +228,9 @@ def question_summary():
     '''
     print(reset_all + "\nSo these are the details you have given to me so far...\n")
     print(detail_table)
-    (input(q_color + "\nAre you happy with the details or would you like to start over?(y/n): "))
+    summary_question = (input(q_color + "\nThese are the details you supplied, would you like to start over?(y/n): " + reset_all))
+    if summary_question == "y":
+        return reset_table()
 
 
 # This is the main function, this is where everything runs---->
