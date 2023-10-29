@@ -297,7 +297,7 @@ def asset_calculate():
         print(e_color + f'Invalid name. {e} Please provide your asset name again.' +
               reset_all)
         return asset_calculate()
-        
+
     amount = float(input(q_color + "Enter the amount of that financial asset: " + reset_all))
     add_asset.append(amount)
     total = sum(add_asset)
@@ -322,6 +322,17 @@ def income_calculate():
    Takes in data of the incomes plugged in
     '''
     income = (input(q_color + "Enter The name of your income: " + reset_all))
+    try:
+        # Validate that the income name contains the right amount of characters
+        if len(income) <= 0:
+            raise ValueError("The income name can't be left empty.")
+        if len(income) >= 20:
+            raise ValueError("The income name has too many characters.")
+    except ValueError as e:
+        print(e_color + f'Invalid name. {e} Please provide your income name again.' +
+              reset_all)
+        return income_calculate()
+
     amount = float(input(q_color + "Enter your amount of that income: " + reset_all))
     add_income.append(amount)
     total = sum(add_income)
@@ -343,6 +354,17 @@ add_expense = []
 
 def expense_calculate():
     expense = (input(q_color + "Enter The name of your expense: " + reset_all))
+    try:
+        # Validate that the expense name contains the right amount of characters
+        if len(expense) <= 0:
+            raise ValueError("The income name can't be left empty.")
+        if len(expense) >= 20:
+            raise ValueError("The income name has too many characters.")
+    except ValueError as e:
+        print(e_color + f'Invalid name. {e} Please provide your income name again.' +
+              reset_all)
+        return expense_calculate()
+        
     amount_exp = float(input(q_color + "Enter your amount of that expense: " + reset_all))
     add_expense.append(amount_exp)
     total = sum(add_expense)
