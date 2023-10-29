@@ -327,6 +327,46 @@ def expense_calculate():
         print("ok") 
 
 
+
+
+def results_page():
+    inco_total = sum(add_income)
+    expe_total = sum(add_expense)
+    asset_total = sum(add_asset)
+    calc_days = (int(f"{exact_days}"))
+
+    if goal_set_question == "y":
+        goal_result = (float(f"{goal}"))
+
+    # Calculations
+    surplus = asset_total + inco_total - expe_total
+    day_result = surplus / calc_days
+
+    print(f'Budget Summary of {name}')
+    print()
+    print(h_color + "Financial Assets" + reset_all)
+    print(asset_table)
+    print()
+    print(h_color + "Income" + reset_all)
+    print(income_table)
+    print()
+    print(h_color + "Expenses" + reset_all)
+    print(expense_table)
+    print()
+    print(" Your financial assets are " + str(asset_total))
+    print(" Your total income is " + str(inco_total))
+    print(" Your total expense is " + str(expe_total))
+    print("your gross amount will be " + str(surplus))
+    print(f"you will be able to spend {day_result} per day")
+
+    if goal_set_question == "y":
+        target_goal = surplus - goal_result 
+        if target_goal >= 0:
+            print("You are over your goal by: " + str(target_goal) + "\n")
+        else:
+            print("You are under your goal by: " + str(target_goal) + " short \n")
+
+
 # This is the main function, this is where everything runs---->
 
 # And these are my global variables-->
@@ -348,8 +388,6 @@ expense_table = BeautifulTable()
 expense_table.columns.header = ["expense", "amount", "total"]
 add_expense = []
 # And these are my global variables-->
-
-
 
 #----condensed functions--------->
 def first_questions():
@@ -379,46 +417,9 @@ def main():
     asset_calculate()
     income_calculate()
     expense_calculate()
+    results_page()
 
 
 main()
 
 # This is the main function, this is where everything runs---->
-
-
-inco_total = sum(add_income)
-expe_total = sum(add_expense)
-asset_total = sum(add_asset)
-calc_days = (int(f"{exact_days}"))
-
-if goal_set_question == "y":
-    goal_result = (float(f"{goal}"))
-
-# Calculations
-surplus = asset_total + inco_total - expe_total
-day_result = surplus / calc_days
-
-print(f'Budget Summary of {name}')
-print()
-print(h_color + "Financial Assets" + reset_all)
-print(asset_table)
-print()
-print(h_color + "Income" + reset_all)
-print(income_table)
-print()
-print(h_color + "Expenses" + reset_all)
-print(expense_table)
-print()
-print(" Your financial assets are " + str(asset_total))
-print(" Your total income is " + str(inco_total))
-print(" Your total expense is " + str(expe_total))
-print("your gross amount will be " + str(surplus))
-print(f"you will be able to spend {day_result} per day")
-
-if goal_set_question == "y":
-
-    target_goal = surplus - goal_result 
-    if target_goal >= 0:
-        print("You are over your goal by: " + str(target_goal) + "\n")
-    else:
-        print("You are under your goal by: " + str(target_goal) + " short \n")
