@@ -387,13 +387,21 @@ main()
 inco_total = sum(add_income)
 expe_total = sum(add_expense)
 asset_total = sum(add_asset)
+calc_days = (int(f"{exact_days}"))
 
+if goal_question == "y":
+    goalz = (float(f"{goal}"))
+
+# Calculations
 surplus = asset_total + inco_total - expe_total
+day_result = surplus / calc_days
 
+print(f'Budget Summary of {name}')
+print(h_color + "Financial Assets" + reset_all)
 print(asset_table)
-print()
+print(h_color + "Income" + reset_all)
 print(income_table)
-print()
+print(h_color + "Expenses" + reset_all)
 print(expense_table)
 print()
 print(" Your financial assets are " + str(asset_total))
