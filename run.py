@@ -233,6 +233,12 @@ def question_summary():
         return reset_table()
 
 
+def reset_table():
+
+    detail_table = None
+    return first_questions()
+
+
 # This is the main function, this is where everything runs---->
 # And these are my global variables-->
 name = "x"
@@ -241,17 +247,20 @@ exact_days = "z"
 days = "x"
 # And these are my global variables-->
 
+def first_questions():
+    name_questions()
+    month_question()
+    currency_question()
+    goal_questionn()
+    question_summary()
+
 def main():
     welcome_message()
     print(reset_all + textwrap.fill('Ok... So first I am going to ask a few questions before we go on to '
                     'the actual incomes and expenditures, just some information that might '
                     'be useful to me in regards to your budgeting so hear me out :).', 80))
     print()
-    name_question()
-    month_question()
-    currency_question()
-    goal_question()
-    question_summary()
+    first_questions()
 
 main()
 
