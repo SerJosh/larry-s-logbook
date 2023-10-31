@@ -423,7 +423,7 @@ def income_calculate():
     '''
    Takes in data of the incomes plugged in
     '''
-    income = (input(q_color + "Enter The name of your income: " + reset_all))
+    income = (input(q_color + "\nEnter The name of your income: " + reset_all))
     try:
         # Validate that the income name contains the right amount of characters
         if len(income) <= 0:
@@ -446,14 +446,15 @@ def income_calculate():
         income_calculate()
         print(income_table)
     if another_income == "n":
+        print(income_table)
         income_confirmation()
 
 
 def income_confirmation():
-     '''
+    '''
    Confirms if user wants to redo the income
     '''
-    restart_income = (input(q_color + "Are you happy with the details or would you like to start over?(y/n): " + reset_all))
+    restart_income = (input(q_color + "These are the income details you have provided, would you like to start over?(y/n): " + reset_all))
     try:
     # Validate that the input given is "y" or "n"
         if restart_income == "y" or restart_income == "n":
@@ -466,7 +467,7 @@ def income_confirmation():
         print(e_color + f'Invalid answer. {e} Please try again.' +
             reset_all)
         return income_confirmation()
-    if rrestart_income =="y":
+    if restart_income =="y":
         reset_income_table()  
     if restart_income == "n":
         print("ok")
@@ -591,7 +592,7 @@ def main():
     first_questions()
     print()
     financial_asset_option()
-    income_calculate()
+    income_option()
     expense_calculate()
     results_page()
 
