@@ -621,7 +621,7 @@ def results_page():
     surplus = asset_total + inco_total - expe_total
     day_result = surplus / calc_days
 
-    print(f'Budget Summary of {name}')
+    print(h_color + f'Budget Summary of {name}')
     print()
     print(h_color + "Financial Assets" + reset_all)
     print(asset_table)
@@ -632,18 +632,22 @@ def results_page():
     print(h_color + "Expenses" + reset_all)
     print(expense_table)
     print()
-    print(" Your financial assets are " + str(asset_total))
-    print(" Your total income is " + str(inco_total))
-    print(" Your total expense is " + str(expe_total))
-    print("your gross amount will be " + str(surplus))
-    print(f"you will be able to spend {day_result} per day")
+    print(h_color +"Your financial assets are " + reset_all + str(asset_total))
+    print()
+    print(h_color +"Your total income is " + reset_all + str(inco_total))
+    print()
+    print(h_color +"Your total expense is " + reset_all + str(expe_total))
+    print()
+    print(h_color +"Your gross amount will be " + reset_all + str(surplus))
+    print()
+    print(h_color + f"you will be able to spend " + reset_all +  f"{day_result} per day")
 
     if goal_set_question == "y":
         target_goal = surplus - goal_result 
         if target_goal >= 0:
-            print("You are over your goal by: " + str(target_goal) + "\n")
+            print(h_color + "You are over your goal by: " + reset_all + str(target_goal) + "\n")
         else:
-            print("You are under your goal by: " + str(target_goal) + " short \n")
+            print(h_color + "You are under your goal by: " + reset_all + str(target_goal) + "\n")
 
 
 # This is the main function, this is where everything runs---->
