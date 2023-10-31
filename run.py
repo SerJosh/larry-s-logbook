@@ -415,9 +415,9 @@ def income_info_question():
                         'or other institutions like that. Cash on hand may be another one you want to put in here '
                         'In the end its all up to you to decide what you want in here, but try leave nothing out '
                         'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
-        return asset_calculate()
+        return income_calculate()
     if income_info == "n":
-        return asset_calculate()
+        return income_calculate()
 
 def income_calculate():
     '''
