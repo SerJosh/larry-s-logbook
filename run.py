@@ -441,12 +441,48 @@ def income_calculate():
     income_table.rows.append([d_color + income, amount,  total])
 
     print(income_table)
-    continue1 = (input(q_color + "Do you want to add another income? y/n: " + reset_all))
-    if continue1 =="y":
+    another_income = (input(q_color + "Do you want to add another income? y/n: " + reset_all))
+    if another_income =="y":
         income_calculate()
         print(income_table)
-    if continue1 == "n":
-        return income_table  
+    if another_income == "n":
+        income_confirmation()
+
+
+def income_confirmation():
+     '''
+   Confirms if user wants to redo the income
+    '''
+    restart_income = (input(q_color + "Are you happy with the details or would you like to start over?(y/n): " + reset_all))
+    try:
+    # Validate that the input given is "y" or "n"
+        if restart_income == "y" or restart_income == "n":
+            accept = True
+        else:
+            accept = False
+            if accept == False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(e_color + f'Invalid answer. {e} Please try again.' +
+            reset_all)
+        return income_confirmation()
+    if rrestart_income =="y":
+        reset_income_table()  
+    if restart_income == "n":
+        print("ok")
+
+
+def reset_income_table():
+    '''
+   Resets income table and starts income questions again
+    '''
+    global income_table
+    global add_income
+    income_table = None
+    income_table = BeautifulTable()
+    income_table.columns.header = ["income", "amount",  "total"]
+    add_income = []
+    return income_calculate()  
 
 # Expense Functions
 
