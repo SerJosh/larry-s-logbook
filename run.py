@@ -347,13 +347,12 @@ def asset_confirmation():
             reset_all)
         return asset_confirmation()
     if restart_asset =="y":
-        reset_table2()
-        
+        reset_asset_table()  
     if restart_asset == "n":
         print("ok")
 
 
-def reset_table2():
+def reset_asset_table():
     '''
    Resets asset table and starts assets questions again
     '''
@@ -500,7 +499,7 @@ def main():
     print()
     first_questions()
     print()
-    asset_calculate()
+    financial_asset_option()
     income_calculate()
     expense_calculate()
     results_page()
