@@ -235,9 +235,36 @@ def question_summary():
 
 
 def reset_table():
-
+    '''
+    Resets detail_table and restarts the first questions function
+    '''
     detail_table = None
     return first_questions()
+
+
+def financial_asset_option():
+    '''
+    Gives option of choosing if you want to add financial assets
+    '''
+    asset_choice = (input(q_color + "\nWould you like to add financial assets?(y/n): " + reset_all))
+    try:
+        # Validate that name contains any characters
+        if asset_choice == "y" or asset_choice == "n":
+            accept = True
+        else:
+            accept = False
+            if accept == False:
+                raise ValueError("The name can't be left empty.")
+    except ValueError as e:
+        print(e_color + f'Invalid name. {e} Please provide your name again.' +
+              reset_all)
+        return financial_asset_option()
+
+    if asset_choice=='y':
+        return asset_info_question()
+
+
+# def financial_asset_info_question():
 
 
 def asset_calculate():
@@ -325,8 +352,6 @@ def expense_calculate():
         print(expense_table)
     if continue1 == "n":
         print("ok") 
-
-
 
 
 def results_page():
