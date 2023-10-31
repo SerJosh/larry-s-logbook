@@ -90,6 +90,7 @@ __|  \/\|/   /(____|/ //                    /  /||~|~|~|__
 ====================\\|//====================
                     `---`\n''')
 
+# First Questions Functions
 
 def name_question():
     '''
@@ -241,6 +242,7 @@ def reset_table():
     detail_table = None
     return first_questions()
 
+# Financial Asset Functions
 
 def financial_asset_option():
     '''
@@ -248,7 +250,7 @@ def financial_asset_option():
     '''
     asset_choice = (input(q_color + "\nWould you like to add financial assets?(y/n): " + reset_all))
     try:
-        # Validate that name contains any characters
+        # Validate that the input given is "y" or "n"
         if asset_choice == "y" or asset_choice == "n":
             accept = True
         else:
@@ -261,10 +263,39 @@ def financial_asset_option():
         return financial_asset_option()
 
     if asset_choice=='y':
-        return asset_info_question()
+        return financial_asset_info_question()
 
 
-# def financial_asset_info_question():
+def financial_asset_info_question():
+    '''
+    Gives option of choosing if you want to hear more about financial assets
+    '''
+    asset_info = (input(q_color + "\nDo you want to hear more about financial assets?(y/n): " + reset_all))
+    try:
+    # Validate that the input given is "y" or "n"
+        if asset_info == "y" or asset_info == "n":
+            accept = True
+        else:
+            accept = False
+            if accept == False:
+                raise ValueError("The name can't be left empty.")
+    except ValueError as e:
+        print(e_color + f'Invalid name. {e} Please provide your name again.' +
+            reset_all)
+        return financial_asset_info_question()
+
+    if asset_info=='y':
+        print(reset_all + textwrap.fill('\nNow lets get cracking with the financial assets :). '
+                        'By financial assets I mean money that you already have on you that you are willing '
+                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
+                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
+                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
+                        'or other institutions like that. Cash on hand may be another one you want to put in here '
+                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
+                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+        return asset_calculate()
+    if asset_info == "n":
+        return asset_calculate()
 
 
 def asset_calculate():
@@ -431,14 +462,6 @@ def main():
     print()
     first_questions()
     print()
-    print(reset_all + textwrap.fill('\nNow lets get cracking with the financial assets :). '
-                        'By financial assets I mean money that you already have on you that you are willing '
-                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
-                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
-                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
-                        'or other institutions like that. Cash on hand may be another one you want to put in here '
-                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
-                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
     asset_calculate()
     income_calculate()
     expense_calculate()
