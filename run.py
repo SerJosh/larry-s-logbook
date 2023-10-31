@@ -364,6 +364,31 @@ def reset_asset_table():
     add_asset = []
     return asset_calculate() 
 
+# Income Functions
+
+def income_option():
+    '''
+    Gives option of choosing if you want to add financial assets
+    '''
+    income_choice = (input(q_color + "\nWould you like to add Income?(y/n): " + reset_all))
+    try:
+        # Validate that the input given is "y" or "n"
+        if income_choice == "y" or income_choice == "n":
+            accept = True
+        else:
+            accept = False
+            if accept == False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(e_color + f'Invalid answer. {e} Please try again.' +
+              reset_all)
+        return income_option()
+
+    if income_choice=='y':
+        return income_info_question()
+
+
+def income_info_question():
 
 def income_calculate():
     '''
@@ -394,6 +419,7 @@ def income_calculate():
     if continue1 == "n":
         return income_table  
 
+# Expense Functions
 
 def expense_calculate():
     expense = (input(q_color + "Enter The name of your expense: " + reset_all))
