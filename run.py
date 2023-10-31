@@ -487,6 +487,30 @@ def reset_income_table():
 
 # Expense Functions
 
+def expense_option():
+    '''
+    Gives option of choosing if you want to add expenses
+    '''
+    expense_choice = (input(q_color + "\nWould you like to add Expenses?(y/n): " + reset_all))
+    try:
+        # Validate that the input given is "y" or "n"
+        if expense_choice == "y" or expense_choice == "n":
+            accept = True
+        else:
+            accept = False
+            if accept == False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(e_color + f'Invalid answer. {e} Please try again.' +
+              reset_all)
+        return expense_option()
+
+    if expense_choice=='y':
+        return expense_info_question()
+
+
+def expense_info_question():
+
 def expense_calculate():
     expense = (input(q_color + "Enter The name of your expense: " + reset_all))
     try:
