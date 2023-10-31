@@ -368,7 +368,7 @@ def reset_asset_table():
 
 def income_option():
     '''
-    Gives option of choosing if you want to add financial assets
+    Gives option of choosing if you want to add incomes
     '''
     income_choice = (input(q_color + "\nWould you like to add Income?(y/n): " + reset_all))
     try:
@@ -389,6 +389,35 @@ def income_option():
 
 
 def income_info_question():
+    '''
+    Gives option of choosing if you want to hear more about income
+    '''
+    income_info = (input(q_color + "\nDo you want to hear more about income?(y/n): " + reset_all))
+    try:
+    # Validate that the input given is "y" or "n"
+        if income_info == "y" or income_info == "n":
+            accept = True
+        else:
+            accept = False
+            if accept == False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(e_color + f'Invalid answer. {e} Please try again.' +
+            reset_all)
+        return income_info_question()
+
+    if income_info=='y':
+        print(reset_all + textwrap.fill('\nNow lets get cracking with the financial assets :). '
+                        'By financial assets I mean money that you already have on you that you are willing '
+                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
+                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
+                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
+                        'or other institutions like that. Cash on hand may be another one you want to put in here '
+                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
+                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+        return asset_calculate()
+    if income_info == "n":
+        return asset_calculate()
 
 def income_calculate():
     '''
