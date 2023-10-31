@@ -256,9 +256,9 @@ def financial_asset_option():
         else:
             accept = False
             if accept == False:
-                raise ValueError("The name can't be left empty.")
+                raise ValueError("Please only type 'y' or 'n'.")
     except ValueError as e:
-        print(e_color + f'Invalid name. {e} Please provide your name again.' +
+        print(e_color + f'Invalid answer. {e} Please try again.' +
               reset_all)
         return financial_asset_option()
 
@@ -278,9 +278,9 @@ def financial_asset_info_question():
         else:
             accept = False
             if accept == False:
-                raise ValueError("The name can't be left empty.")
+                raise ValueError("Please only type 'y' or 'n'.")
     except ValueError as e:
-        print(e_color + f'Invalid name. {e} Please provide your name again.' +
+        print(e_color + f'Invalid answer. {e} Please try again.' +
             reset_all)
         return financial_asset_info_question()
 
@@ -320,12 +320,50 @@ def asset_calculate():
     asset_table.rows.append([d_color + asset, amount, total])
 
     print(asset_table)
-    continue1 = (input(q_color + "Do you want to add another financial asset? y/n: " + reset_all))
-    if continue1 =="y":
+    another_asset = (input(q_color + "Do you want to add another financial asset? y/n: " + reset_all))
+    if another_asset =="y":
         asset_calculate()
         print(asset_table)
-    if continue1 == "n":
-        return asset_table  
+    if another_asset == "n":
+        print(asset_table)
+        asset_confirmation()
+
+
+def asset_confirmation():
+    '''
+   Confirms if user wants to redo the financial assets
+    '''
+    restart_asset = (input(q_color + "Are you happy with the details or would you like to start over?(y/n): " + reset_all))
+    try:
+    # Validate that the input given is "y" or "n"
+        if restart_asset == "y" or restart_asset == "n":
+            accept = True
+        else:
+            accept = False
+            if accept == False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(e_color + f'Invalid answer. {e} Please try again.' +
+            reset_all)
+        return asset_confirmation()
+    if restart_asset =="y":
+        reset_table2()
+        
+    if restart_asset == "n":
+        print("ok")
+
+
+def reset_table2():
+    '''
+   Resets asset table and starts assets questions again
+    '''
+    global asset_table
+    global add_asset
+    asset_table = None
+    asset_table = BeautifulTable()
+    asset_table.columns.header = ["asset", "amount", "total"]
+    add_asset = []
+    return asset_calculate() 
 
 
 def income_calculate():
