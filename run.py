@@ -333,7 +333,7 @@ def asset_confirmation():
     '''
    Confirms if user wants to redo the financial assets
     '''
-    restart_asset = (input(q_color + "Are you happy with the details or would you like to start over?(y/n): " + reset_all))
+    restart_asset = (input(q_color + "These are the financial asset details your provided, would you like to start over?(y/n): " + reset_all))
     try:
     # Validate that the input given is "y" or "n"
         if restart_asset == "y" or restart_asset == "n":
@@ -542,6 +542,9 @@ def expense_info_question():
 
 
 def expense_calculate():
+    '''
+   Takes in data of the expenses plugged in
+    '''
     expense = (input(q_color + "Enter The name of your expense: " + reset_all))
     try:
         # Validate that the expense name contains the right amount of characters
@@ -560,12 +563,49 @@ def expense_calculate():
     expense_table.rows.append([d_color + expense, amount_exp, total])
 
     print(expense_table)
-    continue1 = (input(q_color + "Do you want to add another expense? y/n: " + reset_all))
-    if continue1 =="y":
+    another_expense = (input(q_color + "Do you want to add another expense? y/n: " + reset_all))
+    if another_expense =="y":
         expense_calculate()
         print(expense_table)
-    if continue1 == "n":
-        print("ok") 
+    if another_expense == "n":
+        print(expense_table)
+        expense_confirmation() 
+
+
+def expense_confirmation():
+    '''
+   Confirms if user wants to redo the expense
+    '''
+    restart_expense = (input(q_color + "These are the expense details you have provided, would you like to start over?(y/n): " + reset_all))
+    try:
+    # Validate that the input given is "y" or "n"
+        if restart_expense == "y" or restart_expense == "n":
+            accept = True
+        else:
+            accept = False
+            if accept == False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(e_color + f'Invalid answer. {e} Please try again.' +
+            reset_all)
+        return expense_confirmation()
+    if restart_expense =="y":
+        reset_expense_table()  
+    if restart_expense == "n":
+        print("ok")
+
+
+def reset_expense_table():
+    '''
+   Resets expense table and starts income questions again
+    '''
+    global expense_table
+    global add_expense
+    expense_table = None
+    expense_table = BeautifulTable()
+    expense_table.columns.header = ["expense", "amount", "total"]
+    add_expense = []
+    return expense_calculate()
 
 
 def results_page():
