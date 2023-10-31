@@ -510,6 +510,36 @@ def expense_option():
 
 
 def expense_info_question():
+    '''
+    Gives option of choosing if you want to hear more about expenses
+    '''
+    expense_info = (input(q_color + "\nDo you want to hear more about expenses?(y/n): " + reset_all))
+    try:
+    # Validate that the input given is "y" or "n"
+        if expense_info == "y" or expense_info == "n":
+            accept = True
+        else:
+            accept = False
+            if accept == False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(e_color + f'Invalid answer. {e} Please try again.' +
+            reset_all)
+        return expense_info_question()
+
+    if expense_info=='y':
+        print(reset_all + textwrap.fill('\nNow lets get cracking with the financial assets :). '
+                        'By financial assets I mean money that you already have on you that you are willing '
+                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
+                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
+                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
+                        'or other institutions like that. Cash on hand may be another one you want to put in here '
+                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
+                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+        return expense_calculate()
+    if income_info == "n":
+        return expense_calculate()
+
 
 def expense_calculate():
     expense = (input(q_color + "Enter The name of your expense: " + reset_all))
