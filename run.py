@@ -545,7 +545,7 @@ def expense_calculate():
     '''
    Takes in data of the expenses plugged in
     '''
-    expense = (input(q_color + "Enter The name of your expense: " + reset_all))
+    expense = (input(q_color + "\nEnter The name of your expense: " + reset_all))
     try:
         # Validate that the expense name contains the right amount of characters
         if len(expense) <= 0:
@@ -687,7 +687,7 @@ def main():
     print()
     financial_asset_option()
     income_option()
-    expense_calculate()
+    expense_option()
     results_page()
 
 
