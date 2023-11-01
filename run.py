@@ -151,15 +151,19 @@ def choose_month():
     global exact_days
     month = int(input(q_color + "Please give me the number of the month eg: 1 is January and so on: " + reset_all))
     try:
-        # Validate that name contains the right amount of characters
+        # Validate that month input contains the corrrect details
         if month <= 0:
-            raise ValueError("This cannot be left empty.")
+            raise ValueError("This cannot be 0 or under silly xD.")
         if month >= 13:
             raise ValueError("Please choose the months between 1 and 12.")
+        if len(month) >= 0:
+            raise ValueError("This cannot be left empty.")
     except ValueError as e:
         print(e_color + f'Invalid input. {e} Please try again.' +
               reset_all)
         return choose_month()
+
+    # Recieves data from which month number was chosen
     if month== 1 :chosen_month='January';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
     if month== 2 :chosen_month='Febuary';exact_days=28;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
     if month== 3 :chosen_month='March';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
@@ -180,6 +184,17 @@ def choose_day():
     '''
     global exact_days
     exact_days = (input(q_color + "Then how many days do you want to budget for?: " + reset_all))
+    try:
+        # Validate that month input contains the corrrect details
+        if exact_days <= 0:
+            raise ValueError("Lets not go there.. atleast put 1 xD.")
+        if len(exact_days) >= 0:
+            raise ValueError("This cannot be left empty.")
+    except ValueError as e:
+        print(e_color + f'Invalid input. {e} Please try again.' +
+              reset_all)
+        return choose_day()
+
     detail_table.rows.append(["Days", d_color + exact_days, ])
 
 
@@ -192,10 +207,13 @@ def currency_question():
         # Validate that the currency has the right amount of characters
         if len(currency) >= 2:
             raise ValueError("You can only use one symbol/character.")
+        if len(currency) <= 0:
+            raise ValueError("This cannot be left empty.") 
     except ValueError as e:
         print(e_color + f'Invalid currency. {e} Please try again.' +
               reset_all)
         return currency_question()
+
     detail_table.rows.append(["CURRENCY", d_color + currency])
 
 
@@ -540,7 +558,7 @@ def expense_info_question():
                         'In the end its all up to you to decide what you want in here, but try leave nothing out '
                         'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
         return expense_calculate()
-    if income_info == "n":
+    if expense_info == "n":
         return expense_calculate()
 
 
