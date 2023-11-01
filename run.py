@@ -186,10 +186,10 @@ def choose_day():
     exact_days = (input(q_color + "Then how many days do you want to budget for?: " + reset_all))
     try:
         # Validate that month input contains the corrrect details
-        if exact_days <= 0:
-            raise ValueError("Lets not go there.. atleast put 1 xD.")
-        if len(exact_days) >= 0:
+        if len(exact_days) <= 0:
             raise ValueError("This cannot be left empty.")
+        if exact_days == "0":
+            raise ValueError("Lets not go there.. atleast put 1 xD.")
     except ValueError as e:
         print(e_color + f'Invalid input. {e} Please try again.' +
               reset_all)
@@ -365,6 +365,7 @@ def asset_confirmation():
         print(e_color + f'Invalid answer. {e} Please try again.' +
             reset_all)
         return asset_confirmation()
+
     if restart_asset =="y":
         reset_asset_table()  
     if restart_asset == "n":
@@ -487,6 +488,7 @@ def income_confirmation():
         print(e_color + f'Invalid answer. {e} Please try again.' +
             reset_all)
         return income_confirmation()
+
     if restart_income =="y":
         reset_income_table()  
     if restart_income == "n":
@@ -610,6 +612,7 @@ def expense_confirmation():
         print(e_color + f'Invalid answer. {e} Please try again.' +
             reset_all)
         return expense_confirmation()
+
     if restart_expense =="y":
         reset_expense_table()  
     if restart_expense == "n":
@@ -630,6 +633,9 @@ def reset_expense_table():
 
 
 def results_page():
+    '''
+   Displays all calculated results and tables from information provided
+    '''
     inco_total = sum(add_income)
     expe_total = sum(add_expense)
     asset_total = sum(add_asset)
@@ -695,6 +701,9 @@ add_expense = []
 
 #----condensed functions--------->
 def first_questions():
+    '''
+   Condenses all of the question functions into one functon
+    '''
     name_question()
     month_question()
     currency_question()
@@ -703,6 +712,9 @@ def first_questions():
 # ----condensed functions------->
 
 def main():
+    '''
+   Takes in all neccessary functions and initiates the functions 
+    '''
     welcome_message()
     print(reset_all + textwrap.fill('Ok... So first I am going to ask a few questions before we go on to '
                     'the actual incomes and expenditures, just some information that might '
