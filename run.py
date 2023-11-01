@@ -248,6 +248,7 @@ def financial_asset_option():
     '''
     Gives option of choosing if you want to add financial assets
     '''
+    print('\nNow lets get cracking with the financial assets :). ')
     asset_choice = (input(q_color + "\nWould you like to add financial assets?(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
@@ -285,12 +286,12 @@ def financial_asset_info_question():
         return financial_asset_info_question()
 
     if asset_info=='y':
-        print(reset_all + textwrap.fill('\nNow lets get cracking with the financial assets :). '
+        print(reset_all + textwrap.fill(
                         'By financial assets I mean money that you already have on you that you are willing '
                         'to use in your budget, so if its a pension, a deeply imbedded life savings account '
                         'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
                         'account, or an amount in it you are willing to give in your budget, same goes with revolut '
-                        'or other institutions like that. Cash on hand may be another one you want to put in here '
+                        'or other institutions like that. Cash on hand may be another one you want to put in here. '
                         'In the end its all up to you to decide what you want in here, but try leave nothing out '
                         'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
         return asset_calculate()
@@ -370,6 +371,7 @@ def income_option():
     '''
     Gives option of choosing if you want to add incomes
     '''
+    print('\nNow lets get cracking with the Income :).')
     income_choice = (input(q_color + "\nWould you like to add Income?(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
@@ -407,7 +409,7 @@ def income_info_question():
         return income_info_question()
 
     if income_info=='y':
-        print(reset_all + textwrap.fill('\nNow lets get cracking with the financial assets :). '
+        print(reset_all + textwrap.fill(' '
                         'By financial assets I mean money that you already have on you that you are willing '
                         'to use in your budget, so if its a pension, a deeply imbedded life savings account '
                         'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
@@ -491,6 +493,7 @@ def expense_option():
     '''
     Gives option of choosing if you want to add expenses
     '''
+    print('\nNow lets get cracking with the expenses :).')
     expense_choice = (input(q_color + "\nWould you like to add Expenses?(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
@@ -528,7 +531,7 @@ def expense_info_question():
         return expense_info_question()
 
     if expense_info=='y':
-        print(reset_all + textwrap.fill('\nNow lets get cracking with the financial assets :). '
+        print(reset_all + textwrap.fill(' '
                         'By financial assets I mean money that you already have on you that you are willing '
                         'to use in your budget, so if its a pension, a deeply imbedded life savings account '
                         'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
