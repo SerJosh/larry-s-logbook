@@ -10,7 +10,7 @@ d_color = Fore.LIGHTYELLOW_EX         # Data color
 q_color = Style.BRIGHT + Fore.GREEN   # Question color
 h_color = Style.BRIGHT + Fore.BLUE    # Header and Image color
 e_color = Back.RED                    # Error color
-
+#!!class
 # OUTPUT FUNCTIONS
 
 def welcome_message():
@@ -156,8 +156,8 @@ def choose_month():
             raise ValueError("This cannot be 0 or under silly xD.")
         if month >= 13:
             raise ValueError("Please choose the months between 1 and 12.")
-        if len(month) >= 0:
-            raise ValueError("This cannot be left empty.")
+        # if len(month) == 0:
+        #     raise ValueError("This cannot be left empty.")
     except ValueError as e:
         print(e_color + f'Invalid input. {e} Please try again.' +
               reset_all)
@@ -176,7 +176,7 @@ def choose_month():
     if month== 10 :chosen_month='October';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
     if month== 11 :chosen_month='November';exact_days=30;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
     if month== 12 :chosen_month='December';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-	
+	#!!!!!!
 	
 def choose_day():
     '''
