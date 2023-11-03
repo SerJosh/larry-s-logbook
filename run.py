@@ -73,7 +73,7 @@ def name_question():
     detail_table.columns.header = ["", ""]
 
     name = str(input(q_color + "What is your name?: " + reset_all))
-    detail_table.rows.append([ "NAME", d_color + name])
+    # detail_table.rows.append([ "NAME", d_color + name])
     try:
         # Validate that name contains the right amount of characters
         if len(name) <= 0:
@@ -94,8 +94,10 @@ def first_question_confirmation():
 
     # Direct to functions on choice of "y" or "n"  
     if question_confirm == 'y':
+        clear_terminal()
         return first_questions()
     if question_confirm == "n":
+        clear_terminal()
         return budget_questions()
  
 # First Questions Functions
@@ -230,6 +232,7 @@ def question_summary():
     '''
     Display all results from questions asked and giving the option to start over
     '''
+    clear_terminal()
     print(reset_all + "\nSo these are the details you have given to me so far...\n")
     print(detail_table)
     summary_question = (input(q_color + "\nThese are the details you supplied, would you like to start over?(y/n): " + reset_all))
@@ -241,7 +244,13 @@ def reset_table():
     '''
     Resets detail_table and restarts the first questions function
     '''
+    # detail_table = None
+    # return first_questions()
+    global detail_table
     detail_table = None
+    detail_table = BeautifulTable()
+    detail_table.columns.header = ["", ""]
+    clear_terminal()
     return first_questions()
 
 # Financial Asset Functions
