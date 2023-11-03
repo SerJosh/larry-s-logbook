@@ -42,7 +42,9 @@ def welcome_message():
                     `---`\n''')
 
     print(reset_all + 'Welcome to Larrys LogBook!\n')
-    print(textwrap.fill('Hi! Im Larry, your personal budgeting tool! '
+    name_question()
+    clear_terminal()
+    print(textwrap.fill(f'Hi {name}! Im Larry, your personal budgeting tool! '
                         'I may not be as fancy as those AI thingy majigs you kids use nowadays '
                         'but I get my job done just fine :). Im here to help you with your personal budgeting '
                         'projections, be it for the month, a couple of days for a holiday or '
@@ -58,7 +60,7 @@ def welcome_message():
                         'Use that formula as you wish in any way you want, but walking it with me may give you more insightful results. '
                         'None the less try out the LogBook and lets see where it takes us.', 80))
 
-# First Questions Functions
+
 
 def name_question():
     '''
@@ -82,7 +84,21 @@ def name_question():
         print(e_color + f'Invalid name. {e} Please provide your name again.' +
               reset_all)
         return name_question()
+
+
+def first_question_confirmation():
+    '''
+    Display and validate name question
+    '''
+    question_confirm = str(input(q_color + "Would you like to go through these additional questions? (y/n): " + reset_all))
+    
+    # Direct to functions on choice of "y" or "n"  
+    if question_confirm == 'y':
+        return first_questions()
+    if question_confirm == "n":
+        return choose_day()
  
+# First Questions Functions
 
 def month_question():
     '''
@@ -672,7 +688,7 @@ def first_questions():
     '''
    Condenses all of the question functions into one functon
     '''
-    name_question()
+    # name_question()
     month_question()
     currency_question()
     goal_question()
@@ -684,6 +700,7 @@ def main():
    Takes in all neccessary functions and initiates the functions 
     '''
     welcome_message()
+    first_question_confirmation()
     print(reset_all + textwrap.fill('Ok... So first I am going to ask a few questions before we go on to '
                     'the actual incomes and expenditures, just some information that might '
                     'be useful to me in regards to your budgeting so hear me out :).', 80))
