@@ -91,12 +91,12 @@ def first_question_confirmation():
     Display and validate name question
     '''
     question_confirm = str(input(q_color + "Would you like to go through these additional questions? (y/n): " + reset_all))
-    
+
     # Direct to functions on choice of "y" or "n"  
     if question_confirm == 'y':
         return first_questions()
     if question_confirm == "n":
-        return choose_day()
+        return budget_questions()
  
 # First Questions Functions
 
@@ -689,10 +689,19 @@ def first_questions():
    Condenses all of the question functions into one functon
     '''
     # name_question()
+    print(reset_all + textwrap.fill('Ok... So first I am going to ask a few questions before we go on to '
+                    'the actual incomes and expenditures, just some information that might '
+                    'be useful to me in regards to your budgeting so hear me out :).', 80))
     month_question()
     currency_question()
     goal_question()
     question_summary()
+
+def budget_questions():
+    financial_asset_option()
+    income_option()
+    expense_option()
+    results_page()
 # ----condensed functions------->
 
 def main():
@@ -701,16 +710,11 @@ def main():
     '''
     welcome_message()
     first_question_confirmation()
-    print(reset_all + textwrap.fill('Ok... So first I am going to ask a few questions before we go on to '
-                    'the actual incomes and expenditures, just some information that might '
-                    'be useful to me in regards to your budgeting so hear me out :).', 80))
-    print()
+    # print()
     first_questions()
-    print()
-    financial_asset_option()
-    income_option()
-    expense_option()
-    results_page()
+    # print()
+    budget_questions()
+    
 
 
 main()
