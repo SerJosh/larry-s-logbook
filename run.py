@@ -2,6 +2,7 @@ from beautifultable import BeautifulTable
 from colorama import Fore, Back, Style
 # Import textwrap to wrap long text for a better visual
 import textwrap
+import os
 
 # COLOR TAGS
 
@@ -13,16 +14,23 @@ e_color = Back.RED                    # Error color
 #!!class
 # OUTPUT FUNCTIONS
 
+
+def clear_terminal():
+    """
+    Clear the terminal screen.
+    """
+    os.system("cls" if os.name == "nt" else "clear")
+
+
 def welcome_message():
     '''
     Display the logo, image and welcome message
     '''
-    print(h_color + '''_                           _             ___         _   
-| |   __ _ _ _ _ _ _  _ ___ | |   ___ __ _| _ )___ ___| |__
-| |__/ _` | '_| '_| || (_-< | |__/ _ / _` | _ / _ / _ | / /
-|____\__,_|_| |_|  \_, /__/ |____\___\__, |___\___\___|_\_\
-
-                   |__/              |___/             ''')
+    print(h_color + ''' _                           _              ___           _   
+| |   __ _ _ _ _ _ _  _ ___ | |   ___  __ _| _ ) ___  ___| |__
+| |__/ _` | '_| '_| || (_-< | |__/ _ \/ _` | _ \/ _ \/ _ \ / /
+|____\__,_|_| |_|  \_, /__/ |____\___/\__, |___/\___/\___/_\_\
+                   |__/               |___/                   ''')
 
     
     print(h_color + '''\n      __...--~~~~~-._   _.-~~~~~--...__
@@ -98,7 +106,7 @@ def month_question():
         return month_question()
 
     # Direct to functions on choice of "y" or "n"  
-    if month_or_day=='y':
+    if month_or_day =='y':
         return choose_month()
     if month_or_day == "n":
         return choose_day()
