@@ -238,6 +238,8 @@ def question_summary():
     summary_question = (input(q_color + "\nThese are the details you supplied, would you like to start over?(y/n): " + reset_all))
     if summary_question == "y":
         return reset_table()
+    if summary_question == "n":
+        return budget_questions()
 
 
 def reset_table():
@@ -707,9 +709,13 @@ def first_questions():
     question_summary()
 
 def budget_questions():
+    clear_terminal()
     financial_asset_option()
+    clear_terminal()
     income_option()
+    clear_terminal()
     expense_option()
+    clear_terminal()
     results_page()
 # ----condensed functions------->
 
