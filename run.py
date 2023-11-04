@@ -26,11 +26,17 @@ def welcome_message():
     '''
     Display the logo, image and welcome message
     '''
-    print(h_color + ''' _                           _              ___           _   
-| |   __ _ _ _ _ _ _  _ ___ | |   ___  __ _| _ ) ___  ___| |__
-| |__/ _` | '_| '_| || (_-< | |__/ _ \/ _` | _ \/ _ \/ _ \ / /
-|____\__,_|_| |_|  \_, /__/ |____\___/\__, |___/\___/\___/_\_\
-                   |__/               |___/                   ''')
+    print(h_color + '''    __                                      
+   / /   ____ _____________  _______        
+  / /   / __ `/ ___/ ___/ / / / ___/        
+ / /___/ /_/ / /  / /  / /_/ (__  )         
+/_____/\__,_/_/  /_/   \__, /____/          
+    __                /____/            __  
+   / /   ____  ____ _/ __ )____  ____  / /__
+  / /   / __ \/ __ `/ __  / __ \/ __ \/ //_/
+ / /___/ /_/ / /_/ / /_/ / /_/ / /_/ / ,<   
+/_____/\____/\__, /_____/\____/\____/_/|_|  
+            /____/                          ''')
 
     
     print(h_color + '''\n      __...--~~~~~-._   _.-~~~~~--...__
@@ -239,6 +245,7 @@ def question_summary():
     if summary_question == "y":
         return reset_table()
     if summary_question == "n":
+        clear_terminal()
         return budget_questions()
 
 
@@ -378,6 +385,7 @@ def asset_confirmation():
         clear_terminal()
         reset_asset_table()  
     if restart_asset == "n":
+        clear_terminal()
         print("ok")
 
 
@@ -483,9 +491,11 @@ def income_calculate():
     print(income_table)
     another_income = (input(q_color + "Do you want to add another income? y/n: " + reset_all))
     if another_income =="y":
+        clear_terminal()
         income_calculate()
         # print(income_table)
     if another_income == "n":
+        clear_terminal()
         print(income_table)
         income_confirmation()
 
@@ -512,6 +522,7 @@ def income_confirmation():
         clear_terminal()
         reset_income_table()  
     if restart_income == "n":
+        clear_terminal()
         print("ok")
 
 
@@ -618,9 +629,11 @@ def expense_calculate():
     print(expense_table)
     another_expense = (input(q_color + "Do you want to add another expense? y/n: " + reset_all))
     if another_expense =="y":
+        clear_terminal()
         expense_calculate()
         # print(expense_table)
     if another_expense == "n":
+        clear_terminal()
         print(expense_table)
         expense_confirmation() 
 
@@ -647,6 +660,7 @@ def expense_confirmation():
         clear_terminal()
         reset_expense_table()  
     if restart_expense == "n":
+        clear_terminal()
         print("ok")
 
 
@@ -745,13 +759,13 @@ def first_questions():
     question_summary()
 
 def budget_questions():
-    clear_terminal()
+    # clear_terminal()
     financial_asset_option()
-    clear_terminal()
+    # clear_terminal()
     income_option()
-    clear_terminal()
+    # clear_terminal()
     expense_option()
-    clear_terminal()
+    # clear_terminal()
     results_page()
 # ----condensed functions------->
 
