@@ -90,7 +90,7 @@ def first_question_confirmation():
     '''
     Display and validate name question
     '''
-    question_confirm = str(input(q_color + "Would you like to go through these additional questions? (y/n): " + reset_all))
+    question_confirm = str(input(q_color + "\nWould you like to go through these additional questions? (y/n): " + reset_all))
 
     # Direct to functions on choice of "y" or "n"  
     if question_confirm == 'y':
@@ -261,7 +261,14 @@ def financial_asset_option():
     '''
     Gives option of choosing if you want to add financial assets
     '''
-    print('\nNow lets get cracking with the financial assets :). ')
+    print(reset_all + textwrap.fill('Now lets get cracking with the financial assets :).'
+                        'By financial assets I mean money that you already have on you that you are willing '
+                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
+                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
+                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
+                        'or other institutions like that. Cash on hand may be another one you want to put in here. '
+                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
+                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
     asset_choice = (input(q_color + "\nWould you like to add financial assets?(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
@@ -277,39 +284,43 @@ def financial_asset_option():
         return financial_asset_option()
 
     if asset_choice=='y':
-        return financial_asset_info_question()
-
-
-def financial_asset_info_question():
-    '''
-    Gives option of choosing if you want to hear more about financial assets
-    '''
-    asset_info = (input(q_color + "\nDo you want to hear more about financial assets?(y/n): " + reset_all))
-    try:
-    # Validate that the input given is "y" or "n"
-        if asset_info == "y" or asset_info == "n":
-            accept = True
-        else:
-            accept = False
-            if accept == False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(e_color + f'Invalid answer. {e} Please try again.' +
-            reset_all)
-        return financial_asset_info_question()
-
-    if asset_info=='y':
-        print(reset_all + textwrap.fill(
-                        'By financial assets I mean money that you already have on you that you are willing '
-                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
-                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
-                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
-                        'or other institutions like that. Cash on hand may be another one you want to put in here. '
-                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
-                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+        clear_terminal()
         return asset_calculate()
-    if asset_info == "n":
-        return asset_calculate()
+    if asset_choice=='n':
+        clear_terminal()
+
+
+
+# def financial_asset_info_question():
+#     '''
+#     Gives option of choosing if you want to hear more about financial assets
+#     '''
+#     asset_info = (input(q_color + "\nDo you want to hear more about financial assets?(y/n): " + reset_all))
+#     try:
+#     # Validate that the input given is "y" or "n"
+#         if asset_info == "y" or asset_info == "n":
+#             accept = True
+#         else:
+#             accept = False
+#             if accept == False:
+#                 raise ValueError("Please only type 'y' or 'n'.")
+#     except ValueError as e:
+#         print(e_color + f'Invalid answer. {e} Please try again.' +
+#             reset_all)
+#         return financial_asset_info_question()
+
+#     if asset_info=='y':
+#         print(reset_all + textwrap.fill(
+#                         'By financial assets I mean money that you already have on you that you are willing '
+#                         'to use in your budget, so if its a pension, a deeply imbedded life savings account '
+#                         'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
+#                         'account, or an amount in it you are willing to give in your budget, same goes with revolut '
+#                         'or other institutions like that. Cash on hand may be another one you want to put in here. '
+#                         'In the end its all up to you to decide what you want in here, but try leave nothing out '
+#                         'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+#         return asset_calculate()
+#     if asset_info == "n":
+#         return asset_calculate()
 
 
 def asset_calculate():
@@ -336,9 +347,11 @@ def asset_calculate():
     print(asset_table)
     another_asset = (input(q_color + "Do you want to add another financial asset? y/n: " + reset_all))
     if another_asset =="y":
+        clear_terminal()
         asset_calculate()
-        print(asset_table)
+        # print(asset_table)
     if another_asset == "n":
+        clear_terminal()
         print(asset_table)
         asset_confirmation()
 
