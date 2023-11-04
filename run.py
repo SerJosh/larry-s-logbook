@@ -375,6 +375,7 @@ def asset_confirmation():
         return asset_confirmation()
 
     if restart_asset =="y":
+        clear_terminal()
         reset_asset_table()  
     if restart_asset == "n":
         print("ok")
@@ -398,7 +399,14 @@ def income_option():
     '''
     Gives option of choosing if you want to add incomes
     '''
-    print('\nNow lets get cracking with the Income :).')
+    print(reset_all + textwrap.fill('\nNow lets get cracking with the Income :). '
+                        'By financial assets I mean money that you already have on you that you are willing '
+                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
+                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
+                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
+                        'or other institutions like that. Cash on hand may be another one you want to put in here '
+                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
+                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
     income_choice = (input(q_color + "\nWould you like to add Income?(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
@@ -414,39 +422,42 @@ def income_option():
         return income_option()
 
     if income_choice=='y':
-        return income_info_question()
-
-
-def income_info_question():
-    '''
-    Gives option of choosing if you want to hear more about income
-    '''
-    income_info = (input(q_color + "\nDo you want to hear more about income?(y/n): " + reset_all))
-    try:
-    # Validate that the input given is "y" or "n"
-        if income_info == "y" or income_info == "n":
-            accept = True
-        else:
-            accept = False
-            if accept == False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(e_color + f'Invalid answer. {e} Please try again.' +
-            reset_all)
-        return income_info_question()
-
-    if income_info=='y':
-        print(reset_all + textwrap.fill(' '
-                        'By financial assets I mean money that you already have on you that you are willing '
-                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
-                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
-                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
-                        'or other institutions like that. Cash on hand may be another one you want to put in here '
-                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
-                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+        clear_terminal()
         return income_calculate()
-    if income_info == "n":
-        return income_calculate()
+    if income_choice=='n':
+        clear_terminal()
+
+
+# def income_info_question():
+#     '''
+#     Gives option of choosing if you want to hear more about income
+#     '''
+#     income_info = (input(q_color + "\nDo you want to hear more about income?(y/n): " + reset_all))
+#     try:
+#     # Validate that the input given is "y" or "n"
+#         if income_info == "y" or income_info == "n":
+#             accept = True
+#         else:
+#             accept = False
+#             if accept == False:
+#                 raise ValueError("Please only type 'y' or 'n'.")
+#     except ValueError as e:
+#         print(e_color + f'Invalid answer. {e} Please try again.' +
+#             reset_all)
+#         return income_info_question()
+
+#     if income_info=='y':
+#         print(reset_all + textwrap.fill(' '
+#                         'By financial assets I mean money that you already have on you that you are willing '
+#                         'to use in your budget, so if its a pension, a deeply imbedded life savings account '
+#                         'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
+#                         'account, or an amount in it you are willing to give in your budget, same goes with revolut '
+#                         'or other institutions like that. Cash on hand may be another one you want to put in here '
+#                         'In the end its all up to you to decide what you want in here, but try leave nothing out '
+#                         'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+#         return income_calculate()
+#     if income_info == "n":
+#         return income_calculate()
 
 def income_calculate():
     '''
@@ -473,7 +484,7 @@ def income_calculate():
     another_income = (input(q_color + "Do you want to add another income? y/n: " + reset_all))
     if another_income =="y":
         income_calculate()
-        print(income_table)
+        # print(income_table)
     if another_income == "n":
         print(income_table)
         income_confirmation()
@@ -498,6 +509,7 @@ def income_confirmation():
         return income_confirmation()
 
     if restart_income =="y":
+        clear_terminal()
         reset_income_table()  
     if restart_income == "n":
         print("ok")
@@ -521,7 +533,14 @@ def expense_option():
     '''
     Gives option of choosing if you want to add expenses
     '''
-    print('\nNow lets get cracking with the expenses :).')
+    print(reset_all + textwrap.fill('\nNow lets get cracking with the expenses :). '
+                        'By financial assets I mean money that you already have on you that you are willing '
+                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
+                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
+                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
+                        'or other institutions like that. Cash on hand may be another one you want to put in here '
+                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
+                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
     expense_choice = (input(q_color + "\nWould you like to add Expenses?(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
@@ -537,39 +556,42 @@ def expense_option():
         return expense_option()
 
     if expense_choice=='y':
-        return expense_info_question()
-
-
-def expense_info_question():
-    '''
-    Gives option of choosing if you want to hear more about expenses
-    '''
-    expense_info = (input(q_color + "\nDo you want to hear more about expenses?(y/n): " + reset_all))
-    try:
-    # Validate that the input given is "y" or "n"
-        if expense_info == "y" or expense_info == "n":
-            accept = True
-        else:
-            accept = False
-            if accept == False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(e_color + f'Invalid answer. {e} Please try again.' +
-            reset_all)
-        return expense_info_question()
-
-    if expense_info=='y':
-        print(reset_all + textwrap.fill(' '
-                        'By financial assets I mean money that you already have on you that you are willing '
-                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
-                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
-                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
-                        'or other institutions like that. Cash on hand may be another one you want to put in here '
-                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
-                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+        clear_terminal()
         return expense_calculate()
-    if expense_info == "n":
-        return expense_calculate()
+    if expense_choice=='n':
+        clear_terminal()
+
+
+# def expense_info_question():
+#     '''
+#     Gives option of choosing if you want to hear more about expenses
+#     '''
+#     expense_info = (input(q_color + "\nDo you want to hear more about expenses?(y/n): " + reset_all))
+#     try:
+#     # Validate that the input given is "y" or "n"
+#         if expense_info == "y" or expense_info == "n":
+#             accept = True
+#         else:
+#             accept = False
+#             if accept == False:
+#                 raise ValueError("Please only type 'y' or 'n'.")
+#     except ValueError as e:
+#         print(e_color + f'Invalid answer. {e} Please try again.' +
+#             reset_all)
+#         return expense_info_question()
+
+#     if expense_info=='y':
+#         print(reset_all + textwrap.fill(' '
+#                         'By financial assets I mean money that you already have on you that you are willing '
+#                         'to use in your budget, so if its a pension, a deeply imbedded life savings account '
+#                         'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
+#                         'account, or an amount in it you are willing to give in your budget, same goes with revolut '
+#                         'or other institutions like that. Cash on hand may be another one you want to put in here '
+#                         'In the end its all up to you to decide what you want in here, but try leave nothing out '
+#                         'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+#         return expense_calculate()
+#     if expense_info == "n":
+#         return expense_calculate()
 
 
 def expense_calculate():
@@ -597,7 +619,7 @@ def expense_calculate():
     another_expense = (input(q_color + "Do you want to add another expense? y/n: " + reset_all))
     if another_expense =="y":
         expense_calculate()
-        print(expense_table)
+        # print(expense_table)
     if another_expense == "n":
         print(expense_table)
         expense_confirmation() 
@@ -622,6 +644,7 @@ def expense_confirmation():
         return expense_confirmation()
 
     if restart_expense =="y":
+        clear_terminal()
         reset_expense_table()  
     if restart_expense == "n":
         print("ok")
