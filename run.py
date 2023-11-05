@@ -105,7 +105,7 @@ def first_question_confirmation():
     # Direct to functions on choice of "y" or "n"  
     if question_confirm == 'y':
         clear_terminal()
-        return first_questions()
+        # return first_questions()
     if question_confirm == "n":
         clear_terminal()
         return name_question()
@@ -135,7 +135,7 @@ def month_question():
         return month_question()
 
     # Direct to functions on choice of "y" or "n"  
-    if month_or_day =='y':
+    if month_or_day == 'y':
         return choose_month()
     if month_or_day == "n":
         return choose_day()
@@ -284,7 +284,7 @@ def financial_asset_option():
                         'or other institutions like that. Cash on hand may be another one you want to put in here. '
                         'In the end its all up to you to decide what you want in here, but try leave nothing out that may be necessary '
                         'which may constitute as available funds, as the more detail you put in only helps you more.'
-                        ' Add as many as you wish and I will add the total up for you :)', 80))
+                        ' Add as many available funds as you wish and I will add the total up for you :)', 80))
 
     asset_choice = (input(q_color + "\nWould you like to add available funds?(y/n): " + reset_all))
     try:
@@ -417,14 +417,13 @@ def income_option():
     '''
     Gives option of choosing if you want to add incomes
     '''
-    print(reset_all + textwrap.fill('\nNow lets get cracking with the Income :). '
+    print(reset_all + textwrap.fill('Now lets get cracking with the Income :). '
                         'Im sure you know what an income is, but an income in what I am asking for is any '
                         'amount of money you will recieve within the timeframe you have given. Be it a paycheck, an '
                         'amount someone else is going to pay you or any other situation that ends up with you recieving money '
-                        'which you want to be added to your budget. Just be aware not to add any amount that hasnt been taxed yet, '
-                        'I wont be able to calculate that.  Add as many as you wish and I will add the total up for you :) '
-                        ' '
-                        '', 80))
+                        'which you want to be added to your budget. Just be aware not to add any amount that still includes tax, '
+                        'try give the amount after taxation. Add as many incomes as you wish and I will add the total up for you :) ', 80))
+
     income_choice = (input(q_color + "\nWould you like to add Income?(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
@@ -554,12 +553,12 @@ def expense_option():
     '''
     Gives option of choosing if you want to add expenses
     '''
-    print(reset_all + textwrap.fill('\nNow lets get cracking with the expenses :). '
+    print(reset_all + textwrap.fill('Now lets get cracking with the expenses :). '
                         'Im sure we all know what expenses are, but without this we would never really need to ever budget '
                         'in our lives! By expenses I am asking for anything that will cost you money, ie: take money away from you '
                         'rather than recieve. There are loads of expenses like rent, electricity, loan payments,   '
                         'traveling expenses, groceries, anything that will cost you. But im oonly asking you for all expenses '
-                        'inside the timeframe you have given. Add as many as you wish and I will add the total up for you as usual :) ', 80))
+                        'inside the timeframe you have given. Add as many expenses as you wish and I will add the total up for you as usual :) ', 80))
 
     expense_choice = (input(q_color + "\nWould you like to add Expenses?(y/n): " + reset_all))
     try:
@@ -685,8 +684,17 @@ def reset_expense_table():
     add_expense = []
     return expense_calculate()
 
+# def result_table():
+#     results_table.rows.append(["Available Funds", asset_total])
+#     results_table.rows.append(["Income", inco_total])
+#     results_table.rows.append(["Expenses", expe_total])
+#     results_table.rows.append(["Surplus", surplus])
+#     results_table.rows.append(["Budget per day", day_result])
+#     results_table.rows.append(["Goal", asset_total])
+
 
 def results_page():
+    global results_table 
     '''
    Displays all calculated results and tables from information provided
     '''
@@ -698,21 +706,30 @@ def results_page():
     if goal_set_question == "y":
         goal_result = (float(f"{goal}"))
 
+
     # Calculations
     surplus = asset_total + inco_total - expe_total
     day_result = surplus / calc_days
+    target_goal = surplus - goal_result
 
-    print(h_color + f'Budget Summary of {name}')
-    print()
-    print(h_color + "Financial Assets" + reset_all)
-    print(asset_table)
-    print()
-    print(h_color + "Income" + reset_all)
-    print(income_table)
-    print()
-    print(h_color + "Expenses" + reset_all)
-    print(expense_table)
-    print()
+    results_table.rows.append(["Available Funds", asset_total])
+    results_table.rows.append(["Income", inco_total])
+    results_table.rows.append(["Expenses", expe_total])
+    results_table.rows.append(["Surplus", surplus])
+    results_table.rows.append(["Budget per day", day_result])
+    results_table.rows.append(["Goal", target_goal])
+
+    print(h_color + f'Budget Summary of {name}' + reset_all)
+    print(results_table)
+    # print(h_color + "Financial Assets" + reset_all)
+    # print(asset_table)
+    # print()
+    # print(h_color + "Income" + reset_all)
+    # print(income_table)
+    # print()
+    # print(h_color + "Expenses" + reset_all)
+    # print(expense_table)
+    # print()
     print(h_color +"Your financial assets are " + reset_all + str(asset_total))
     print()
     print(h_color +"Your total income is " + reset_all + str(inco_total))
@@ -723,12 +740,22 @@ def results_page():
     print()
     print(h_color + f"you will be able to spend " + reset_all +  f"{day_result} per day")
 
-    if goal_set_question == "y":
-        target_goal = surplus - goal_result 
+    if goal_set_question == "y": 
         if target_goal >= 0:
             print(h_color + "You are over your goal by: " + reset_all + str(target_goal) + "\n")
         else:
             print(h_color + "You are under your goal by: " + reset_all + str(target_goal) + "\n")
+    print("a is for avalaible funds, i is for income, e is for expense")
+    choose_table = (input(q_color + "\nWhere would you like to go?:  " + reset_all))
+    if choose_table == "a":
+        clear_terminal()
+        print(asset_table)
+    if choose_table == "i":
+        clear_terminal()
+        print(income_table)
+    if choose_table == "e":
+        clear_terminal()
+        print(expense_table)
 
 
 # This is the main function, this is where everything runs---->
@@ -751,6 +778,9 @@ add_income = []
 expense_table = BeautifulTable()
 expense_table.columns.header = ["expense", "amount", "total"]
 add_expense = []
+
+results_table = BeautifulTable()
+results_table.columns.header = ["", "",]
 # And these are my global variables-->
 
 #----condensed functions--------->
