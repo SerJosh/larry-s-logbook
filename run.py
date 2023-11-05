@@ -26,22 +26,20 @@ def welcome_message():
     '''
     Display the logo, image and welcome message
     '''
-    print(h_color + '''[..                                                               
-[..                                                               
-[..         [..    [. [...[. [...[..   [.. [....                  
-[..       [..  [..  [..    [..    [.. [.. [..                     
-[..      [..   [..  [..    [..      [...    [...                  
-[..      [..   [..  [..    [..       [..      [..                 
-[........  [.. [...[...   [...      [..   [.. [..                 
-                                  [..                             
-[..                         [.. [..                       [..     
-[..                         [.    [..                     [..     
-[..         [..       [..   [.     [..   [..       [..    [..  [..
-[..       [..  [..  [..  [..[... [.    [..  [..  [..  [.. [.. [.. 
-[..      [..    [..[..   [..[.     [..[..    [..[..    [..[.[..   
-[..       [..  [..  [..  [..[.      [. [..  [..  [..  [.. [.. [.. 
-[........   [..         [.. [.... [..    [..       [..    [..  [..
-                     [..                                          ''')
+    print(h_color + '''#                                                 
+#         ##   #####  #####  #   #  ####          
+#        #  #  #    # #    #  # #  #              
+#       #    # #    # #    #   #    ####          
+#       ###### #####  #####    #        #         
+#       #    # #   #  #   #    #   #    #         
+####### #    # #    # #    #   #    ####          
+#                     ######                      
+#        ####   ####  #     #  ####   ####  #    #
+#       #    # #    # #     # #    # #    # #   # 
+#       #    # #      ######  #    # #    # ####  
+#       #    # #  ### #     # #    # #    # #  #  
+#       #    # #    # #     # #    # #    # #   # 
+#######  ####   ####  ######   ####   ####  #    # ''')
 
     
     print(h_color + '''\n      __...--~~~~~-._   _.-~~~~~--...__
@@ -651,7 +649,7 @@ def expense_confirmation():
     '''
    Confirms if user wants to redo the expense
     '''
-    restart_expense = (input(q_color + "\nWould you like to enter your income again?(y/n):  " + reset_all))
+    restart_expense = (input(q_color + "\nWould you like to enter your expenses again?(y/n):  " + reset_all))
     try:
     # Validate that the input given is "y" or "n"
         if restart_expense == "y" or restart_expense == "n":
@@ -692,12 +690,13 @@ def reset_expense_table():
 #     results_table.rows.append(["Budget per day", day_result])
 #     results_table.rows.append(["Goal", asset_total])
 
-
-def results_page():
-    global results_table 
-    '''
-   Displays all calculated results and tables from information provided
-    '''
+def result_calculations():
+    global asset_total
+    global inco_total
+    global expe_total
+    global surplus
+    global day_result
+    global target_goal
     inco_total = sum(add_income)
     expe_total = sum(add_expense)
     asset_total = sum(add_asset)
@@ -719,6 +718,14 @@ def results_page():
     results_table.rows.append(["Budget per day", day_result])
     results_table.rows.append(["Goal", target_goal])
 
+
+def results_page():
+    global results_table 
+    '''
+   Displays all calculated results and tables from information provided
+    '''
+    
+
     print(h_color + f'Budget Summary of {name}' + reset_all)
     print(results_table)
     # print(h_color + "Financial Assets" + reset_all)
@@ -731,13 +738,9 @@ def results_page():
     # print(expense_table)
     # print()
     print(h_color +"Your financial assets are " + reset_all + str(asset_total))
-    print()
     print(h_color +"Your total income is " + reset_all + str(inco_total))
-    print()
     print(h_color +"Your total expense is " + reset_all + str(expe_total))
-    print()
     print(h_color +"Your gross amount will be " + reset_all + str(surplus))
-    print()
     print(h_color + f"you will be able to spend " + reset_all +  f"{day_result} per day")
 
     if goal_set_question == "y": 
@@ -748,8 +751,21 @@ def results_page():
     print("a is for avalaible funds, i is for income, e is for expense")
     choose_table = (input(q_color + "\nWhere would you like to go?:  " + reset_all))
     if choose_table == "a":
+        af_results()
+    if choose_table == "i":
         clear_terminal()
-        print(asset_table)
+        print(income_table)
+    if choose_table == "e":
+        clear_terminal()
+        print(expense_table)
+
+def af_results():
+    clear_terminal()
+    print(asset_table)
+    print("r is for results summary, i is for income, e is for expense")
+    choose_table = (input(q_color + "\nWhere would you like to go?:  " + reset_all))
+    if choose_table == "r":
+        results_page()
     if choose_table == "i":
         clear_terminal()
         print(income_table)
@@ -806,6 +822,7 @@ def budget_questions():
     # clear_terminal()
     expense_option()
     # clear_terminal()
+    result_calculations()
     results_page()
 # ----condensed functions------->
 
