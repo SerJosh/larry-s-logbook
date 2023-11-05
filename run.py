@@ -26,17 +26,22 @@ def welcome_message():
     '''
     Display the logo, image and welcome message
     '''
-    print(h_color + '''    __                                      
-   / /   ____ _____________  _______        
-  / /   / __ `/ ___/ ___/ / / / ___/        
- / /___/ /_/ / /  / /  / /_/ (__  )         
-/_____/\__,_/_/  /_/   \__, /____/          
-    __                /____/            __  
-   / /   ____  ____ _/ __ )____  ____  / /__
-  / /   / __ \/ __ `/ __  / __ \/ __ \/ //_/
- / /___/ /_/ / /_/ / /_/ / /_/ / /_/ / ,<   
-/_____/\____/\__, /_____/\____/\____/_/|_|  
-            /____/                          ''')
+    print(h_color + '''[..                                                               
+[..                                                               
+[..         [..    [. [...[. [...[..   [.. [....                  
+[..       [..  [..  [..    [..    [.. [.. [..                     
+[..      [..   [..  [..    [..      [...    [...                  
+[..      [..   [..  [..    [..       [..      [..                 
+[........  [.. [...[...   [...      [..   [.. [..                 
+                                  [..                             
+[..                         [.. [..                       [..     
+[..                         [.    [..                     [..     
+[..         [..       [..   [.     [..   [..       [..    [..  [..
+[..       [..  [..  [..  [..[... [.    [..  [..  [..  [.. [.. [.. 
+[..      [..    [..[..   [..[.     [..[..    [..[..    [..[.[..   
+[..       [..  [..  [..  [..[.      [. [..  [..  [..  [.. [.. [.. 
+[........   [..         [.. [.... [..    [..       [..    [..  [..
+                     [..                                          ''')
 
     
     print(h_color + '''\n      __...--~~~~~-._   _.-~~~~~--...__
@@ -278,7 +283,9 @@ def financial_asset_option():
                         'account, or an amount in it you are willing to give in your budget, same goes with revolut '
                         'or other institutions like that. Cash on hand may be another one you want to put in here. '
                         'In the end its all up to you to decide what you want in here, but try leave nothing out that may be necessary '
-                        'which may constitute as available funds, as the more detail you put in only helps you more.', 80))
+                        'which may constitute as available funds, as the more detail you put in only helps you more.'
+                        ' Add as many as you wish and I will add the total up for you :)', 80))
+
     asset_choice = (input(q_color + "\nWould you like to add available funds?(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
@@ -337,7 +344,7 @@ def asset_calculate():
     '''
    Takes in data of the financial assets plugged in
     '''
-    asset = (input(q_color + "\nPlease enter The name of your available fund " + reset_all))
+    asset = (input(q_color + "\nPlease enter The name of your available fund: " + reset_all))
     try:
         # Validate that the asset name contains the right amount of characters
         if len(asset) <= 0:
@@ -349,7 +356,7 @@ def asset_calculate():
               reset_all)
         return asset_calculate()
 
-    amount = float(input(q_color + "Enter the amount of that available fund: " + reset_all))
+    amount = float(input(q_color + "Please enter the amount of that available fund: " + reset_all))
     add_asset.append(amount)
     total = sum(add_asset)
     asset_table.rows.append([d_color + asset, amount, total])
@@ -362,15 +369,16 @@ def asset_calculate():
         # print(asset_table)
     if another_asset == "n":
         clear_terminal()
+        print(h_color + "Available funds" + reset_all)
         print(asset_table)
         asset_confirmation()
 
 
 def asset_confirmation():
     '''
-   Confirms if user wants to redo the financial assets
+   Confirms if user wants to redo the  available funds
     '''
-    restart_asset = (input(q_color + "These are the financial asset details your provided, would you like to start over?(y/n): " + reset_all))
+    restart_asset = (input(q_color + "\nWould you like to enter your available funds again?(y/n): " + reset_all))
     try:
     # Validate that the input given is "y" or "n"
         if restart_asset == "y" or restart_asset == "n":
@@ -389,12 +397,11 @@ def asset_confirmation():
         reset_asset_table()  
     if restart_asset == "n":
         clear_terminal()
-        print("ok")
 
 
 def reset_asset_table():
     '''
-   Resets asset table and starts assets questions again
+   Resets asset table and starts  available funds questions again
     '''
     global asset_table
     global add_asset
@@ -411,13 +418,13 @@ def income_option():
     Gives option of choosing if you want to add incomes
     '''
     print(reset_all + textwrap.fill('\nNow lets get cracking with the Income :). '
-                        'By financial assets I mean money that you already have on you that you are willing '
-                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
-                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
-                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
-                        'or other institutions like that. Cash on hand may be another one you want to put in here '
-                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
-                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+                        'Im sure you know what an income is, but an income in what I am asking for is any '
+                        'amount of money you will recieve within the timeframe you have given. Be it a paycheck, an '
+                        'amount someone else is going to pay you or any other situation that ends up with you recieving money '
+                        'which you want to be added to your budget. Just be aware not to add any amount that hasnt been taxed yet, '
+                        'I wont be able to calculate that.  Add as many as you wish and I will add the total up for you :) '
+                        ' '
+                        '', 80))
     income_choice = (input(q_color + "\nWould you like to add Income?(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
@@ -474,7 +481,7 @@ def income_calculate():
     '''
    Takes in data of the incomes plugged in
     '''
-    income = (input(q_color + "\nEnter The name of your income: " + reset_all))
+    income = (input(q_color + "\nPlease enter The name of your income: " + reset_all))
     try:
         # Validate that the income name contains the right amount of characters
         if len(income) <= 0:
@@ -486,7 +493,7 @@ def income_calculate():
               reset_all)
         return income_calculate()
 
-    amount = float(input(q_color + "Enter your amount of that income: " + reset_all))
+    amount = float(input(q_color + "Please enter the amount of that income: " + reset_all))
     add_income.append(amount)
     total = sum(add_income)
     income_table.rows.append([d_color + income, amount,  total])
@@ -499,6 +506,7 @@ def income_calculate():
         # print(income_table)
     if another_income == "n":
         clear_terminal()
+        print(h_color + "Income" + reset_all)
         print(income_table)
         income_confirmation()
 
@@ -507,7 +515,7 @@ def income_confirmation():
     '''
    Confirms if user wants to redo the income
     '''
-    restart_income = (input(q_color + "These are the income details you have provided, would you like to start over?(y/n): " + reset_all))
+    restart_income = (input(q_color + "\nWould you like to enter your income again?(y/n): " + reset_all))
     try:
     # Validate that the input given is "y" or "n"
         if restart_income == "y" or restart_income == "n":
@@ -526,7 +534,6 @@ def income_confirmation():
         reset_income_table()  
     if restart_income == "n":
         clear_terminal()
-        print("ok")
 
 
 def reset_income_table():
@@ -548,13 +555,12 @@ def expense_option():
     Gives option of choosing if you want to add expenses
     '''
     print(reset_all + textwrap.fill('\nNow lets get cracking with the expenses :). '
-                        'By financial assets I mean money that you already have on you that you are willing '
-                        'to use in your budget, so if its a pension, a deeply imbedded life savings account '
-                        'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
-                        'account, or an amount in it you are willing to give in your budget, same goes with revolut '
-                        'or other institutions like that. Cash on hand may be another one you want to put in here '
-                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
-                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
+                        'Im sure we all know what expenses are, but without this we would never really need to ever budget '
+                        'in our lives! By expenses I am asking for anything that will cost you money, ie: take money away from you '
+                        'rather than recieve. There are loads of expenses like rent, electricity, loan payments,   '
+                        'traveling expenses, groceries, anything that will cost you. But im oonly asking you for all expenses '
+                        'inside the timeframe you have given. Add as many as you wish and I will add the total up for you as usual :) ', 80))
+
     expense_choice = (input(q_color + "\nWould you like to add Expenses?(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
@@ -612,7 +618,7 @@ def expense_calculate():
     '''
    Takes in data of the expenses plugged in
     '''
-    expense = (input(q_color + "\nEnter The name of your expense: " + reset_all))
+    expense = (input(q_color + "\nPlease enter The name of your expense: " + reset_all))
     try:
         # Validate that the expense name contains the right amount of characters
         if len(expense) <= 0:
@@ -624,7 +630,7 @@ def expense_calculate():
               reset_all)
         return expense_calculate()
 
-    amount_exp = float(input(q_color + "Enter your amount of that expense: " + reset_all))
+    amount_exp = float(input(q_color + "Please enter the amount of that income: " + reset_all))
     add_expense.append(amount_exp)
     total = sum(add_expense)
     expense_table.rows.append([d_color + expense, amount_exp, total])
@@ -637,6 +643,7 @@ def expense_calculate():
         # print(expense_table)
     if another_expense == "n":
         clear_terminal()
+        print(h_color + "Income" + reset_all)
         print(expense_table)
         expense_confirmation() 
 
@@ -645,7 +652,7 @@ def expense_confirmation():
     '''
    Confirms if user wants to redo the expense
     '''
-    restart_expense = (input(q_color + "These are the expense details you have provided, would you like to start over?(y/n): " + reset_all))
+    restart_expense = (input(q_color + "\nWould you like to enter your income again?(y/n):  " + reset_all))
     try:
     # Validate that the input given is "y" or "n"
         if restart_expense == "y" or restart_expense == "n":
@@ -664,7 +671,6 @@ def expense_confirmation():
         reset_expense_table()  
     if restart_expense == "n":
         clear_terminal()
-        print("ok")
 
 
 def reset_expense_table():
