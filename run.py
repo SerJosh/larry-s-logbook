@@ -46,23 +46,22 @@ def welcome_message():
  //__.....----~~~~._\ | /_.~~~~----.....__\\
 ====================\\|//====================
                     `---`\n''')
-
-    print(reset_all + 'Welcome to Larrys LogBook!\n')
     name_question()
     clear_terminal()
+    print(reset_all + 'Welcome to Larrys LogBook!\n')
     print(textwrap.fill(f'Hi {name}! Im Larry, your personal budgeting tool! '
                         'I may not be as fancy as those AI thingy majigs you kids use nowadays '
                         'but I get my job done just fine :). Im here to help you with your personal budgeting '
-                        'projections, be it for the month, a couple of days for a holiday or '
+                        'projections. Be it for the month, a couple of days for a holiday or '
                         'even the whole year if you up to it. Just give me all the information I need and '
                         'Il do all the magic for you in my trusty logbook, revealing some more insight into your '
                         'budget rather than just how many pennys you have left over ;).', 80))
     print()
-    print(textwrap.fill('So the information that my logbook needs to work with are your financial assets, '
+    print(textwrap.fill('So the information that my logbook needs to work with are your available funds, '
                         'incomes, expenses and the timeframe in which you want to budget for. There is additional '
                         'information which is completely optional for you to provide me with but wouldnt it be fun '
-                        'to just go all out and discover you financial budgeting story!? '
-                        'To simply put it, you are dealing with a simple formula of financial assets + income - expenses. '
+                        'to just go all out and discover your financial budgeting story!? '
+                        'To simply put it, you are dealing with a simple formula of available funds + income - expenses. '
                         'Use that formula as you wish in any way you want, but walking it with me may give you more insightful results. '
                         'None the less try out the LogBook and lets see where it takes us.', 80))
 
@@ -78,7 +77,7 @@ def name_question():
     detail_table = BeautifulTable()
     detail_table.columns.header = ["", ""]
 
-    name = str(input(q_color + "What is your name?: " + reset_all))
+    name = str(input(q_color + "Please enter your name: " + reset_all))
     # detail_table.rows.append([ "NAME", d_color + name])
     try:
         # Validate that name contains the right amount of characters
@@ -96,7 +95,7 @@ def first_question_confirmation():
     '''
     Display and validate name question
     '''
-    question_confirm = str(input(q_color + "\nWould you like to go through these additional questions? (y/n): " + reset_all))
+    question_confirm = str(input(q_color + f"\nSo your name is {name} correct? (y/n): " + reset_all))
 
     # Direct to functions on choice of "y" or "n"  
     if question_confirm == 'y':
@@ -104,7 +103,8 @@ def first_question_confirmation():
         return first_questions()
     if question_confirm == "n":
         clear_terminal()
-        return budget_questions()
+        return name_question()
+        
  
 # First Questions Functions
 
@@ -115,7 +115,7 @@ def month_question():
     global detail_table
     global chosen_month
     global exact_days 
-    month_or_day = (input(q_color + "\nWould you like to budget for a given month(y/n): " + reset_all))
+    month_or_day = (input(q_color + "\nWould you like to budget for a particular month? (y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
         if month_or_day == "y" or month_or_day == "n":
@@ -141,7 +141,8 @@ def choose_month():
     Display, append and validate choose month question
     '''
     global exact_days
-    month = int(input(q_color + "Please give me the number of the month eg: 1 is January and so on: " + reset_all))
+    print('eg: 1 is January and so on')
+    month = int(input(q_color + "Please give me the number of the month you want to budget for:  " + reset_all))
     try:
         # Validate that month input contains the corrrect details
         if month <= 0:
@@ -154,6 +155,8 @@ def choose_month():
         print(e_color + f'Invalid input. {e} Please try again.' +
               reset_all)
         return choose_month()
+
+    
 
     # Recieves data from which month number was chosen
     if month== 1 :chosen_month='January';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
@@ -230,7 +233,7 @@ def goal_question():
         return goal_question()
         
     if goal_set_question == "y":
-        goal = (input((q_color + "Enter the amount of your goal: " + reset_all)))
+        goal = (input((q_color + "Please enter the amount of your desired goal: " + reset_all)))
         detail_table.rows.append(["Goal", d_color + goal ])
 
 
@@ -239,9 +242,9 @@ def question_summary():
     Display all results from questions asked and giving the option to start over
     '''
     clear_terminal()
-    print(reset_all + "\nSo these are the details you have given to me so far...\n")
+    print(reset_all + f"\n{name}, these are the details you have given to me so far...\n")
     print(detail_table)
-    summary_question = (input(q_color + "\nThese are the details you supplied, would you like to start over?(y/n): " + reset_all))
+    summary_question = (input(q_color + "\nWould you like to enter your details again?(y/n): " + reset_all))
     if summary_question == "y":
         return reset_table()
     if summary_question == "n":
@@ -268,15 +271,15 @@ def financial_asset_option():
     '''
     Gives option of choosing if you want to add financial assets
     '''
-    print(reset_all + textwrap.fill('Now lets get cracking with the financial assets :).'
-                        'By financial assets I mean money that you already have on you that you are willing '
+    print(reset_all + textwrap.fill('Now lets get cracking with the available funds :).'
+                        'By available funds I mean money that you already have on you that you are willing '
                         'to use in your budget, so if its a pension, a deeply imbedded life savings account '
                         'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
                         'account, or an amount in it you are willing to give in your budget, same goes with revolut '
                         'or other institutions like that. Cash on hand may be another one you want to put in here. '
-                        'In the end its all up to you to decide what you want in here, but try leave nothing out '
-                        'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
-    asset_choice = (input(q_color + "\nWould you like to add financial assets?(y/n): " + reset_all))
+                        'In the end its all up to you to decide what you want in here, but try leave nothing out that may be necessary '
+                        'which may constitute as available funds, as the more detail you put in only helps you more.', 80))
+    asset_choice = (input(q_color + "\nWould you like to add available funds?(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
         if asset_choice == "y" or asset_choice == "n":
@@ -334,7 +337,7 @@ def asset_calculate():
     '''
    Takes in data of the financial assets plugged in
     '''
-    asset = (input(q_color + "\nEnter The name of your financial asset: " + reset_all))
+    asset = (input(q_color + "\nPlease enter The name of your available fund " + reset_all))
     try:
         # Validate that the asset name contains the right amount of characters
         if len(asset) <= 0:
@@ -346,13 +349,13 @@ def asset_calculate():
               reset_all)
         return asset_calculate()
 
-    amount = float(input(q_color + "Enter the amount of that financial asset: " + reset_all))
+    amount = float(input(q_color + "Enter the amount of that available fund: " + reset_all))
     add_asset.append(amount)
     total = sum(add_asset)
     asset_table.rows.append([d_color + asset, amount, total])
 
     print(asset_table)
-    another_asset = (input(q_color + "Do you want to add another financial asset? y/n: " + reset_all))
+    another_asset = (input(q_color + "Do you want to add another available fund? y/n: " + reset_all))
     if another_asset =="y":
         clear_terminal()
         asset_calculate()
@@ -750,8 +753,9 @@ def first_questions():
    Condenses all of the question functions into one functon
     '''
     # name_question()
-    print(reset_all + textwrap.fill('Ok... So first I am going to ask a few questions before we go on to '
-                    'the actual incomes and expenditures, just some information that might '
+    clear_terminal()
+    print(reset_all + textwrap.fill(f'Ok {name}... first I am going to ask a few questions before we go on to '
+                    'the actual available funds, incomes and expenditures. Just some information that might '
                     'be useful to me in regards to your budgeting so hear me out :).', 80))
     month_question()
     currency_question()
