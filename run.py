@@ -2,17 +2,17 @@ from beautifultable import BeautifulTable
 from colorama import Fore, Back, Style
 # Import textwrap to wrap long text for a better visual
 import textwrap
+# Import os to let clear_terminal clear the terminal screen
 import os
 
 # COLOR TAGS
-
+# !! This can be made into classes !!
 reset_all = Style.RESET_ALL           # Reset to normal
 d_color = Fore.LIGHTYELLOW_EX         # Data color
 q_color = Style.BRIGHT + Fore.GREEN   # Question color
 h_color = Style.BRIGHT + Fore.BLUE    # Header and Image color
 e_color = Back.RED                    # Error color
-#!!class
-# OUTPUT FUNCTIONS
+
 
 
 def clear_terminal():
@@ -21,6 +21,7 @@ def clear_terminal():
     """
     os.system("cls" if os.name == "nt" else "clear")
 
+# OUTPUT FUNCTIONS
 
 def welcome_message():
     '''
@@ -53,20 +54,30 @@ def welcome_message():
     clear_terminal()
     print(reset_all + 'Welcome to Larrys LogBook!\n')
     print(textwrap.fill(f'Hi {name}! Im Larry, your personal budgeting tool! '
-                        'I may not be as fancy as those AI thingy majigs you kids use nowadays '
-                        'but I get my job done just fine :). Im here to help you with your personal budgeting '
-                        'projections. Be it for the month, a couple of days for a holiday or '
-                        'even the whole year if you up to it. Just give me all the information I need and '
-                        'Il do all the magic for you in my trusty logbook, revealing some more insight into your '
-                        'budget rather than just how many pennys you have left over ;).', 80))
+                        'I may not be as fancy as those AI thingy majigs you '
+                        'kids use nowadays but I get my job done just fine :)'
+                        '. Im here to help you with your personal budgeting '
+                        'projections. Be it for the month, a couple of days '
+                        'for a holiday or even the whole year if you up to it'
+                        '. Just give me all the information I need and Il do '
+                        'all the magic for you in my trusty logbook, '
+                        'revealing some more insight into your budget rather '
+                        'than just how many pennys you have left over ' 
+                        ';).', 80))
     print()
-    print(textwrap.fill('So the information that my logbook needs to work with are your available funds, '
-                        'incomes, expenses and the timeframe in which you want to budget for. There is additional '
-                        'information which is completely optional for you to provide me with but wouldnt it be fun '
-                        'to just go all out and discover your financial budgeting story!? '
-                        'To simply put it, you are dealing with a simple formula of available funds + income - expenses. '
-                        'Use that formula as you wish in any way you want, but walking it with me may give you more insightful results. '
-                        'None the less try out the LogBook and lets see where it takes us.', 80))
+    print(textwrap.fill('So the information that my logbook needs to work ' 
+                        'with are your available funds, incomes, expenses and '
+                        'the timeframe in which you want to budget for. There '
+                        'is an additional question whether you want to add a '
+                        'budget goal or not which is completely '
+                        'optional for you to provide me with but wouldnt it  ' 
+                        'be fun to just go all out and discover your financial'
+                        ' budgeting story!? To simply put it, you are dealing '
+                        'with a simple formula of available funds + income'
+                        ' - expenses. Use that formula as you wish in any '
+                        'way you want, but walking it with me may give you '
+                        'more insightful results. None the less try out the '
+                        'LogBook and lets see where it takes us.', 80))
 
 
 
@@ -76,12 +87,11 @@ def name_question():
     '''
     global detail_table
     global name
-    
+  
     detail_table = BeautifulTable()
     detail_table.columns.header = ["", ""]
 
     name = str(input(q_color + "Please enter your name: " + reset_all))
-    # detail_table.rows.append([ "NAME", d_color + name])
     try:
         # Validate that name contains the right amount of characters
         if len(name) <= 0:
@@ -98,27 +108,39 @@ def first_question_confirmation():
     '''
     Display and validate name question
     '''
-    question_confirm = str(input(q_color + f"\nSo your name is {name} correct? (y/n): " + reset_all))
+    question_confirm = str(input(q_color + 
+                                 f"\nSo your name is {name} correct? (y/n): "
+                                 + reset_all))
+    try:
+        # Validate that the input given is "y" or "n"
+        if question_confirm == "y" or question_confirm == "n":
+            accept = True
+        else:
+            accept = False
+            if accept == False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(e_color + f'Invalid answer. {e} Please try again.' +
+              reset_all)
+        return first_question_confirmation()
 
-    # Direct to functions on choice of "y" or "n"  
+    # Direct to functions on choice of "y" or "n" 
     if question_confirm == 'y':
         clear_terminal()
-        # return first_questions()
     if question_confirm == "n":
         clear_terminal()
         return name_question()
-        
- 
+      
 # First Questions Functions
 
 def month_question():
     '''
     Display, validate and direct (to relevant next question) month question.
     '''
-    global detail_table
-    global chosen_month
-    global exact_days 
-    month_or_day = (input(q_color + "\nWould you like to budget for a particular month? (y/n): " + reset_all))
+    month_or_day = (input(q_color + 
+                          "\nWould you like to budget for a "
+                          "particular month? (y/n): " 
+                          + reset_all))
     try:
         # Validate that the input given is "y" or "n"
         if month_or_day == "y" or month_or_day == "n":
@@ -145,22 +167,20 @@ def choose_month():
     '''
     global exact_days
     print('eg: 1 is January and so on')
-    month = int(input(q_color + "Please give me the number of the month you want to budget for:  " + reset_all))
+    month = int(input(q_color + "Please give me the number of the month you"
+                      " want to budget for:  "
+                      + reset_all))
     try:
         # Validate that month input contains the corrrect details
         if month <= 0:
-            raise ValueError("This cannot be 0 or under silly xD.")
+            raise ValueError("This cannot be 0 or under ")
         if month >= 13:
             raise ValueError("Please choose the months between 1 and 12.")
-        # if len(month) == 0:
-        #     raise ValueError("This cannot be left empty.")
     except ValueError as e:
         print(e_color + f'Invalid input. {e} Please try again.' +
               reset_all)
         return choose_month()
-
-    
-
+    # !!! THIS NEEDS TO CHANGE !!!
     # Recieves data from which month number was chosen
     if month== 1 :chosen_month='January';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
     if month== 2 :chosen_month='Febuary';exact_days=28;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
@@ -181,7 +201,8 @@ def choose_day():
     Display, append and validate choose day question
     '''
     global exact_days
-    exact_days = (input(q_color + "Then how many days do you want to budget for?: " + reset_all))
+    exact_days = (input(q_color + "Then how many days do you want to budget"
+                        " for?: " + reset_all))
     try:
         # Validate that month input contains the corrrect details
         if len(exact_days) <= 0:
@@ -777,7 +798,7 @@ def af_results():
 # This is the main function, this is where everything runs---->
 
 # And these are my global variables-->
-name = "x"
+# name = "x"
 detail_table = "y"
 exact_days = "z"
 days = "x"
