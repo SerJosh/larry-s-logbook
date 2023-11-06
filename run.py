@@ -217,32 +217,15 @@ def choose_day():
     detail_table.rows.append(["Days", d_color + exact_days, ])
 
 
-def currency_question():
-    '''
-    Display, append and validate currency question
-    '''
-    currency = (input(q_color + "\nWhat currency would you like to use?(Only one character/symbol neccessary): " + reset_all))
-    try:
-        # Validate that the currency has the right amount of characters
-        if len(currency) >= 2:
-            raise ValueError("You can only use one symbol/character.")
-        if len(currency) <= 0:
-            raise ValueError("This cannot be left empty.") 
-    except ValueError as e:
-        print(e_color + f'Invalid currency. {e} Please try again.' +
-              reset_all)
-        return currency_question()
-
-    detail_table.rows.append(["CURRENCY", d_color + currency])
-
-
 def goal_question():
     '''
     Display, append and validate goal question
     '''
     global goal
     global goal_set_question
-    goal_set_question =  (input(q_color + "\nDo you want to set a budget goal? ie: a desired amount you want after all expenses(y/n): " + reset_all))
+    goal_set_question =  (input(q_color + "\nDo you want to set a budget goal?"
+                                " ie: a desired amount you want after all"
+                                " expenses(y/n): " + reset_all))
     try:
         # Validate that the input given is "y" or "n"
         if goal_set_question == "y" or goal_set_question == "n":
@@ -257,7 +240,8 @@ def goal_question():
         return goal_question()
         
     if goal_set_question == "y":
-        goal = (input((q_color + "Please enter the amount of your desired goal: " + reset_all)))
+        goal = (input((q_color + "Please enter the amount of your desired"
+                       " goal: " + reset_all)))
         detail_table.rows.append(["Goal", d_color + goal ])
 
 
@@ -319,44 +303,11 @@ def financial_asset_option():
               reset_all)
         return financial_asset_option()
 
-    if asset_choice=='y':
+    if asset_choice == 'y':
         clear_terminal()
         return asset_calculate()
-    if asset_choice=='n':
+    if asset_choice == 'n':
         clear_terminal()
-
-
-
-# def financial_asset_info_question():
-#     '''
-#     Gives option of choosing if you want to hear more about financial assets
-#     '''
-#     asset_info = (input(q_color + "\nDo you want to hear more about financial assets?(y/n): " + reset_all))
-#     try:
-#     # Validate that the input given is "y" or "n"
-#         if asset_info == "y" or asset_info == "n":
-#             accept = True
-#         else:
-#             accept = False
-#             if accept == False:
-#                 raise ValueError("Please only type 'y' or 'n'.")
-#     except ValueError as e:
-#         print(e_color + f'Invalid answer. {e} Please try again.' +
-#             reset_all)
-#         return financial_asset_info_question()
-
-#     if asset_info=='y':
-#         print(reset_all + textwrap.fill(
-#                         'By financial assets I mean money that you already have on you that you are willing '
-#                         'to use in your budget, so if its a pension, a deeply imbedded life savings account '
-#                         'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
-#                         'account, or an amount in it you are willing to give in your budget, same goes with revolut '
-#                         'or other institutions like that. Cash on hand may be another one you want to put in here. '
-#                         'In the end its all up to you to decide what you want in here, but try leave nothing out '
-#                         'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
-#         return asset_calculate()
-#     if asset_info == "n":
-#         return asset_calculate()
 
 
 def asset_calculate():
@@ -385,7 +336,6 @@ def asset_calculate():
     if another_asset =="y":
         clear_terminal()
         asset_calculate()
-        # print(asset_table)
     if another_asset == "n":
         clear_terminal()
         print(h_color + "Available funds" + reset_all)
@@ -464,37 +414,6 @@ def income_option():
         clear_terminal()
 
 
-# def income_info_question():
-#     '''
-#     Gives option of choosing if you want to hear more about income
-#     '''
-#     income_info = (input(q_color + "\nDo you want to hear more about income?(y/n): " + reset_all))
-#     try:
-#     # Validate that the input given is "y" or "n"
-#         if income_info == "y" or income_info == "n":
-#             accept = True
-#         else:
-#             accept = False
-#             if accept == False:
-#                 raise ValueError("Please only type 'y' or 'n'.")
-#     except ValueError as e:
-#         print(e_color + f'Invalid answer. {e} Please try again.' +
-#             reset_all)
-#         return income_info_question()
-
-#     if income_info=='y':
-#         print(reset_all + textwrap.fill(' '
-#                         'By financial assets I mean money that you already have on you that you are willing '
-#                         'to use in your budget, so if its a pension, a deeply imbedded life savings account '
-#                         'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
-#                         'account, or an amount in it you are willing to give in your budget, same goes with revolut '
-#                         'or other institutions like that. Cash on hand may be another one you want to put in here '
-#                         'In the end its all up to you to decide what you want in here, but try leave nothing out '
-#                         'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
-#         return income_calculate()
-#     if income_info == "n":
-#         return income_calculate()
-
 def income_calculate():
     '''
    Takes in data of the incomes plugged in
@@ -521,7 +440,6 @@ def income_calculate():
     if another_income =="y":
         clear_terminal()
         income_calculate()
-        # print(income_table)
     if another_income == "n":
         clear_terminal()
         print(h_color + "Income" + reset_all)
@@ -600,38 +518,6 @@ def expense_option():
         clear_terminal()
 
 
-# def expense_info_question():
-#     '''
-#     Gives option of choosing if you want to hear more about expenses
-#     '''
-#     expense_info = (input(q_color + "\nDo you want to hear more about expenses?(y/n): " + reset_all))
-#     try:
-#     # Validate that the input given is "y" or "n"
-#         if expense_info == "y" or expense_info == "n":
-#             accept = True
-#         else:
-#             accept = False
-#             if accept == False:
-#                 raise ValueError("Please only type 'y' or 'n'.")
-#     except ValueError as e:
-#         print(e_color + f'Invalid answer. {e} Please try again.' +
-#             reset_all)
-#         return expense_info_question()
-
-#     if expense_info=='y':
-#         print(reset_all + textwrap.fill(' '
-#                         'By financial assets I mean money that you already have on you that you are willing '
-#                         'to use in your budget, so if its a pension, a deeply imbedded life savings account '
-#                         'or anything of that sort, maybe just leave that out ;). What I mean is money in your current '
-#                         'account, or an amount in it you are willing to give in your budget, same goes with revolut '
-#                         'or other institutions like that. Cash on hand may be another one you want to put in here '
-#                         'In the end its all up to you to decide what you want in here, but try leave nothing out '
-#                         'which may constitute as a financial asset as the more detail you put in only helps you more.', 80))
-#         return expense_calculate()
-#     if expense_info == "n":
-#         return expense_calculate()
-
-
 def expense_calculate():
     '''
    Takes in data of the expenses plugged in
@@ -658,7 +544,6 @@ def expense_calculate():
     if another_expense =="y":
         clear_terminal()
         expense_calculate()
-        # print(expense_table)
     if another_expense == "n":
         clear_terminal()
         print(h_color + "Income" + reset_all)
@@ -703,13 +588,6 @@ def reset_expense_table():
     add_expense = []
     return expense_calculate()
 
-# def result_table():
-#     results_table.rows.append(["Available Funds", asset_total])
-#     results_table.rows.append(["Income", inco_total])
-#     results_table.rows.append(["Expenses", expe_total])
-#     results_table.rows.append(["Surplus", surplus])
-#     results_table.rows.append(["Budget per day", day_result])
-#     results_table.rows.append(["Goal", asset_total])
 
 def result_calculations():
     global asset_total
@@ -749,15 +627,6 @@ def results_page():
 
     print(h_color + f'Budget Summary of {name}' + reset_all)
     print(results_table)
-    # print(h_color + "Financial Assets" + reset_all)
-    # print(asset_table)
-    # print()
-    # print(h_color + "Income" + reset_all)
-    # print(income_table)
-    # print()
-    # print(h_color + "Expenses" + reset_all)
-    # print(expense_table)
-    # print()
     print(h_color +"Your financial assets are " + reset_all + str(asset_total))
     print(h_color +"Your total income is " + reset_all + str(inco_total))
     print(h_color +"Your total expense is " + reset_all + str(expe_total))
@@ -769,32 +638,8 @@ def results_page():
             print(h_color + "You are over your goal by: " + reset_all + str(target_goal) + "\n")
         else:
             print(h_color + "You are under your goal by: " + reset_all + str(target_goal) + "\n")
-    print("a is for avalaible funds, i is for income, e is for expense")
-    choose_table = (input(q_color + "\nWhere would you like to go?:  " + reset_all))
-    if choose_table == "a":
-        af_results()
-    if choose_table == "i":
-        clear_terminal()
-        print(income_table)
-    if choose_table == "e":
-        clear_terminal()
-        print(expense_table)
-
-def af_results():
-    clear_terminal()
-    print(asset_table)
-    print("r is for results summary, i is for income, e is for expense")
-    choose_table = (input(q_color + "\nWhere would you like to go?:  " + reset_all))
-    if choose_table == "r":
-        results_page()
-    if choose_table == "i":
-        clear_terminal()
-        print(income_table)
-    if choose_table == "e":
-        clear_terminal()
-        print(expense_table)
-
-
+    
+    
 # This is the main function, this is where everything runs---->
 
 # And these are my global variables-->
@@ -825,24 +670,18 @@ def first_questions():
     '''
    Condenses all of the question functions into one functon
     '''
-    # name_question()
     clear_terminal()
     print(reset_all + textwrap.fill(f'Ok {name}... first I am going to ask a few questions before we go on to '
                     'the actual available funds, incomes and expenditures. Just some information that might '
                     'be useful to me in regards to your budgeting so hear me out :).', 80))
     month_question()
-    currency_question()
     goal_question()
     question_summary()
 
 def budget_questions():
-    # clear_terminal()
     financial_asset_option()
-    # clear_terminal()
     income_option()
-    # clear_terminal()
     expense_option()
-    # clear_terminal()
     result_calculations()
     results_page()
 # ----condensed functions------->
@@ -853,13 +692,9 @@ def main():
     '''
     welcome_message()
     first_question_confirmation()
-    # print()
     first_questions()
-    # print()
     budget_questions()
     
-
-
 main()
 
 # This is the main function, this is where everything runs---->
