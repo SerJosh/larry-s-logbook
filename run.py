@@ -27,27 +27,34 @@ def welcome_message():
     '''
     Display the logo, image and welcome message
     '''
-    print(h_color + '''#                                                 
-#         ##   #####  #####  #   #  ####          
-#        #  #  #    # #    #  # #  #              
-#       #    # #    # #    #   #    ####          
-#       ###### #####  #####    #        #         
-#       #    # #   #  #   #    #   #    #         
-####### #    # #    # #    #   #    ####          
-#                     ######                      
-#        ####   ####  #     #  ####   ####  #    #
-#       #    # #    # #     # #    # #    # #   # 
-#       #    # #      ######  #    # #    # ####  
-#       #    # #  ### #     # #    # #    # #  #  
-#       #    # #    # #     # #    # #    # #   # 
-#######  ####   ####  ######   ####   ####  #    # ''')
-    print(h_color + '''\n      __...--~~~~~-._   _.-~~~~~--...__
-    //               `V'               \\ 
-   //                 |                 \\ 
-  //__...--~~~~~~-._  |  _.-~~~~~~--...__\\ 
- //__.....----~~~~._\ | /_.~~~~----.....__\\
-====================\\|//====================
-                    `---`\n''')
+    print(h_color + '''888                                                             
+888                                                             
+888                                                             
+888       8888b.  888d888 888d888 888  888 .d8888b              
+888          "88b 888P"   888P"   888  888 88K                  
+888      .d888888 888     888     888  888 "Y8888b.             
+888      888  888 888     888     Y88b 888      X88             
+88888888 "Y888888 888     888      "Y88888  88888P'             
+                                       888                      
+                                  Y8b d88P                      
+888                        888888b."Y88P"               888     
+888                        888  "88b                    888     
+888                        888  .88P                    888     
+888       .d88b.   .d88b.  8888888K.   .d88b.   .d88b.  888  888
+888      d88""88b d88P"88b 888  "Y88b d88""88b d88""88b 888 .88P
+888      888  888 888  888 888    888 888  888 888  888 888888K 
+888      Y88..88P Y88b 888 888   d88P Y88..88P Y88..88P 888 "88b
+88888888  "Y88P"   "Y88888 8888888P"   "Y88P"   "Y88P"  888  888
+                       888                                      
+                  Y8b d88P                                      
+                   "Y88P"             ''')
+#     print(h_color + '''\n      __...--~~~~~-._   _.-~~~~~--...__
+#     //               `V'               \\ 
+#    //                 |                 \\ 
+#   //__...--~~~~~~-._  |  _.-~~~~~~--...__\\ 
+#  //__.....----~~~~._\ | /_.~~~~----.....__\\
+# ====================\\|//====================
+#                     `---`\n''')
     name_question()
     clear_terminal()
     print(reset_all + 'Welcome to Larrys LogBook!\n')
@@ -216,32 +223,32 @@ def choose_day():
     detail_table.rows.append(["Days", d_color + exact_days, ])
 
 
-def goal_question():
-    '''
-    Display, append and validate goal question
-    '''
-    global goal
-    global goal_set_question
-    goal_set_question = (input(q_color + "\nDo you want to set a budget goal?"
-                               " ie: a desired amount you want after all"
-                               " expenses(y/n): " + reset_all))
-    try:
-        # Validate that the input given is "y" or "n"
-        if goal_set_question == "y" or goal_set_question == "n":
-            accept = True
-        else:
-            accept = False
-            if accept == False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(e_color + f'Invalid answer. {e} Please try again.' +
-              reset_all)
-        return goal_question()
+# def goal_question():
+#     '''
+#     Display, append and validate goal question
+#     '''
+#     global goal
+#     global goal_set_question
+#     goal_set_question = (input(q_color + "\nDo you want to set a budget goal?"
+#                                " ie: a desired amount you want after all"
+#                                " expenses(y/n): " + reset_all))
+#     try:
+#         # Validate that the input given is "y" or "n"
+#         if goal_set_question == "y" or goal_set_question == "n":
+#             accept = True
+#         else:
+#             accept = False
+#             if accept == False:
+#                 raise ValueError("Please only type 'y' or 'n'.")
+#     except ValueError as e:
+#         print(e_color + f'Invalid answer. {e} Please try again.' +
+#               reset_all)
+#         return goal_question()
         
-    if goal_set_question == "y":
-        goal = (input((q_color + "Please enter the amount of your desired"
-                       " goal: " + reset_all)))
-        detail_table.rows.append(["Goal", d_color + goal])
+#     if goal_set_question == "y":
+#         goal = (input((q_color + "Please enter the amount of your desired"
+#                        " goal: " + reset_all)))
+#         detail_table.rows.append(["Goal", d_color + goal])
 
 
 def question_summary():
@@ -258,15 +265,13 @@ def question_summary():
         return reset_table()
     if summary_question == "n":
         clear_terminal()
-        return budget_questions()
+        # return budget_questions()
 
 
 def reset_table():
     '''
     Resets detail_table and restarts the first questions function
     '''
-    # detail_table = None
-    # return first_questions()
     global detail_table
     detail_table = None
     detail_table = BeautifulTable()
@@ -512,25 +517,27 @@ def result_calculations():
     global expe_total
     global surplus
     global day_result
-    global target_goal
+    # global target_goal
     inco_total = sum(add_income)
     expe_total = sum(add_expense)
     asset_total = sum(add_asset)
     calc_days = (int(f"{exact_days}"))
 
-    if goal_set_question == "y":
-        goal_result = (float(f"{goal}"))
+    # if goal_set_question == "y":
+    #     goal_result = (float(f"{goal}"))
     # Calculations
     surplus = asset_total + inco_total - expe_total
     day_result = surplus / calc_days
-    target_goal = surplus - goal_result
+    # if goal_set_question == "y":
+    #     target_goal = surplus - goal_result
 
-    results_table.rows.append(["Available Funds", asset_total])
-    results_table.rows.append(["Income", inco_total])
-    results_table.rows.append(["Expenses", expe_total])
-    results_table.rows.append(["Surplus", surplus])
-    results_table.rows.append(["Budget per day", day_result])
-    results_table.rows.append(["Goal", target_goal])
+    results_table.rows.append(["Available Funds", d_color + asset_total])
+    results_table.rows.append(["Income", d_color + inco_total])
+    results_table.rows.append(["Expenses", d_color + expe_total])
+    results_table.rows.append(["Surplus", d_color + surplus])
+    results_table.rows.append(["Budget per day", d_color + day_result])
+    # if goal_set_question == "y":
+    #     results_table.rows.append(["Goal", d_color + target_goal])
 
 
 def results_page(): 
@@ -546,15 +553,20 @@ def results_page():
     print(h_color + f"you will be able to spend "
           + reset_all + f"{day_result} per day")
 
-    if goal_set_question == "y": 
-        if target_goal >= 0:
-            print(h_color + "You are over your goal by: "
-                  + reset_all + str(target_goal) + "\n")
-        else:
-            print(h_color + "You are under your goal by: "
-                  + reset_all + str(target_goal) + "\n")
-    
-    
+    # if goal_set_question == "y": 
+    #     if target_goal >= 0:
+    #         print(h_color + "You are over your goal by: "
+    #               + reset_all + str(target_goal) + "\n")
+    #     else:
+    #         print(h_color + "You are under your goal by: "
+    #               + reset_all + str(target_goal) + "\n")
+    print(reset_all + 
+          textwrap.fill(f'Thanks {name}, for using Larrys Logbook, I hope I '
+                        'have helped :) If you wish to start over just press '
+                        'Run Program on top of the Terminal. See ya '
+                        f'{name} ', 80))
+
+
 # This is the main function, this is where everything runs---->
 
 # And these are my global variables-->
@@ -562,7 +574,7 @@ def results_page():
 detail_table = "y"
 exact_days = "z"
 days = "x"
-goal_set_question = "a"
+# goal_set_question = "a"
 
 asset_table = BeautifulTable()
 asset_table.columns.header = ["asset", "amount", "total"]
@@ -595,7 +607,7 @@ def first_questions():
                         'might be useful to me in regards to your budgeting '
                         'so hear me out :).', 80))
     month_question()
-    goal_question()
+    # goal_question()
     question_summary()
 
 
@@ -604,7 +616,7 @@ def budget_questions():
           textwrap.fill('Now lets get cracking with the available'
                         ' funds :). By available funds I mean money that you'
                         ' already have on you that you are willing to use in'
-                        ' your budget, so if its a pension, a deeply imbedded'
+                        ' your budget. So if its a pension, a deeply imbedded'
                         ' life savings account or anything of that sort, '
                         'maybe just leave that out ;). What I mean is money '
                         'in your current account, or an amount in it you are '
@@ -659,7 +671,7 @@ def main():
     first_questions()
     budget_questions()
 
- 
+
 main()
 
 # This is the main function, this is where everything runs---->
