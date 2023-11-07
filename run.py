@@ -187,18 +187,18 @@ def choose_month():
         return choose_month()
     # !!! THIS NEEDS TO CHANGE !!!
     # Recieves data from which month number was chosen
-    # if month== 1 :chosen_month='January';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-    # if month== 2 :chosen_month='Febuary';exact_days=28;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-    # if month== 3 :chosen_month='March';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-    # if month== 4 :chosen_month='April';exact_days=30;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-    # if month== 5 :chosen_month='May';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-    # if month== 6 :chosen_month='June';exact_days=30;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-    # if month== 7 :chosen_month='July';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-    # if month== 8 :chosen_month='August';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-    # if month== 9 :chosen_month='September';exact_days=30;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-    # if month== 10 :chosen_month='October';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-    # if month== 11 :chosen_month='November';exact_days=30;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
-    # if month== 12 :chosen_month='December';exact_days=31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    # if month == 1: chosen_month = 'January' ;exact_days =31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    # if month == 2: chosen_month = 'Febuary' ;exact_days =28;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    # if month == 3: chosen_month = 'March' ;exact_days =31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    # if month == 4: chosen_month = 'April' ;exact_days =30;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    # if month == 5: chosen_month = 'May' ;exact_days =31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    # if month == 6: chosen_month = 'June' ;exact_days =30;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    # if month == 7: chosen_month = 'July' ;exact_days =31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    # if month == 8: chosen_month = 'August' ;exact_days =31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    # if month == 9: chosen_month = 'September' ;exact_days =30;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    # if month == 10: chosen_month = 'October' ;exact_days =31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    # if month == 11: chosen_month = 'November' ;exact_days =30;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
+    # if month == 12: chosen_month = 'December' ;exact_days =31;detail_table.rows.append(["MONTH", d_color + chosen_month, ])
 	# #!!!!!!
 	
 
@@ -223,34 +223,6 @@ def choose_day():
     detail_table.rows.append(["Days", d_color + exact_days, ])
 
 
-# def goal_question():
-#     '''
-#     Display, append and validate goal question
-#     '''
-#     global goal
-#     global goal_set_question
-#     goal_set_question = (input(q_color + "\nDo you want to set a budget goal?"
-#                                " ie: a desired amount you want after all"
-#                                " expenses(y/n): " + reset_all))
-#     try:
-#         # Validate that the input given is "y" or "n"
-#         if goal_set_question == "y" or goal_set_question == "n":
-#             accept = True
-#         else:
-#             accept = False
-#             if accept == False:
-#                 raise ValueError("Please only type 'y' or 'n'.")
-#     except ValueError as e:
-#         print(e_color + f'Invalid answer. {e} Please try again.' +
-#               reset_all)
-#         return goal_question()
-        
-#     if goal_set_question == "y":
-#         goal = (input((q_color + "Please enter the amount of your desired"
-#                        " goal: " + reset_all)))
-#         detail_table.rows.append(["Goal", d_color + goal])
-
-
 def question_summary():
     '''
     Display all results from questions asked and give option to start over
@@ -265,7 +237,6 @@ def question_summary():
         return reset_table()
     if summary_question == "n":
         clear_terminal()
-        # return budget_questions()
 
 
 def reset_table():
@@ -517,27 +488,20 @@ def result_calculations():
     global expe_total
     global surplus
     global day_result
-    # global target_goal
     inco_total = sum(add_income)
     expe_total = sum(add_expense)
     asset_total = sum(add_asset)
     calc_days = (int(f"{exact_days}"))
 
-    # if goal_set_question == "y":
-    #     goal_result = (float(f"{goal}"))
     # Calculations
     surplus = asset_total + inco_total - expe_total
     day_result = surplus / calc_days
-    # if goal_set_question == "y":
-    #     target_goal = surplus - goal_result
 
-    results_table.rows.append(["Available Funds", d_color + asset_total])
-    results_table.rows.append(["Income", d_color + inco_total])
-    results_table.rows.append(["Expenses", d_color + expe_total])
-    results_table.rows.append(["Surplus", d_color + surplus])
-    results_table.rows.append(["Budget per day", d_color + day_result])
-    # if goal_set_question == "y":
-    #     results_table.rows.append(["Goal", d_color + target_goal])
+    results_table.rows.append(["Available Funds", + asset_total])
+    results_table.rows.append(["Income", + inco_total])
+    results_table.rows.append(["Expenses", + expe_total])
+    results_table.rows.append(["Surplus", + surplus])
+    results_table.rows.append(["Budget per day", + day_result])
 
 
 def results_page(): 
@@ -552,14 +516,6 @@ def results_page():
     print(h_color + "Your gross amount will be " + reset_all + str(surplus))
     print(h_color + f"you will be able to spend "
           + reset_all + f"{day_result} per day")
-
-    # if goal_set_question == "y": 
-    #     if target_goal >= 0:
-    #         print(h_color + "You are over your goal by: "
-    #               + reset_all + str(target_goal) + "\n")
-    #     else:
-    #         print(h_color + "You are under your goal by: "
-    #               + reset_all + str(target_goal) + "\n")
     print(reset_all + 
           textwrap.fill(f'Thanks {name}, for using Larrys Logbook, I hope I '
                         'have helped :) If you wish to start over just press '
@@ -574,7 +530,6 @@ def results_page():
 detail_table = "y"
 exact_days = "z"
 days = "x"
-# goal_set_question = "a"
 
 asset_table = BeautifulTable()
 asset_table.columns.header = ["asset", "amount", "total"]
@@ -607,7 +562,6 @@ def first_questions():
                         'might be useful to me in regards to your budgeting '
                         'so hear me out :).', 80))
     month_question()
-    # goal_question()
     question_summary()
 
 
