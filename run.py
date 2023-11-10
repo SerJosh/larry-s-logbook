@@ -133,7 +133,7 @@ def first_question_confirmation():
             accept = True
         else:
             accept = False
-            if accept == False:
+            if accept is False:
                 raise ValueError("Please only type 'y' or 'n'.")
     except ValueError as e:
         print(color.red + f'Invalid answer. {e} Please try again.' +
@@ -165,7 +165,7 @@ def month_question():
             accept = True
         else:
             accept = False
-            if accept == False:
+            if accept is False:
                 raise ValueError("Please only type 'y' or 'n'.")
     except ValueError as e:
         print(color.red + f'Invalid answer. {e} Please try again.' +
@@ -185,33 +185,40 @@ def choose_month():
     '''
     global exact_days
     global chosen_month
-    month = int(input(color.green + "Please give me the number of the month "
-                      "you want to budget for \n(ie 1 is January and so on): "
-                      + color.reset))
-    try:
-        # Validate that month input contains the corrrect details
-        if month <= 0:
-            raise ValueError("This cannot be 0 or under ")
-        if month >= 13:
-            raise ValueError("Please choose the months between 1 and 12.")
-    except ValueError as e:
-        print(color.red + f'Invalid input. {e} Please try again.' +
-              color.reset)
-        return choose_month()
-    # !!! THIS NEEDS TO CHANGE !!!
-    # Recieves data from which month number was chosen
-    if month == 1: chosen_month = 'January'; exact_days =31
-    if month == 2: chosen_month = 'Febuary';exact_days =28
-    if month == 3: chosen_month = 'March';exact_days =31
-    if month == 4: chosen_month = 'April';exact_days =30
-    if month == 5: chosen_month = 'May';exact_days =31
-    if month == 6: chosen_month = 'June';exact_days =30
-    if month == 7: chosen_month = 'July';exact_days =31
-    if month == 8: chosen_month = 'August';exact_days =31
-    if month == 9: chosen_month = 'September';exact_days =30
-    if month == 10: chosen_month = 'October';exact_days =31
-    if month == 11: chosen_month = 'November';exact_days =30
-    if month == 12: chosen_month = 'December';exact_days =31
+    while True:
+        try:
+            month = int(input(color.green + "Please give me the number of the "
+                              "month you want to budget for \n(ie 1 is "
+                              "January and so on): " + color.reset))
+            try:
+                # Validate that month input contains the corrrect details
+                if month <= 0:
+                    raise ValueError("This cannot be 0 or under ")
+                if month >= 13:
+                    raise ValueError("Please choose the months between 1 and "
+                                     "12.")
+            except ValueError as e:
+                print(color.red + f'Invalid input. {e} Please try again.' +
+                      color.reset)
+                return choose_month()
+            # !!! THIS NEEDS TO CHANGE !!!
+            # Recieves data from which month number was chosen
+            if month == 1: chosen_month = 'January'; exact_days = 31
+            if month == 2: chosen_month = 'Febuary'; exact_days = 28
+            if month == 3: chosen_month = 'March'; exact_days = 31
+            if month == 4: chosen_month = 'April'; exact_days = 30
+            if month == 5: chosen_month = 'May'; exact_days = 31
+            if month == 6: chosen_month = 'June'; exact_days = 30
+            if month == 7: chosen_month = 'July'; exact_days = 31
+            if month == 8: chosen_month = 'August'; exact_days = 31
+            if month == 9: chosen_month = 'September'; exact_days = 30
+            if month == 10: chosen_month = 'October'; exact_days = 31
+            if month == 11: chosen_month = 'November'; exact_days = 30
+            if month == 12: chosen_month = 'December'; exact_days = 31
+            break
+        except ValueError:
+            print(color.red + "Thats not a valid number. Please enter a "
+                  "number." + color.reset)
 	
 	
 def choose_day():
@@ -219,38 +226,62 @@ def choose_day():
     Display, append and validate choose day question
     '''
     global exact_days
-    exact_days = (input(color.green + "Then how many days do you want to "
-                        "budget for?: " + color.reset))
-    try:
-        # Validate that month input contains the corrrect details
-        if len(exact_days) <= 0:
-            raise ValueError("This cannot be left empty.")
-        if exact_days == "0":
-            raise ValueError("Lets not go there.. atleast put 1 xD.")
-    except ValueError as e:
-        print(color.red + f'Invalid input. {e} Please try again.' +
-              color.reset)
-        return choose_day()
+    while True:
+        try:
+            exact_days = int(input(color.green + "Then how many days do you "
+                                   "want to budget for?: " + color.reset))
+            try:
+                # Validate that month input contains the corrrect details
+                # if len(exact_days) <= 0:
+                #     raise ValueError("This cannot be left empty.")
+                if exact_days == 0:
+                    raise ValueError("Lets not go there.. atleast put 1 xD.")
+            except ValueError as e:
+                print(color.red + f'Invalid input. {e} Please try again.' +
+                      color.reset)
+                return choose_day()
+            break
+        except ValueError:
+            print(color.red + "Thats not a valid number. Please enter a "
+                  "number." + color.reset)
 
 
 def timeframe_summary():
     '''
-    Display all results from questions asked and give option to start over
+    Display summary of timeframe questions
     '''
     clear_terminal()
     if month_or_day == "y":
         print(color.reset + 
-              (f"\n{name}, So you are budgeting for" + color.yellow +
+              (f"\n{name}, So you are budgeting for " + color.yellow +
                f" {chosen_month}," + color.reset + " which is approximately "
                + color.yellow + str(exact_days) + color.reset + " days long."
                ))
     if month_or_day == "n":
         print(color.reset + 
-              (f"\n{name}, So you are budgeting for" + color.yellow +
+              (f"\n{name}, So you are budgeting for " + color.yellow +
                f"{exact_days} days."))
 
+
+def timeframe_re_enter():
+    '''
+    Give option to re enter timeframe questions
+    '''
     timeframe_question = (input(color.green + "\nWould you like to enter your"
                           " timeframe details again?(y/n): " + color.reset))
+    try:
+        # Validate that the input given is "y" or "n"
+        if timeframe_question == "y" or timeframe_question == "n":
+            accept = True
+        else:
+            accept = False
+            if accept is False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(color.red + f'Invalid answer. {e} Please try again.' +
+              color.reset)
+        return timeframe_re_enter()
+
     if timeframe_question == "y":
         clear_terminal()
         return first_questions()
@@ -288,16 +319,40 @@ def asset_calculate():
         print(color.red + f'Invalid name. {e} Please provide your asset name'
               ' again.' + color.reset)     
         return asset_calculate()
+    # Validate if amount input is a number. 
+    while True:
+        try:
+            amount = float(input(color.green + "Please enter the amount of "
+                           "that available fund: " + color.reset))
+            break
+        except ValueError:
+            print(color.red + "Thats not a valid number. Please enter a "
+                  "number." + color.reset)
 
-    amount = float(input(color.green + "Please enter the amount of that "
-                         "available fund: " + color.reset))
     add_asset.append(amount)
     total = sum(add_asset)
     asset_table.rows.append([color.yellow + asset, amount, total])
     clear_terminal()
     print(asset_table)
+    return extra_fund()
+
+
+def extra_fund():
     another_asset = (input(color.green + "Do you want to add another available"
                            " fund? y/n: " + color.reset))
+    try:
+        # Validate that the input given is "y" or "n"
+        if another_asset == "y" or another_asset == "n":
+            accept = True
+        else:
+            accept = False
+            if accept is False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(color.red + f'Invalid answer. {e} Please try again.' +
+              color.reset)
+        return extra_fund()
+
     if another_asset == "y":
         clear_terminal()
         asset_calculate()
@@ -306,7 +361,7 @@ def asset_calculate():
         print(color.blue + "Available funds" + color.reset)
         print(asset_table)
         asset_confirmation()
-
+        
 
 def asset_confirmation():
     '''
@@ -320,7 +375,7 @@ def asset_confirmation():
             accept = True
         else:
             accept = False
-            if accept == False:
+            if accept is False:
                 raise ValueError("Please only type 'y' or 'n'.")
     except ValueError as e:
         print(color.red + f'Invalid answer. {e} Please try again.' +
@@ -365,16 +420,40 @@ def income_calculate():
         print(color.red + f'Invalid name. {e} Please provide your income name'
               ' again.' + color.reset)   
         return income_calculate()
+        
+    while True:
+        try:
+            amount = float(input(color.green + "Please enter the amount of "
+                                 "that income: " + color.reset))
+            break
+        except ValueError:
+            print(color.red + "Thats not a valid number. Please enter a "
+                  "number." + color.reset)
 
-    amount = float(input(color.green + "Please enter the amount of that "
-                         "income: " + color.reset))  
     add_income.append(amount)
     total = sum(add_income)
     income_table.rows.append([color.yellow + income, amount,  total])
     clear_terminal()
     print(income_table)
+    return extra_income()
+
+
+def extra_income():
     another_income = (input(color.green + "Do you want to add another income?"
                             " y/n: " + color.reset))
+    try:
+        # Validate that the input given is "y" or "n"
+        if another_income == "y" or another_income == "n":
+            accept = True
+        else:
+            accept = False
+            if accept is False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(color.red + f'Invalid answer. {e} Please try again.' +
+              color.reset)
+        return extra_income()
+
     if another_income == "y":
         clear_terminal()
         income_calculate()
@@ -390,15 +469,14 @@ def income_confirmation():
    Confirms if user wants to redo the income
     '''
     restart_income = (input(color.green + "\nWould you like to enter your"
-                            " income again?(y/n): " + color.reset))
-                            
+                            " income again?(y/n): " + color.reset))                      
     try:
         # Validate that the input given is "y" or "n"
         if restart_income == "y" or restart_income == "n":
             accept = True
         else:
             accept = False
-            if accept == False:
+            if accept is False:
                 raise ValueError("Please only type 'y' or 'n'.")
     except ValueError as e:
         print(color.red + f'Invalid answer. {e} Please try again.' +
@@ -444,15 +522,39 @@ def expense_calculate():
               ' again.' + color.reset)  
         return expense_calculate()
 
-    amount_exp = float(input(color.green + "Please enter the amount of that"
-                             " expense: " + color.reset))
+    while True:
+        try:
+            amount_exp = float(input(color.green + "Please enter the amount of"
+                                     " that expense: " + color.reset))
+            break
+        except ValueError:
+            print(color.red + "Thats not a valid number. Please enter a "
+                  "number." + color.reset)
+
     add_expense.append(amount_exp)
     total = sum(add_expense)
     expense_table.rows.append([color.yellow + expense, amount_exp, total])
     clear_terminal()
     print(expense_table)
+    return extra_expense()
+
+
+def extra_expense():
     another_expense = (input(color.green + "Do you want to add another expense"
                        "? y/n: " + color.reset))
+    try:
+        # Validate that the input given is "y" or "n"
+        if another_expense == "y" or another_expense == "n":
+            accept = True
+        else:
+            accept = False
+            if accept is False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(color.red + f'Invalid answer. {e} Please try again.' +
+              color.reset)
+        return extra_expense()
+
     if another_expense == "y":
         clear_terminal()
         expense_calculate()
@@ -475,7 +577,7 @@ def expense_confirmation():
             accept = True
         else:
             accept = False
-            if accept == False:
+            if accept is False:
                 raise ValueError("Please only type 'y' or 'n'.")
     except ValueError as e:
         print(color.red + f'Invalid answer. {e} Please try again.' +
@@ -587,6 +689,7 @@ def first_questions():
                         'of days, you choose :).', 80))
     month_question()
     timeframe_summary()
+    timeframe_re_enter()
 
 
 def budget_questions():
@@ -608,6 +711,7 @@ def budget_questions():
                         ' Add as many available funds as you wish and I will '
                         'add the total up for you :)', 80))
     asset_calculate()
+    # extra_fund()
     print(color.reset + 
           textwrap.fill('Now lets get cracking with the Income :).'
                         'Im sure you know what an income is, but an income in '
@@ -621,6 +725,7 @@ def budget_questions():
                         'taxation. Add as many incomes as you wish and I will'
                         ' add the total up for you :) ', 80))
     income_calculate()
+    # extra_income()
     print(color.reset +
           textwrap.fill('Now lets get cracking with the expenses'
                         ' :). Im sure we all know what expenses are, but '
