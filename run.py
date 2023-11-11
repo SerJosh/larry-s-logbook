@@ -5,14 +5,6 @@ import textwrap
 # Import os to let clear_terminal clear the terminal screen
 import os
 
-# COLOR TAGS
-# !! This can be made into classes !!
-# reset_all = Style.RESET_ALL           # Reset to normal
-# d_color =          # Data color
-# q_color =    # Question color
-#     # Header and Image color
-# e_color =                     # Error color
-
 
 class Color:
     blue = Style.BRIGHT + Fore.BLUE
@@ -30,6 +22,22 @@ def clear_terminal():
     Clear the terminal screen.
     """
     os.system("cls" if os.name == "nt" else "clear")
+
+
+def y_n_validator(question, function):
+    try:
+        # Validate that the input given is "y" or "n"
+        if question == "y" or question == "n":
+            accept = True
+        else:
+            accept = False
+            if accept is False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(color.red + f'Invalid answer. {e} Please try again.' +
+              color.reset)
+        return function()
+        
 
 # OUTPUT FUNCTIONS
 
@@ -101,12 +109,7 @@ def name_question():
     '''
     Display, append and validate name question
     '''
-    global detail_table
     global name
-  
-    # detail_table = BeautifulTable()
-    # detail_table.columns.header = ["", ""]
-
     name = str(input(color.green + "\nPlease enter your name: " + color.reset))
     try:
         # Validate that name contains the right amount of characters
@@ -127,18 +130,19 @@ def first_question_confirmation():
     question_confirm = str(input(color.green + 
                                  f"\nSo your name is {name} correct? (y/n): "
                                  + color.reset))
-    try:
-        # Validate that the input given is "y" or "n"
-        if question_confirm == "y" or question_confirm == "n":
-            accept = True
-        else:
-            accept = False
-            if accept is False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(color.red + f'Invalid answer. {e} Please try again.' +
-              color.reset)
-        return first_question_confirmation()
+    y_n_validator(question_confirm, first_question_confirmation)
+    # try:
+    #     # Validate that the input given is "y" or "n"
+    #     if question_confirm == "y" or question_confirm == "n":
+    #         accept = True
+    #     else:
+    #         accept = False
+    #         if accept is False:
+    #             raise ValueError("Please only type 'y' or 'n'.")
+    # except ValueError as e:
+    #     print(color.red + f'Invalid answer. {e} Please try again.' +
+    #           color.reset)
+    #     return first_question_confirmation()
 
     # Direct to functions on choice of "y" or "n" 
     if question_confirm == 'y':
@@ -159,18 +163,19 @@ def month_question():
                           "\nWould you like to budget for a "
                           "particular month? (y/n): " 
                           + color.reset))
-    try:
-        # Validate that the input given is "y" or "n"
-        if month_or_day == "y" or month_or_day == "n":
-            accept = True
-        else:
-            accept = False
-            if accept is False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(color.red + f'Invalid answer. {e} Please try again.' +
-              color.reset)
-        return month_question()
+    y_n_validator(month_or_day, month_question)
+    # try:
+    #     # Validate that the input given is "y" or "n"
+    #     if month_or_day == "y" or month_or_day == "n":
+    #         accept = True
+    #     else:
+    #         accept = False
+    #         if accept is False:
+    #             raise ValueError("Please only type 'y' or 'n'.")
+    # except ValueError as e:
+    #     print(color.red + f'Invalid answer. {e} Please try again.' +
+    #           color.reset)
+    #     return month_question()
 
     # Direct to functions on choice of "y" or "n"  
     if month_or_day == 'y':
@@ -219,7 +224,7 @@ def choose_month():
         except ValueError:
             print(color.red + "Thats not a valid number. Please enter a "
                   "number." + color.reset)
-	
+
 	
 def choose_day():
     '''
@@ -232,8 +237,6 @@ def choose_day():
                                    "want to budget for?: " + color.reset))
             try:
                 # Validate that month input contains the corrrect details
-                # if len(exact_days) <= 0:
-                #     raise ValueError("This cannot be left empty.")
                 if exact_days == 0:
                     raise ValueError("Lets not go there.. atleast put 1 xD.")
             except ValueError as e:
@@ -269,36 +272,25 @@ def timeframe_re_enter():
     '''
     timeframe_question = (input(color.green + "\nWould you like to enter your"
                           " timeframe details again?(y/n): " + color.reset))
-    try:
-        # Validate that the input given is "y" or "n"
-        if timeframe_question == "y" or timeframe_question == "n":
-            accept = True
-        else:
-            accept = False
-            if accept is False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(color.red + f'Invalid answer. {e} Please try again.' +
-              color.reset)
-        return timeframe_re_enter()
+    y_n_validator(timeframe_question, timeframe_re_enter)
+    # try:
+    #     # Validate that the input given is "y" or "n"
+    #     if timeframe_question == "y" or timeframe_question == "n":
+    #         accept = True
+    #     else:
+    #         accept = False
+    #         if accept is False:
+    #             raise ValueError("Please only type 'y' or 'n'.")
+    # except ValueError as e:
+    #     print(color.red + f'Invalid answer. {e} Please try again.' +
+    #           color.reset)
+    #     return timeframe_re_enter()
 
     if timeframe_question == "y":
         clear_terminal()
         return first_questions()
     if timeframe_question == "n":
         clear_terminal()
-
-
-# def reset_table():
-#     '''
-#     Resets detail_table and restarts the first questions function
-#     '''
-#     global detail_table
-#     detail_table = None
-#     detail_table = BeautifulTable()
-#     detail_table.columns.header = ["", ""]
-#     clear_terminal()
-#     return first_questions()
 
 # Financial Asset Functions
 
@@ -340,18 +332,19 @@ def asset_calculate():
 def extra_fund():
     another_asset = (input(color.green + "Do you want to add another available"
                            " fund? y/n: " + color.reset))
-    try:
-        # Validate that the input given is "y" or "n"
-        if another_asset == "y" or another_asset == "n":
-            accept = True
-        else:
-            accept = False
-            if accept is False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(color.red + f'Invalid answer. {e} Please try again.' +
-              color.reset)
-        return extra_fund()
+    y_n_validator(another_asset, extra_fund)
+    # try:
+    #     # Validate that the input given is "y" or "n"
+    #     if another_asset == "y" or another_asset == "n":
+    #         accept = True
+    #     else:
+    #         accept = False
+    #         if accept is False:
+    #             raise ValueError("Please only type 'y' or 'n'.")
+    # except ValueError as e:
+    #     print(color.red + f'Invalid answer. {e} Please try again.' +
+    #           color.reset)
+    #     return extra_fund()
 
     if another_asset == "y":
         clear_terminal()
@@ -369,18 +362,19 @@ def asset_confirmation():
     '''
     restart_asset = (input(color.green + "\nWould you like to enter your "
                            "available funds again?(y/n): " + color.reset))
-    try:
-        # Validate that the input given is "y" or "n"
-        if restart_asset == "y" or restart_asset == "n":
-            accept = True
-        else:
-            accept = False
-            if accept is False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(color.red + f'Invalid answer. {e} Please try again.' +
-              color.reset)
-        return asset_confirmation()
+    y_n_validator(restart_asset, asset_confirmation)
+    # try:
+    #     # Validate that the input given is "y" or "n"
+    #     if restart_asset == "y" or restart_asset == "n":
+    #         accept = True
+    #     else:
+    #         accept = False
+    #         if accept is False:
+    #             raise ValueError("Please only type 'y' or 'n'.")
+    # except ValueError as e:
+    #     print(color.red + f'Invalid answer. {e} Please try again.' +
+    #           color.reset)
+    #     return asset_confirmation()
 
     if restart_asset == "y":
         clear_terminal()
@@ -441,18 +435,19 @@ def income_calculate():
 def extra_income():
     another_income = (input(color.green + "Do you want to add another income?"
                             " y/n: " + color.reset))
-    try:
-        # Validate that the input given is "y" or "n"
-        if another_income == "y" or another_income == "n":
-            accept = True
-        else:
-            accept = False
-            if accept is False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(color.red + f'Invalid answer. {e} Please try again.' +
-              color.reset)
-        return extra_income()
+    y_n_validator(another_income, extra_income)
+    # try:
+    #     # Validate that the input given is "y" or "n"
+    #     if another_income == "y" or another_income == "n":
+    #         accept = True
+    #     else:
+    #         accept = False
+    #         if accept is False:
+    #             raise ValueError("Please only type 'y' or 'n'.")
+    # except ValueError as e:
+    #     print(color.red + f'Invalid answer. {e} Please try again.' +
+    #           color.reset)
+    #     return extra_income()
 
     if another_income == "y":
         clear_terminal()
@@ -469,19 +464,20 @@ def income_confirmation():
    Confirms if user wants to redo the income
     '''
     restart_income = (input(color.green + "\nWould you like to enter your"
-                            " income again?(y/n): " + color.reset))                      
-    try:
-        # Validate that the input given is "y" or "n"
-        if restart_income == "y" or restart_income == "n":
-            accept = True
-        else:
-            accept = False
-            if accept is False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(color.red + f'Invalid answer. {e} Please try again.' +
-              color.reset)
-        return income_confirmation()
+                            " income again?(y/n): " + color.reset)) 
+    y_n_validator(restart_income, income_confirmation)                     
+    # try:
+    #     # Validate that the input given is "y" or "n"
+    #     if restart_income == "y" or restart_income == "n":
+    #         accept = True
+    #     else:
+    #         accept = False
+    #         if accept is False:
+    #             raise ValueError("Please only type 'y' or 'n'.")
+    # except ValueError as e:
+    #     print(color.red + f'Invalid answer. {e} Please try again.' +
+    #           color.reset)
+    #     return income_confirmation()
 
     if restart_income == "y":
         clear_terminal()
@@ -542,18 +538,19 @@ def expense_calculate():
 def extra_expense():
     another_expense = (input(color.green + "Do you want to add another expense"
                        "? y/n: " + color.reset))
-    try:
-        # Validate that the input given is "y" or "n"
-        if another_expense == "y" or another_expense == "n":
-            accept = True
-        else:
-            accept = False
-            if accept is False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(color.red + f'Invalid answer. {e} Please try again.' +
-              color.reset)
-        return extra_expense()
+    y_n_validator(another_expense, extra_expense)
+    # try:
+    #     # Validate that the input given is "y" or "n"
+    #     if another_expense == "y" or another_expense == "n":
+    #         accept = True
+    #     else:
+    #         accept = False
+    #         if accept is False:
+    #             raise ValueError("Please only type 'y' or 'n'.")
+    # except ValueError as e:
+    #     print(color.red + f'Invalid answer. {e} Please try again.' +
+    #           color.reset)
+    #     return extra_expense()
 
     if another_expense == "y":
         clear_terminal()
@@ -571,18 +568,19 @@ def expense_confirmation():
     '''
     restart_expense = (input(color.green + "\nWould you like to enter your"
                        " expenses again?(y/n):  " + color.reset))
-    try:
-        # Validate that the input given is "y" or "n"
-        if restart_expense == "y" or restart_expense == "n":
-            accept = True
-        else:
-            accept = False
-            if accept is False:
-                raise ValueError("Please only type 'y' or 'n'.")
-    except ValueError as e:
-        print(color.red + f'Invalid answer. {e} Please try again.' +
-              color.reset)
-        return expense_confirmation()
+    y_n_validator(restart_expense, expense_confirmation)
+    # try:
+    #     # Validate that the input given is "y" or "n"
+    #     if restart_expense == "y" or restart_expense == "n":
+    #         accept = True
+    #     else:
+    #         accept = False
+    #         if accept is False:
+    #             raise ValueError("Please only type 'y' or 'n'.")
+    # except ValueError as e:
+    #     print(color.red + f'Invalid answer. {e} Please try again.' +
+    #           color.reset)
+    #     return expense_confirmation()
 
     if restart_expense == "y":
         clear_terminal()
@@ -652,8 +650,6 @@ def results_page():
 # This is the main function, this is where everything runs---->
 
 # And these are my global variables-->
-# name = "x"
-# detail_table = "y"
 exact_days = "z"
 days = "x"
 
@@ -711,7 +707,6 @@ def budget_questions():
                         ' Add as many available funds as you wish and I will '
                         'add the total up for you :)', 80))
     asset_calculate()
-    # extra_fund()
     print(color.reset + 
           textwrap.fill('Now lets get cracking with the Income :).'
                         'Im sure you know what an income is, but an income in '
@@ -725,7 +720,6 @@ def budget_questions():
                         'taxation. Add as many incomes as you wish and I will'
                         ' add the total up for you :) ', 80))
     income_calculate()
-    # extra_income()
     print(color.reset +
           textwrap.fill('Now lets get cracking with the expenses'
                         ' :). Im sure we all know what expenses are, but '
