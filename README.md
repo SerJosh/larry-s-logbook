@@ -2,7 +2,9 @@
 
 ![Larrys LogBooks mockup image]()
 
-Introduction here
+Larrys Logbook is designed to help the user find out their budget for a given time, without having to do any mathematical equations.
+
+Larrys LogBooks works with the simple formula of Available Funds + Income - Expenses, all of which are inside a given timeframe of the user’s choosing.
 
 Visit the deployed application [here]().
 
@@ -42,25 +44,25 @@ Visit the deployed application [here]().
 
 ### Project Goals
 
-* 
+* Display enough information to let the user know what Larrys LogBook does.
 
-* 
+* Each question/section that is asked/displayed is given the necessary information to be understood by the user.
 
-* 
+* Provides input validation to help the user input the correct data.
 
-* 
+* Gives insightful and convenient information to the user when the budget projections are displayed at the end.
 
 ### User Stories
 
-* 
+* As a user, I want to know what Larrys LogBook is about and what it does.
 
-* 
+* As a user, I want to understand each step clearly. 
 
-* 
+* As a user, I want to know if the input I put in is correct or not, and receive clear feedback of what needs to be corrected.
 
-* 
+* As a user, I want the data I put in to be displayed to me and given the option to correct it if needed.
 
-* 
+* As a user, I want the final budget information to be displayed clearly and easy to understand.
 
 ### Color Scheme
 
@@ -68,19 +70,23 @@ Visit the deployed application [here]().
 
 Here are the colors being used:
 
-* 
+* Inputs/questions are displayed in green.
 
-* 
+* The heading and final budget page are displayed in blue.
 
-* 
+* Data that has been put in is displayed in yellow.
 
-* 
+* Errors are displayed with a red background. 
 
-* 
+* General information and other content is displayed in plain white. 
 
 ### Data Model
 
+Data asked for like name is used for aesthetic purposes while data asked for as available funds amount, income amount and expense amount are used to calculate the surplus of the budget. What is also done with this data, is the input of naming and adding extra data with the data model being able to add up each available fund, income and expense given, to give a total of each respectively. The naming of each available fund, income and expense is recored for the convenience of the user to not have to add up each amount but just state the amount and let the program add it up for them. 
 
+The timeframe data is used to calculate the daily projections of the budget and be displayed to the user at the final budget page.
+
+Extra calculations are used with the data recieved to calculate the surplus, budget per day and ofcourse the totals of each available fund, income and expense for the results page.
 
 ### Flowchart
 
