@@ -46,23 +46,22 @@ def welcome_message():
     '''
     Display the logo, image and welcome message
     '''
-    print(color.blue + '''dP                                                               
-88                                                               
-88        .d8888b. 88d888b. 88d888b. dP    dP .d8888b.           
-88        88'  `88 88'  `88 88'  `88 88    88 Y8ooooo.           
-88        88.  .88 88       88       88.  .88       88           
-88888888P `88888P8 dP       dP       `8888P88 `88888P'           
-                                          .88                    
-                                      d8888P                     
-dP                           888888ba                    dP      
-88                           88    `8b                   88      
-88        .d8888b. .d8888b. a88aaaa8P' .d8888b. .d8888b. 88  .dP 
-88        88'  `88 88'  `88  88   `8b. 88'  `88 88'  `88 88888"  
-88        88.  .88 88.  .88  88    .88 88.  .88 88.  .88 88  `8b.
-88888888P `88888P' `8888P88  88888888P `88888P' `88888P' dP   `YP
-                        .88                                      
-                    d8888P                                       ''')
-#     print(h_color + '''\n      __...--~~~~~-._   _.-~~~~~--...__
+    print(color.blue + '''#                                                       
+#          ##    #####   #####   #   #   ####           
+#         #  #   #    #  #    #   # #   #               
+#        #    #  #    #  #    #    #     ####           
+#        ######  #####   #####     #         #          
+#        #    #  #   #   #   #     #    #    #          
+#######  #    #  #    #  #    #    #     ####           
+                                                        
+#                        ######                         
+#         ####    ####   #     #   ####    ####   #    #
+#        #    #  #    #  #     #  #    #  #    #  #   # 
+#        #    #  #       ######   #    #  #    #  ####  
+#        #    #  #  ###  #     #  #    #  #    #  #  #  
+#        #    #  #    #  #     #  #    #  #    #  #   # 
+#######   ####    ####   ######    ####    ####   #    #''')
+#     print( '''\n      __...--~~~~~-._   _.-~~~~~--...__
 #     //               `V'               \\ 
 #    //                 |                 \\ 
 #   //__...--~~~~~~-._  |  _.-~~~~~~--...__\\ 
@@ -83,19 +82,7 @@ dP                           888888ba                    dP
                         'revealing some more insight into your budget rather '
                         'than just how many pennys you have left over ' 
                         ';).', 80))
-    print()
-    print(textwrap.fill('So the information that my logbook needs to work ' 
-                        'with are your available funds, incomes, expenses and '
-                        'the timeframe in which you want to budget for. There '
-                        'is an option to choose whether you want to budget '
-                        'for a given month or a particular amount of days, '
-                        'the choice is completely yours :) To simply put it, ' 
-                        'you are dealing with a simple formula of available '
-                        'funds + income - expenses. Use that formula as '
-                        'you wish in any way you want, but walking it with '
-                        'me may give you more insightful results. None the '
-                        'less try out the LogBook and lets see where it '
-                        'takes us.', 80))
+    
     print()
     print(textwrap.fill('A few of the questions I am going to ask will give '
                         'you a y/n at the end. What y/n means is that you ' 
@@ -256,7 +243,7 @@ def timeframe_summary():
     clear_terminal()
     if month_or_day == "y":
         print(color.reset + 
-              (f"\n{name}, So you are budgeting for " + color.yellow +
+              (f"\n{name}, So you are budgeting for" + color.yellow +
                f" {chosen_month}," + color.reset + " which is approximately "
                + color.yellow + str(exact_days) + color.reset + " days long."
                ))
@@ -270,8 +257,8 @@ def timeframe_re_enter():
     '''
     Give option to re enter timeframe questions
     '''
-    timeframe_question = (input(color.green + "\nWould you like to enter your"
-                          " timeframe details again?(y/n): " + color.reset))
+    timeframe_question = (input(color.green + "\nWould you like to re-enter "
+                          "your timeframe details again?(y/n): " + color.reset))
     y_n_validator(timeframe_question, timeframe_re_enter)
     # try:
     #     # Validate that the input given is "y" or "n"
@@ -321,9 +308,9 @@ def asset_calculate():
             print(color.red + "Thats not a valid number. Please enter a "
                   "number." + color.reset)
 
-    add_asset.append(amount)
+    add_asset.append(round(amount, 2))
     total = sum(add_asset)
-    asset_table.rows.append([color.yellow + asset, amount, total])
+    asset_table.rows.append([color.yellow + asset, round(amount, 2), total])
     clear_terminal()
     print(asset_table)
     return extra_fund()
@@ -353,6 +340,8 @@ def extra_fund():
         clear_terminal()
         print(color.blue + "Available funds" + color.reset)
         print(asset_table)
+        print()
+        print("These are the Available Funds you have supplied.")
         asset_confirmation()
         
 
@@ -360,7 +349,7 @@ def asset_confirmation():
     '''
    Confirms if user wants to redo the  available funds
     '''
-    restart_asset = (input(color.green + "\nWould you like to enter your "
+    restart_asset = (input(color.green + "\nWould you like to re-enter your "
                            "available funds again?(y/n): " + color.reset))
     y_n_validator(restart_asset, asset_confirmation)
     # try:
@@ -424,9 +413,9 @@ def income_calculate():
             print(color.red + "Thats not a valid number. Please enter a "
                   "number." + color.reset)
 
-    add_income.append(amount)
+    add_income.append(round(amount, 2))
     total = sum(add_income)
-    income_table.rows.append([color.yellow + income, amount,  total])
+    income_table.rows.append([color.yellow + income, round(amount, 2), total])
     clear_terminal()
     print(income_table)
     return extra_income()
@@ -456,6 +445,8 @@ def extra_income():
         clear_terminal()
         print(color.blue + "Income" + color.reset)
         print(income_table)
+        print()
+        print("These are the Incomes you have supplied.")
         income_confirmation()
 
 
@@ -463,7 +454,7 @@ def income_confirmation():
     '''
    Confirms if user wants to redo the income
     '''
-    restart_income = (input(color.green + "\nWould you like to enter your"
+    restart_income = (input(color.green + "\nWould you like to re-enter your"
                             " income again?(y/n): " + color.reset)) 
     y_n_validator(restart_income, income_confirmation)                     
     # try:
@@ -520,16 +511,16 @@ def expense_calculate():
 
     while True:
         try:
-            amount_exp = float(input(color.green + "Please enter the amount of"
+            amount = float(input(color.green + "Please enter the amount of"
                                      " that expense: " + color.reset))
             break
         except ValueError:
             print(color.red + "Thats not a valid number. Please enter a "
                   "number." + color.reset)
 
-    add_expense.append(amount_exp)
+    add_expense.append(round(amount, 2))
     total = sum(add_expense)
-    expense_table.rows.append([color.yellow + expense, amount_exp, total])
+    expense_table.rows.append([color.yellow + expense, round(amount, 2), total])
     clear_terminal()
     print(expense_table)
     return extra_expense()
@@ -559,6 +550,8 @@ def extra_expense():
         clear_terminal()
         print(color.blue + "Income" + color.reset)
         print(expense_table)
+        print()
+        print("These are the Expenses you have supplied.")
         expense_confirmation() 
 
 
@@ -566,7 +559,8 @@ def expense_confirmation():
     '''
    Confirms if user wants to redo the expense
     '''
-    restart_expense = (input(color.green + "\nWould you like to enter your"
+    
+    restart_expense = (input(color.green + "\nWould you like to re-enter your"
                        " expenses again?(y/n):  " + color.reset))
     y_n_validator(restart_expense, expense_confirmation)
     # try:
@@ -606,8 +600,8 @@ def result_calculations():
     global asset_total
     global inco_total
     global expe_total
-    global surplus
-    global day_result
+    global round_surplus
+    global round_day_result
     inco_total = sum(add_income)
     expe_total = sum(add_expense)
     asset_total = sum(add_asset)
@@ -615,20 +609,28 @@ def result_calculations():
 
     # Calculations
     surplus = asset_total + inco_total - expe_total
+    round_surplus = round(surplus, 2)
     day_result = surplus / calc_days
+    round_day_result = round(day_result, 2)
 
-    results_table.rows.append(["Available Funds", + asset_total])
-    results_table.rows.append(["Income", + inco_total])
-    results_table.rows.append(["Expenses", + expe_total])
-    results_table.rows.append(["Surplus", + surplus])
-    results_table.rows.append(["Budget per day", + day_result])
+    results_table.rows.append(["Available Funds", color.yellow + str(asset_total)])
+    results_table.rows.append(["Income", color.yellow + str(inco_total)])
+    results_table.rows.append(["Expenses", color.yellow + str(expe_total)])
+    results_table.rows.append(["Surplus", color.yellow + str(round_surplus)])
+    results_table.rows.append(["Budget per day", color.yellow + str(round_day_result)])
 
 
 def results_page(): 
     '''
    Displays all calculated results and tables from information provided
     '''
-    print(color.blue + f'Budget Summary of {name}' + color.reset)
+    if month_or_day == 'y':
+
+        print(color.blue + f'Budget Summary of {name} for ' + color.yellow
+              + f'{chosen_month}' + color.reset)
+    else:
+        print(color.blue + f'Budget Summary of {name} for ' + color.yellow
+              + f'{exact_days} days' + color.reset)
     print(results_table)
     print(color.blue + "Your available funds are " 
           + color.reset + str(asset_total))
@@ -636,10 +638,11 @@ def results_page():
           + color.reset + str(inco_total))
     print(color.blue + "Your total expense is " 
           + color.reset + str(expe_total))
-    print(color.blue + "Your gross amount will be " 
-          + color.reset + str(surplus))
+    print(color.blue + "Your surplus (amount left after expenses) will be " 
+          + color.reset + str(round_surplus))
     print(color.blue + f"you will be able to spend "
-          + color.reset + f"{day_result} per day")
+          + color.reset + f"{round_day_result} per day")
+    print()
     print(color.reset + 
           textwrap.fill(f'Thanks {name}, for using Larrys Logbook, I hope I '
                         'have helped :) If you wish to start over just press '
@@ -676,19 +679,28 @@ def first_questions():
     '''
    Condenses all of the question functions into one functon
     '''
-    clear_terminal()
-    print(color.reset + 
-          textwrap.fill(f'Ok {name}... first I am going to ask you about your '
-                        'timeframe before we go on to the actual available '
-                        'funds, incomes and expenditures. Whether you want '
-                        'to budget for a given month or a particular amount '
-                        'of days, you choose :).', 80))
+    # clear_terminal()
+    # print(textwrap.fill('So the information that my logbook needs to work ' 
+    #                     'with are your available funds, incomes, expenses and '
+    #                     'the timeframe in which you want to budget for. There '
+    #                     'is an option to choose whether you want to budget '
+    #                     'for a given month or a particular amount of days, '
+    #                     'the choice is completely yours :) To simply put it, ' 
+    #                     'you are dealing with a simple formula of available '
+    #                     'funds + income - expenses. Use that formula as '
+    #                     'you wish in any way you want, but walking it with '
+    #                     'me may give you more insightful results. None the '
+    #                     'less try out the LogBook and lets see where it '
+    #                     'takes us.', 80))
+    
     month_question()
     timeframe_summary()
     timeframe_re_enter()
 
 
 def budget_questions():
+    print(color.blue + "Available funds" + color.reset)
+    print()
     print(color.reset + 
           textwrap.fill('Now lets get cracking with the available'
                         ' funds :). By available funds I mean money that you'
@@ -707,6 +719,8 @@ def budget_questions():
                         ' Add as many available funds as you wish and I will '
                         'add the total up for you :)', 80))
     asset_calculate()
+    print(color.blue + "Income" + color.reset)
+    print()
     print(color.reset + 
           textwrap.fill('Now lets get cracking with the Income :).'
                         'Im sure you know what an income is, but an income in '
@@ -720,6 +734,8 @@ def budget_questions():
                         'taxation. Add as many incomes as you wish and I will'
                         ' add the total up for you :) ', 80))
     income_calculate()
+    print(color.blue + "Expenses" + color.reset)
+    print()
     print(color.reset +
           textwrap.fill('Now lets get cracking with the expenses'
                         ' :). Im sure we all know what expenses are, but '
@@ -745,6 +761,26 @@ def main():
     '''
     welcome_message()
     first_question_confirmation()
+    clear_terminal()
+    print(textwrap.fill(f'Ok {name}... So the information that my logbook ' 
+                        'needs to work with are your available funds, incomes,'
+                        ' expenses and the timeframe in which you want to '
+                        'budget for. There is an option to choose whether you '
+                        'want to budget for a given month or a particular '
+                        'amount of days, the choice is completely yours :). ' 
+                        'To simply put it, you are dealing with a simple '
+                        'formula of available funds + income - expenses. Use '
+                        'that formula as you wish in any way you want, but '
+                        'walking it with me may give you more insightful '
+                        'results. None the less try out the LogBook and lets '
+                        'see where it takes us.', 80))
+    print()
+    print(color.reset + 
+          textwrap.fill('first I am going to ask you about your '
+                        'timeframe before we go on to the actual available '
+                        'funds, incomes and expenditures. Whether you want '
+                        'to budget for a given month or a particular amount '
+                        'of days, you choose :).', 80))
     first_questions()
     budget_questions()
 
