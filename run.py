@@ -96,6 +96,8 @@ def name_question():
     global name
     name = str(input(color.green + "\nPlease enter your name: " + color.reset))
     try:
+        if name.isspace() is True:
+            raise ValueError("The name can't be left empty.")
         # Validate that name contains the right amount of characters
         if len(name) <= 0:
             raise ValueError("The name can't be left empty.")
@@ -130,8 +132,10 @@ def name_re_enter():
     '''
     global name
     name = str(input(color.green + "\nPlease enter your name: " + color.reset))
+    # Validate that name contains the right amount of characters
     try:
-        # Validate that name contains the right amount of characters
+        if name.isspace() is True:
+            raise ValueError("The name can't be left empty.")
         if len(name) <= 0:
             raise ValueError("The name can't be left empty.")
         if len(name) >= 10:
@@ -139,7 +143,7 @@ def name_re_enter():
     except ValueError as e:
         print(color.red + f'Invalid name. {e} Please provide your name again.'
               + color.reset)
-        return name_question()
+        return name_re_enter()
     return name_confirmation()
 
 
@@ -187,18 +191,12 @@ def choose_month():
             month = int(input(color.green + "Please give me the number of the "
                               "month you want to budget for \n(ie 1 is "
                               "January and so on): " + color.reset))
-            # try:
             # Validate that month input contains the corrrect details
             if month <= 0:
                 raise ValueError("This cannot be 0 or under.")
             if month >= 13:
                 raise ValueError("Please choose the months between 1 and "
                                  "12.")
-            # except ValueError as e:
-            #     print(color.red + f'Invalid input. {e} Please try again.' +
-            #           color.reset)
-            #     return choose_month()
-            # !!! THIS NEEDS TO CHANGE !!!
             # Recieves data from which month number was chosen
             if month == 1:
                 chosen_month = 'January'
@@ -273,7 +271,7 @@ def timeframe_summary():
     clear_terminal()
     # Direct to print statements on choice of "y" or "n"
     if month_or_day == "y":
-        print(color.reset + 
+        print(color.reset +
               (f"\n{name}, So you are budgeting for" + color.yellow +
                f" {chosen_month}," + color.reset + " which is "
                + color.yellow + str(exact_days) + color.reset + " days long."
@@ -312,6 +310,8 @@ def fund_calculate():
                   " fund: " + color.reset))
     try:
         # Validate that available fund name contains right amount of characters
+        if fund.isspace() is True:
+            raise ValueError("The name can't be left empty.")
         if len(fund) <= 0:
             raise ValueError("The available fund name can't be left empty.")
         if len(fund) >= 20:
@@ -401,6 +401,8 @@ def income_calculate():
               + color.reset))
     try:
         # Validate that the income name contains the right amount of characters
+        if income.isspace() is True:
+            raise ValueError("The name can't be left empty.")
         if len(income) <= 0:
             raise ValueError("The income name can't be left empty.")
         if len(income) >= 20:
@@ -488,6 +490,8 @@ def expense_calculate():
                + color.reset))
     try:
         # Validate that expense name contains right amount of characters
+        if expense.isspace() is True:
+            raise ValueError("The name can't be left empty.")
         if len(expense) <= 0:
             raise ValueError("The expense name can't be left empty.")
         if len(expense) >= 20:
@@ -631,8 +635,8 @@ def results_page():
           textwrap.fill(f'Thanks {name}, for using Larrys Logbook, I hope I '
                         'have helped :) If you wish to start over just press '
                         'Run Program on top of the Terminal, or press s '
-                        f'below. See ya {name}', 80)) 
-    start_over = (input(color.green + "\nPlease enter s to start over: "
+                        f'below to start over. See ya {name}', 80)) 
+    start_over = (input(color.green + "Please enter s to start over: "
                   + color.reset).lower())
     # Validates y/n input questions.
     try:
