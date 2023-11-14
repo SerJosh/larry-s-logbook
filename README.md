@@ -141,14 +141,23 @@ Gives the users the option to add extra Available Funds, Incomes and Expenses re
 Gives the users the option to confirm their Data given.
 
 Name Confirmation
+
 ![Name Confirmation](assets/readme-images/name-confirm.png)
+
 Timeframe Confirmation
+
 ![Timeframe Confirmation](assets/readme-images/timeframe-confirm.png)
+
 Available Fund Confirmation
+
 ![Available Fund Confirmation](assets/readme-images/fund-confirm.png)
+
 Income Confirmation
+
 ![Income Confirmation](assets/readme-images/income-confirm.png)
+
 Expense Confirmation
+
 ![Expense Confirmation](assets/readme-images/expense-confirm.png)
 
 ### User Data Results
@@ -173,7 +182,7 @@ Displayes the budget page of the results of all information given and the calcul
 
 * [Heroku](https://id.heroku.com/) was used to deploy the application.
 
-* [PEP8 online check](http://pep8online.com/) was used to validate the Python code.
+* [CI Python Linter](https://pep8ci.herokuapp.com/) was used to validate the Python code.
 
 * [BeautifulTable](https://pypi.org/project/beautifultable/) library was used to present the data in table format.
 
@@ -224,6 +233,15 @@ Displayes the budget page of the results of all information given and the calcul
     - A results table is given, summarising all data given and displaying it in a clear way.
 
 ### Code Validation
+
+The [PEP8 online check](https://pep8ci.herokuapp.com/) was used to validate the Python code for PEP8 requirements. Small errors and white space warnings were given. Knowing that I have 80 and under columns for code before checking prevented more errors. I fixed the minor error and warnings by just back spacing on areas with whitespace warnings.
+
+PEP8 Code Validation Before Fixes
+
+![PEP8 Code Validation Before Fixes](assets/readme-images/pep-before.png)
+
+PEP8 Code Validation After Fixes
+![PEP8 Code Validation After Fixes](assets/readme-images/pep-after.png)
 
 
 ### Manual Testing
@@ -357,7 +375,7 @@ Displayes the budget page of the results of all information given and the calcul
     <tr>
         <td rowspan=2>Income amount Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/income-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is not a number</td>
@@ -377,11 +395,11 @@ Displayes the budget page of the results of all information given and the calcul
     <tr>
         <td rowspan=2>Income redo Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/re-enter-income-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is not y or n</td>
-        <td><img src=assets/readme-images/.png alt="y/n value is not y or n"></td>
+        <td><img src=assets/readme-images/re-enter-income-wrong.png alt="y/n value is not y or n"></td>
         <td>Pass</td>
     </tr>
     <tr>
@@ -397,11 +415,11 @@ Displayes the budget page of the results of all information given and the calcul
     <tr>
         <td rowspan=2>Expense Funds amount Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/add-expense-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is not a number</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/add-expense-wrong.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
     <tr>
@@ -478,7 +496,7 @@ The project has been deployed using [Heroku](https://id.heroku.com/) by followin
 
 * My Good friend Nathan Deg, for some guidance on python code and python in general.
 
-* My tutor, Marcel, and my temporary tutor David for their invaluable feedback and guidance.
+* My tutor, Marcel Mulders, and my temporary tutor Matt Bodden for their invaluable feedback and guidance.
 
 * Code Institute and its amazing Slack community for their support and providing me with the necessary knowledge to complete this project.
 

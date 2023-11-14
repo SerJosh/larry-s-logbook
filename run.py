@@ -57,7 +57,7 @@ def welcome_message():
 #        ######  #####   #####     #         #
 #        #    #  #   #   #   #     #    #    #
 #######  #    #  #    #  #    #    #     ####
-                                                        
+
 #                        ######
 #         ####    ####   #     #   ####    ####   #    #
 #        #    #  #    #  #     #  #    #  #    #  #   #
@@ -65,9 +65,9 @@ def welcome_message():
 #        #    #  #  ###  #     #  #    #  #    #  #  #
 #        #    #  #    #  #     #  #    #  #    #  #   #
 #######   ####    ####   ######    ####    ####   #    #''')
+    print(color.reset + '\nWelcome to Larrys LogBook!\n')
     name_question()
     clear_terminal()
-    print(color.reset + 'Welcome to Larrys LogBook!\n')
     print(textwrap.fill(f'Hi {name}! Im Larry, your personal budgeting tool! '
                         'I may not be as fancy as those AI thingy majigs you '
                         'kids use nowadays but I get my job done just fine :)'
@@ -79,7 +79,7 @@ def welcome_message():
                         'revealing some more insight into your budget rather '
                         'than just how many pennys you have left over '
                         ';).', 80))
-    
+
     print()
     print(textwrap.fill('A few of the questions I am going to ask will give '
                         'you a y/n at the end. What y/n means is that you '
@@ -105,7 +105,7 @@ def name_question():
             raise ValueError("The name has too many characters.")
     except ValueError as e:
         print(color.red + f'Invalid name. {e} Please provide your name again.'
-              + color.reset) 
+              + color.reset)
         return name_question()
 
 
@@ -201,37 +201,37 @@ def choose_month():
             if month == 1:
                 chosen_month = 'January'
                 exact_days = 31
-            if month == 2:
+            elif month == 2:
                 chosen_month = 'Febuary'
                 exact_days = 28
-            if month == 3:
+            elif month == 3:
                 chosen_month = 'March'
                 exact_days = 31
-            if month == 4:
+            elif month == 4:
                 chosen_month = 'April'
                 exact_days = 30
-            if month == 5:
+            elif month == 5:
                 chosen_month = 'May'
                 exact_days = 31
-            if month == 6:
+            elif month == 6:
                 chosen_month = 'June'
                 exact_days = 30
-            if month == 7:
+            elif month == 7:
                 chosen_month = 'July'
                 exact_days = 31
-            if month == 8:
+            elif month == 8:
                 chosen_month = 'August'
                 exact_days = 31
-            if month == 9:
+            elif month == 9:
                 chosen_month = 'September'
                 exact_days = 30
-            if month == 10:
+            elif month == 10:
                 chosen_month = 'October'
                 exact_days = 31
-            if month == 11:
+            elif month == 11:
                 chosen_month = 'November'
                 exact_days = 30
-            if month == 12:
+            elif month == 12:
                 chosen_month = 'December'
                 exact_days = 31
             break
@@ -239,7 +239,7 @@ def choose_month():
             print(color.red + "Thats not a valid number. Please enter a "
                   "number." + color.reset)
 
-	
+
 def choose_day():
     '''
     Display and validate choose day question.
@@ -277,7 +277,7 @@ def timeframe_summary():
                + color.yellow + str(exact_days) + color.reset + " days long."
                ))
     if month_or_day == "n":
-        print(color.reset + 
+        print(color.reset +
               (f"\n{name}, So you are budgeting for " + color.yellow +
                f"{exact_days} days."))
 
@@ -304,28 +304,28 @@ def timeframe_re_enter():
 
 def fund_calculate():
     '''
-    Takes in data of the available funds plugged in
+    Takes in data of the Available Funds plugged in
     '''
-    fund = (input(color.green + "\nPlease enter the name of your available"
-                  " fund: " + color.reset))
+    fund = (input(color.green + "\nPlease enter the name of your Available"
+                  " Fund: " + color.reset))
     try:
-        # Validate that available fund name contains right amount of characters
+        # Validate that Available Fund name contains right amount of characters
         if fund.isspace() is True:
             raise ValueError("The name can't be left empty.")
         if len(fund) <= 0:
-            raise ValueError("The available fund name can't be left empty.")
+            raise ValueError("The Available Fund name can't be left empty.")
         if len(fund) >= 20:
-            raise ValueError("The available fund name has too many "
+            raise ValueError("The Available Fund name has too many "
                              "characters.")
     except ValueError as e:
-        print(color.red + f'Invalid name. {e} Please provide your\n available'
-              'fund name again.' + color.reset)     
+        print(color.red + f'Invalid name. {e} Please provide your\n Available'
+              'Fund name again.' + color.reset)
         return fund_calculate()
-    # Validate if amount input is a number. 
+    # Validate if amount input is a number.
     while True:
         try:
             amount = float(input(color.green + "Please enter the amount of "
-                           "that available fund: " + color.reset))
+                           "that Available Fund: " + color.reset))
             break
         except ValueError:
             print(color.red + "Thats not a valid number. Please enter a "
@@ -341,10 +341,10 @@ def fund_calculate():
 
 def extra_fund():
     '''
-    Displays funds supplied and gives option to re-enter again
+    Displays Available Funds supplied and gives option to re-enter again
     '''
-    another_fund = (input(color.green + "Do you want to add another available"
-                          " fund? y/n: " + color.reset).lower())
+    another_fund = (input(color.green + "Do you want to add another Available"
+                          " Fund? y/n: " + color.reset).lower())
     # Validates y/n input questions.
     y_n_validator(another_fund, extra_fund)
     # Direct to functions on choice of "y" or "n"
@@ -353,41 +353,41 @@ def extra_fund():
         fund_calculate()
     if another_fund == "n":
         clear_terminal()
-        print(color.blue + "Available funds" + color.reset)
+        print(color.blue + "Available Funds" + color.reset)
         print(fund_table)
         print()
         print("These are the Available Funds you have supplied.")
         fund_confirmation()
-        
+
 
 def fund_confirmation():
     '''
-   Confirms if user wants to redo the available funds
+    Confirms if user wants to redo the Available Funds
     '''
     restart_fund = (input(color.green + "\nWould you like to re-enter your "
-                          "available funds again?(y/n): " 
+                          "Available Funds again?(y/n): "
                           + color.reset).lower())
     # Validates y/n input questions.
     y_n_validator(restart_fund, fund_confirmation)
     # Direct to functions on choice of "y" or "n"
     if restart_fund == "y":
         clear_terminal()
-        reset_fund_table()  
+        reset_fund_table()
     if restart_fund == "n":
         clear_terminal()
 
 
 def reset_fund_table():
     '''
-   Resets fund table and starts available funds questions again
+    Resets fund table and starts Available Funds questions again
     '''
     global fund_table
     global add_fund
     fund_table = None
     fund_table = BeautifulTable()
-    fund_table.columns.header = ["available funds", "amount", "total"]
+    fund_table.columns.header = ["Available Funds", "amount", "total"]
     add_fund = []
-    return fund_calculate() 
+    return fund_calculate()
 
 
 # INCOME FUNCTIONS
@@ -395,27 +395,27 @@ def reset_fund_table():
 
 def income_calculate():
     '''
-   Takes in data of the incomes plugged in
+    Takes in data of the Incomes plugged in
     '''
-    income = (input(color.green + "\nPlease enter The name of your income: "
+    income = (input(color.green + "\nPlease enter The name of your Income: "
               + color.reset))
     try:
-        # Validate that the income name contains the right amount of characters
+        # Validate that the Income name contains the right amount of characters
         if income.isspace() is True:
             raise ValueError("The name can't be left empty.")
         if len(income) <= 0:
-            raise ValueError("The income name can't be left empty.")
+            raise ValueError("The Income name can't be left empty.")
         if len(income) >= 20:
-            raise ValueError("The income name has too many characters.")
+            raise ValueError("The Income name has too many characters.")
     except ValueError as e:
-        print(color.red + f'Invalid name. {e} Please provide your\n income '
-              'name again.' + color.reset)   
+        print(color.red + f'Invalid name. {e} Please provide your\n Income '
+              'name again.' + color.reset)
         return income_calculate()
-    # Validate if amount input is a number.   
+    # Validate if amount input is a number.
     while True:
         try:
             amount = float(input(color.green + "Please enter the amount of "
-                                 "that income: " + color.reset))
+                                 "that Income: " + color.reset))
             break
         except ValueError:
             print(color.red + "Thats not a valid number. Please enter a "
@@ -431,9 +431,9 @@ def income_calculate():
 
 def extra_income():
     '''
-    Displays income supplied and gives option to re-enter again
+    Displays Income supplied and gives option to re-enter again
     '''
-    another_income = (input(color.green + "Do you want to add another income?"
+    another_income = (input(color.green + "Do you want to add another Income?"
                             " y/n: " + color.reset).lower())
     # Validates y/n input questions.
     y_n_validator(another_income, extra_income)
@@ -452,23 +452,23 @@ def extra_income():
 
 def income_confirmation():
     '''
-   Confirms if user wants to redo the income
+    Confirms if user wants to redo the Income
     '''
     restart_income = (input(color.green + "\nWould you like to re-enter your"
-                            " income again?(y/n): " + color.reset).lower()) 
+                            " Income again?(y/n): " + color.reset).lower())
     # Validates y/n input questions.
-    y_n_validator(restart_income, income_confirmation)                     
+    y_n_validator(restart_income, income_confirmation)
     # Direct to functions on choice of "y" or "n"
     if restart_income == "y":
         clear_terminal()
-        reset_income_table()  
+        reset_income_table()
     if restart_income == "n":
         clear_terminal()
 
 
 def reset_income_table():
     '''
-   Resets income table and starts income questions again
+    Resets Income table and starts income questions again
     '''
     global income_table
     global add_income
@@ -476,7 +476,7 @@ def reset_income_table():
     income_table = BeautifulTable()
     income_table.columns.header = ["income", "amount",  "total"]
     add_income = []
-    return income_calculate()  
+    return income_calculate()
 
 
 # EXPENSE FUNCTIONS
@@ -484,27 +484,27 @@ def reset_income_table():
 
 def expense_calculate():
     '''
-   Takes in data of the expenses plugged in
+    Takes in data of the Expenses plugged in
     '''
-    expense = (input(color.green + "\nPlease enter The name of your expense: " 
+    expense = (input(color.green + "\nPlease enter The name of your Expense: "
                + color.reset))
     try:
-        # Validate that expense name contains right amount of characters
+        # Validate that Expense name contains right amount of characters
         if expense.isspace() is True:
             raise ValueError("The name can't be left empty.")
         if len(expense) <= 0:
-            raise ValueError("The expense name can't be left empty.")
+            raise ValueError("The Expense name can't be left empty.")
         if len(expense) >= 20:
-            raise ValueError("The expense name has too many characters.")
+            raise ValueError("The Expense name has too many characters.")
     except ValueError as e:
-        print(color.red + f'Invalid name. {e} Please provide your\n expense '
-              'name again.' + color.reset)  
+        print(color.red + f'Invalid name. {e} Please provide your\n Expense '
+              'name again.' + color.reset)
         return expense_calculate()
     # Validate if amount input is a number.
     while True:
         try:
             amount = float(input(color.green + "Please enter the amount of"
-                                 " that expense: " + color.reset))
+                                 " that Expense: " + color.reset))
             break
         except ValueError:
             print(color.red + "Thats not a valid number. Please enter a "
@@ -512,7 +512,7 @@ def expense_calculate():
     # Append, round, calculate and display Expense data.
     add_expense.append(round(amount, 2))
     total = sum(add_expense)
-    expense_table.rows.append([color.yellow + 
+    expense_table.rows.append([color.yellow +
                                expense, round(amount, 2), total])
     clear_terminal()
     print(expense_table)
@@ -521,9 +521,9 @@ def expense_calculate():
 
 def extra_expense():
     '''
-    Displays expenses supplied and gives option to re-enter again
+    Displays Expenses supplied and gives option to re-enter again
     '''
-    another_expense = (input(color.green + "Do you want to add another expense"
+    another_expense = (input(color.green + "Do you want to add another Expense"
                        "? y/n: " + color.reset).lower())
     # Validates y/n input questions.
     y_n_validator(another_expense, extra_expense)
@@ -537,35 +537,35 @@ def extra_expense():
         print(expense_table)
         print()
         print("These are the Expenses you have supplied.")
-        expense_confirmation() 
+        expense_confirmation()
 
 
 def expense_confirmation():
     '''
-   Confirms if user wants to redo the expense
+    Confirms if user wants to redo the Expense
     '''
-    
+
     restart_expense = (input(color.green + "\nWould you like to re-enter your"
-                       " expenses again?(y/n):  " + color.reset).lower())
+                       " Expenses again?(y/n):  " + color.reset).lower())
     # Validates y/n input questions.
     y_n_validator(restart_expense, expense_confirmation)
     # Direct to functions on choice of "y" or "n"
     if restart_expense == "y":
         clear_terminal()
-        reset_expense_table()  
+        reset_expense_table()
     if restart_expense == "n":
         clear_terminal()
 
 
 def reset_expense_table():
     '''
-    Resets expense table and starts expense questions again
+    Resets Expense table and starts expense questions again
     '''
     global expense_table
     global add_expense
     expense_table = None
     expense_table = BeautifulTable()
-    expense_table.columns.header = ["expense", "amount", "total"]
+    expense_table.columns.header = ["Expense", "amount", "total"]
     add_expense = []
     return expense_calculate()
 
@@ -635,7 +635,7 @@ def results_page():
           textwrap.fill(f'Thanks {name}, for using Larrys Logbook, I hope I '
                         'have helped :) If you wish to start over just press '
                         'Run Program on top of the Terminal, or press s '
-                        f'below to start over. See ya {name}', 80)) 
+                        f'below to start over. See ya {name}', 80))
     start_over = (input(color.green + "Please enter s to start over: "
                   + color.reset).lower())
     # Validates y/n input questions.
@@ -671,15 +671,15 @@ def restart():
     global add_expense
     fund_table = None
     fund_table = BeautifulTable()
-    fund_table.columns.header = ["available fund", "amount", "total"]
+    fund_table.columns.header = ["Available Fund", "amount", "total"]
     add_fund = []
     income_table = None
     income_table = BeautifulTable()
-    income_table.columns.header = ["income", "amount",  "total"]
+    income_table.columns.header = ["Income", "amount",  "total"]
     add_income = []
     expense_table = None
     expense_table = BeautifulTable()
-    expense_table.columns.header = ["expense", "amount", "total"]
+    expense_table.columns.header = ["Expense", "amount", "total"]
     add_expense = []
     results_table = None
     results_table = BeautifulTable()
@@ -692,15 +692,15 @@ def restart():
 color = Color()
 
 fund_table = BeautifulTable()
-fund_table.columns.header = ["available fund", "amount", "total"]
+fund_table.columns.header = ["Available Fund", "amount", "total"]
 add_fund = []
 
 income_table = BeautifulTable()
-income_table.columns.header = ["income", "amount",  "total"]
+income_table.columns.header = ["Income", "amount",  "total"]
 add_income = []
 
 expense_table = BeautifulTable()
-expense_table.columns.header = ["expense", "amount", "total"]
+expense_table.columns.header = ["Expense", "amount", "total"]
 add_expense = []
 
 results_table = BeautifulTable()
@@ -723,7 +723,7 @@ def budget_questions():
     '''
     Condenses all of the budget functions into one functon.
     '''
-    print(color.blue + "Available funds" + color.reset)
+    print(color.blue + "Available Funds" + color.reset)
     print()
     print(color.reset +
           textwrap.fill('Now lets get cracking with the available'
@@ -780,17 +780,17 @@ def budget_questions():
 
 def main():
     '''
-   Takes in all neccessary functions and initiates the functions 
+    Takes in all neccessary functions and initiates the functions
     '''
     welcome_message()
     name_confirmation()
     clear_terminal()
-    print(textwrap.fill(f'Ok {name}... So the information that my logbook ' 
+    print(textwrap.fill(f'Ok {name}... So the information that my logbook '
                         'needs to work with are your available funds, incomes,'
                         ' expenses and the timeframe in which you want to '
                         'budget for. There is an option to choose whether you '
                         'want to budget for a given month or a particular '
-                        'amount of days, the choice is completely yours :). ' 
+                        'amount of days, the choice is completely yours :). '
                         'To simply put it, you are dealing with a simple '
                         'formula of available funds + income - expenses. Use '
                         'that formula as you wish in any way you want, but '
@@ -798,7 +798,7 @@ def main():
                         'results. None the less try out the LogBook and lets '
                         'see where it takes us.', 80))
     print()
-    print(color.reset + 
+    print(color.reset +
           textwrap.fill('First I am going to ask you about your '
                         'timeframe before we go on to the actual available '
                         'funds, incomes and expenditures. Whether you want '
