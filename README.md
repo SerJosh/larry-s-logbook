@@ -110,7 +110,6 @@ Collect the users timeframe information in order to use it in the programs calcu
 ![User Timeframe Days Input](assets/readme-images/timeframe-days.png)
 ![User Timeframe Months Input](assets/readme-images/timeframe-months.png)
 
-
 ### User Available Fund Input
 
 Collect the users Available Fund information in order to use it in the programs calculations.
@@ -190,45 +189,42 @@ Displayes the budget page of the results of all information given and the calcul
 
 * As a user, I want to be given information about the main objective and purpose of Larrys LogBook.
 
-    - Information about Larrys LogBook is given in the welcome message explaining what the application is and what it does.
-
-    - 
+    - Information about Larrys LogBook is given in the welcome message explaining what the application is and what it does. 
 
 * As a user, I want to easily understand what input is needed in each step.
 
-    - Each timeframe, available funds, incomes and expenses are explained before any input is given, to help me as a user understand what im putting in before I do.
+    - Each timeframe, available funds, incomes and expenses are explained before any input is given, to help me as a user understand what I am putting in before I do.
 
     - An explaination of the y/n option has been explained clearly right at the beginning as it is used often.
 
-    - Input question text is colored in light green to differenciate them from other information. 
+    - Input question text is colored in green to differenciate them from other information. 
 
-* As a user, I want to receive clear feedback in case I provide the wrong input.
+* As a user, I want to receive feedback if I provide the wrong input.
 
-    - 
+    - Error messages are provided explaining what's wrong with the input If I have entered it incorrectly.
 
-    - 
+    - int/float values are rounded to the nearest 2 decimal points for accurate financial calculations.
 
-    - 
+    - Names of inputs given has a certain amount of character limitations to keep data organised and in shape.
 
-* 
+    - Error messages have a red background to make them noticeable.
 
-    - 
+* As a user, I want to be able to review the data I provided and correct it if needed.
 
-    - 
+    - The data is being presented in table format throughout the application to make it easier to review.
 
-    - 
+    - The input data is colored in yellow to make it as clear as possible
 
-* 
+    - At each end stage of timeframe, available funds, incomes and expense gives the option to re enter your information if there is a mistake.
 
-    - 
+*  As a user, I want the results displayed to be calculated and easy to understand.
 
-    - 
+    - The result data is colored in blue and yellow to make the given calculated data as clear as possible.
+
+    - A results table is given, summarising all data given and displaying it in a clear way.
 
 ### Code Validation
 
-The [PEP8 online check](http://pep8online.com/) was used continuosly during the development proces to validate the Python code for PEP8 requirements.
-
-![PEP8 Code Validation](assets/readme-files/pep8-code-validation.png)
 
 ### Manual Testing
 
@@ -238,7 +234,7 @@ The [PEP8 online check](http://pep8online.com/) was used continuosly during the 
 
 ## Deployment
 
-The application has been deployed using [Heroku](https://id.heroku.com/) by following these steps:
+The project has been deployed using [Heroku](https://id.heroku.com/) by following these steps:
 
 [Heroku](https://id.heroku.com/) was used to deploy the application.
 
@@ -262,25 +258,32 @@ The application has been deployed using [Heroku](https://id.heroku.com/) by foll
 
 ## Credits
 
-### Content
-
-* 
-
-*
-
 ### Media
-* 
+
+* The ASCII Art Archive has been used for the heading of the application [ASCII Art Archive](https://www.asciiart.eu/logos/kool-aid).
 
 ### Code
-* 
+
+* Majority of the code is of my own making.
+
+* Guidance on how to begin a budgeting application with python from youtuber [LeMaster Tech](https://www.youtube.com/watch?v=DVbP7JqjHeQ&list=LL&index=1&t=617s).
+
+* codedamn used for how to go about float values for int/float inputs.
+
+* Some code ideas and structure of how to go about the readme file from [josswe26-macro-calculator](jhttps://josswe26-macro-calculato-n86n9ejynl.us2.codeanyapp.com/#/workspaces/macro-calculator). 
+
 
 [Back to top ⇧](#larrys-logbook)
 
 ## Acknowledgements
 
-* 
+* My Lord and Saviour Jesus Christ, for giving me the patience and courage to get through all the hard times within this project and outside it
 
-* My tutor, Marcel, for his invaluable feedback and guidance.
+* My Wife and Son for their unconditional support throughout.
+
+* My Good friend Nathan Deg, for some guidance on python code and python in general.
+
+* My tutor, Marcel, and my temporary tutor David for their invaluable feedback and guidance.
 
 * Code Institute and its amazing Slack community for their support and providing me with the necessary knowledge to complete this project.
 
