@@ -599,7 +599,7 @@ def result_calculations():
 
 def results_page():
     '''
-   Displays all calculated results and results_table from info provided
+    Displays all calculated results and results_table from info provided
     '''
     # Direct to print statements on choice of "y" or "n"
     if month_or_day == 'y':
@@ -630,8 +630,57 @@ def results_page():
     print(color.reset +
           textwrap.fill(f'Thanks {name}, for using Larrys Logbook, I hope I '
                         'have helped :) If you wish to start over just press '
-                        'Run Program on top of the Terminal. See ya '
-                        f'{name} ', 80))
+                        'Run Program on top of the Terminal, or press s '
+                        f'below. See ya {name}', 80)) 
+    start_over = (input(color.green + "\nPlease enter s to start over: "
+                  + color.reset).lower())
+    # Validates y/n input questions.
+    try:
+        # Validate that the input given is "y" or "n"
+        if start_over == "s":
+            accept = True
+        else:
+            accept = False
+            if accept is False:
+                raise ValueError("Please only type 's'.")
+    except ValueError as e:
+        print(color.red + f'Invalid answer. {e} Please try again.' +
+              color.reset)
+        clear_terminal()
+        return results_page()
+    # Direct to functions on key "s"
+    if start_over == 's':
+        clear_terminal()
+        return restart()
+
+
+def restart():
+    '''
+    Restarts the application
+    '''
+    global fund_table
+    global income_table
+    global expense_table
+    global results_table
+    global add_fund
+    global add_income
+    global add_expense
+    fund_table = None
+    fund_table = BeautifulTable()
+    fund_table.columns.header = ["available fund", "amount", "total"]
+    add_fund = []
+    income_table = None
+    income_table = BeautifulTable()
+    income_table.columns.header = ["income", "amount",  "total"]
+    add_income = []
+    expense_table = None
+    expense_table = BeautifulTable()
+    expense_table.columns.header = ["expense", "amount", "total"]
+    add_expense = []
+    results_table = None
+    results_table = BeautifulTable()
+    results_table.columns.header = ["", ""]
+    return main()
 
 
 # ALL TABLES AND COLOR CLASS
