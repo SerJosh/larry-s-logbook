@@ -228,7 +228,202 @@ Displayes the budget page of the results of all information given and the calcul
 
 ### Manual Testing
 
-
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>Outcome</th>
+        <th>Example</th>
+        <th>Pass/Fail</th>
+    </tr>
+    <tr>
+        <td rowspan=2>Name Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/empty-name.png alt="Name value is empty"></td>
+        <td>Pass</td>
+    </tr>
+    <td>Validate if value is too big</td>
+        <td><img src=assets/readme-images/too-big-name.png alt="Name value is too big"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Name y/n Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/name-yn-blank.png alt="y/n value is empty"></td>
+        <td>Pass</td>
+    </tr>
+    <td>Validate if value is not y or n</td>
+        <td><img src=assets/readme-images/not-y-or-n.png alt="y/n value is not y or n"></td>
+        <td>Pass</td>
+    <tr>
+        <td rowspan=2>timeframe y/n Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/time-yn-blank.png alt="y/n value is empty"></td>
+        <td>Pass</td>
+    </tr>
+    <td>Validate if value is not y or n</td>
+        <td><img src=assets/readme-images/time-yn-wrong.png alt="y/n value is not y or n"></td>
+        <td>Pass</td>
+    <tr>
+        <td rowspan=4>timeframe month Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/month-blank.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+    <td>Validate if value is 0 or under</td>
+        <td><img src=assets/readme-images/month-0.png alt="value is 0"></td>
+        <td>Pass</td>
+    </tr>
+    <td>Validate if value is over 12</td>
+        <td><img src=assets/readme-images/month-over.png alt="value is over 12"></td>
+        <td>Pass</td>
+    </tr>
+    <td>Validate if value is an number</td>
+        <td><img src=assets/readme-images/month-nonumber.png alt="value is not a number"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=3>timeframe days Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/days-blank.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+    <td>Validate if value is not an interger</td>
+        <td><img src=assets/readme-images/days-wrong.png alt="value is not an interger"></td>
+        <td>Pass</td>
+    </tr>
+    <td>Validate if value is 0 or under</td>
+        <td><img src=assets/readme-images/days-0.png alt="value is 0 or under"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>timeframe summary y/n Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/ts-blank.png alt="y/n value is empty"></td>
+        <td>Pass</td>
+    </tr>
+    <td>Validate if value is not y or n</td>
+        <td><img src=assets/readme-images/ts-wrong.png alt="y/n value is not y or n"></td>
+        <td>Pass</td>
+    <tr>
+        <td rowspan=2>Available Funds name Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is too big</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Available Funds amount Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is not a number</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Available Funds add Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is not y or n</td>
+        <td><img src=assets/readme-images/.png alt="y/n value is not y or n"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Available Funds redo Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is not y or n</td>
+        <td><img src=assets/readme-images/.png alt="y/n value is not y or n"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Income name Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is too big</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Income amount Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is not a number</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Income add Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is not y or n</td>
+        <td><img src=assets/readme-images/.png alt="y/n value is not y or n"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Income redo Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is not y or n</td>
+        <td><img src=assets/readme-images/.png alt="y/n value is not y or n"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Expense name Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is too big</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Expense Funds amount Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is not a number</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Expense add Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is not y or n</td>
+        <td><img src=assets/readme-images/.png alt="y/n value is not y or n"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Expense redo Input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is not y or n</td>
+        <td><img src=assets/readme-images/.png alt="y/n value is not y or n"></td>
+        <td>Pass</td>
+    </tr>
 
 [Back to top ⇧](#larrys-logbook)
 

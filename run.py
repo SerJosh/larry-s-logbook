@@ -160,7 +160,7 @@ def choose_month():
             try:
                 # Validate that month input contains the corrrect details
                 if month <= 0:
-                    raise ValueError("This cannot be 0 or under ")
+                    raise ValueError("This cannot be 0 or under.")
                 if month >= 13:
                     raise ValueError("Please choose the months between 1 and "
                                      "12.")
@@ -200,7 +200,7 @@ def choose_day():
                                    "want to budget for?: " + color.reset))
             try:
                 # Validate that month input contains the corrrect details
-                if exact_days == 0:
+                if exact_days <= 0:
                     raise ValueError("Lets not go there.. atleast put 1 xD.")
             except ValueError as e:
                 print(color.red + f'Invalid input. {e} Please try again.' +
