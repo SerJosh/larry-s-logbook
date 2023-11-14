@@ -317,31 +317,31 @@ Displayes the budget page of the results of all information given and the calcul
     <tr>
         <td rowspan=2>Available Funds amount Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/fund-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is not a number</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/fund-nonumber.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
     <tr>
         <td rowspan=2>Available Funds add Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/add-fund-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is not y or n</td>
-        <td><img src=assets/readme-images/.png alt="y/n value is not y or n"></td>
+        <td><img src=assets/readme-images/add-fund-wrong.png alt="y/n value is not y or n"></td>
         <td>Pass</td>
     </tr>
     <tr>
         <td rowspan=2>Available Funds redo Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/fund-reenter-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is not y or n</td>
-        <td><img src=assets/readme-images/.png alt="y/n value is not y or n"></td>
+        <td><img src=assets/readme-images/fund-reenter-wrong.png alt="y/n value is not y or n"></td>
         <td>Pass</td>
     </tr>
     <tr>

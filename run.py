@@ -41,7 +41,7 @@ def y_n_validator(question, function):
         print(color.red + f'Invalid answer. {e} Please try again.' +
               color.reset)
         return function()
-      
+
 
 # INTRODUCTION AND NAME FUNCTIONS
 
@@ -50,20 +50,20 @@ def welcome_message():
     '''
     Display the logo, image and welcome message
     '''
-    print(color.blue + '''#                                                       
-#          ##    #####   #####   #   #   ####           
-#         #  #   #    #  #    #   # #   #               
-#        #    #  #    #  #    #    #     ####           
-#        ######  #####   #####     #         #          
-#        #    #  #   #   #   #     #    #    #          
-#######  #    #  #    #  #    #    #     ####           
+    print(color.blue + '''#
+#          ##    #####   #####   #   #   ####
+#         #  #   #    #  #    #   # #   #
+#        #    #  #    #  #    #    #     ####
+#        ######  #####   #####     #         #
+#        #    #  #   #   #   #     #    #    #
+#######  #    #  #    #  #    #    #     ####
                                                         
-#                        ######                         
+#                        ######
 #         ####    ####   #     #   ####    ####   #    #
-#        #    #  #    #  #     #  #    #  #    #  #   # 
-#        #    #  #       ######   #    #  #    #  ####  
-#        #    #  #  ###  #     #  #    #  #    #  #  #  
-#        #    #  #    #  #     #  #    #  #    #  #   # 
+#        #    #  #    #  #     #  #    #  #    #  #   #
+#        #    #  #       ######   #    #  #    #  ####
+#        #    #  #  ###  #     #  #    #  #    #  #  #
+#        #    #  #    #  #     #  #    #  #    #  #   #
 #######   ####    ####   ######    ####    ####   #    #''')
     name_question()
     clear_terminal()
@@ -77,12 +77,12 @@ def welcome_message():
                         '. Just give me all the information I need and Il do '
                         'all the magic for you in my trusty logbook, '
                         'revealing some more insight into your budget rather '
-                        'than just how many pennys you have left over ' 
+                        'than just how many pennys you have left over '
                         ';).', 80))
     
     print()
     print(textwrap.fill('A few of the questions I am going to ask will give '
-                        'you a y/n at the end. What y/n means is that you ' 
+                        'you a y/n at the end. What y/n means is that you '
                         'have to choose either y which means yes or n which '
                         'means no. Choose whichever one you suits your desired'
                         ' purpose. Lets give it a shot with the question below'
@@ -102,7 +102,7 @@ def name_question():
         if len(name) >= 10:
             raise ValueError("The name has too many characters.")
     except ValueError as e:
-        print(color.red + f'Invalid name. {e} Please provide your name again.' 
+        print(color.red + f'Invalid name. {e} Please provide your name again.'
               + color.reset) 
         return name_question()
 
@@ -111,18 +111,18 @@ def name_confirmation():
     '''
     Display and validate name question
     '''
-    question_confirm = str(input(color.green + 
+    question_confirm = str(input(color.green +
                                  f"\nSo your name is {name} correct? (y/n): "
                                  + color.reset).lower())
     # Validates y/n input questions.
     y_n_validator(question_confirm, name_confirmation)
-    # Direct to functions on choice of "y" or "n" 
+    # Direct to functions on choice of "y" or "n"
     if question_confirm == 'y':
         clear_terminal()
     if question_confirm == "n":
         clear_terminal()
         return name_question()
-      
+
 
 # TIMEFRAME FUNCTIONS
 
@@ -132,13 +132,24 @@ def month_question():
     Display and direct (to relevant next question) month question.
     '''
     global month_or_day
-    month_or_day = (input(color.green + 
+    month_or_day = (input(color.green +
                           "\nWould you like to budget for a "
-                          "particular month? (y/n): " 
+                          "particular month? (y/n): "
                           + color.reset).lower())
     # Validates y/n input questions.
-    y_n_validator(month_or_day, month_question)
-    # Direct to functions on choice of "y" or "n"  
+    try:
+        # Validate that the input given is "y" or "n"
+        if month_or_day == "y" or month_or_day == "n":
+            accept = True
+        else:
+            accept = False
+            if accept is False:
+                raise ValueError("Please only type 'y' or 'n'.")
+    except ValueError as e:
+        print(color.red + f'Invalid answer. {e} Please try again.' +
+              color.reset)
+        return month_question()
+    # Direct to functions on choice of "y" or "n"
     if month_or_day == 'y':
         return choose_month()
     if month_or_day == "n":
@@ -157,31 +168,55 @@ def choose_month():
             month = int(input(color.green + "Please give me the number of the "
                               "month you want to budget for \n(ie 1 is "
                               "January and so on): " + color.reset))
-            try:
-                # Validate that month input contains the corrrect details
-                if month <= 0:
-                    raise ValueError("This cannot be 0 or under.")
-                if month >= 13:
-                    raise ValueError("Please choose the months between 1 and "
-                                     "12.")
-            except ValueError as e:
-                print(color.red + f'Invalid input. {e} Please try again.' +
-                      color.reset)
-                return choose_month()
+            # try:
+            # Validate that month input contains the corrrect details
+            if month <= 0:
+                raise ValueError("This cannot be 0 or under.")
+            if month >= 13:
+                raise ValueError("Please choose the months between 1 and "
+                                 "12.")
+            # except ValueError as e:
+            #     print(color.red + f'Invalid input. {e} Please try again.' +
+            #           color.reset)
+            #     return choose_month()
             # !!! THIS NEEDS TO CHANGE !!!
             # Recieves data from which month number was chosen
-            if month == 1: chosen_month = 'January'; exact_days = 31
-            if month == 2: chosen_month = 'Febuary'; exact_days = 28
-            if month == 3: chosen_month = 'March'; exact_days = 31
-            if month == 4: chosen_month = 'April'; exact_days = 30
-            if month == 5: chosen_month = 'May'; exact_days = 31
-            if month == 6: chosen_month = 'June'; exact_days = 30
-            if month == 7: chosen_month = 'July'; exact_days = 31
-            if month == 8: chosen_month = 'August'; exact_days = 31
-            if month == 9: chosen_month = 'September'; exact_days = 30
-            if month == 10: chosen_month = 'October'; exact_days = 31
-            if month == 11: chosen_month = 'November'; exact_days = 30
-            if month == 12: chosen_month = 'December'; exact_days = 31
+            if month == 1:
+                chosen_month = 'January'
+                exact_days = 31
+            if month == 2:
+                chosen_month = 'Febuary'
+                exact_days = 28
+            if month == 3:
+                chosen_month = 'March'
+                exact_days = 31
+            if month == 4:
+                chosen_month = 'April'
+                exact_days = 30
+            if month == 5:
+                chosen_month = 'May'
+                exact_days = 31
+            if month == 6:
+                chosen_month = 'June'
+                exact_days = 30
+            if month == 7:
+                chosen_month = 'July'
+                exact_days = 31
+            if month == 8:
+                chosen_month = 'August'
+                exact_days = 31
+            if month == 9:
+                chosen_month = 'September'
+                exact_days = 30
+            if month == 10:
+                chosen_month = 'October'
+                exact_days = 31
+            if month == 11:
+                chosen_month = 'November'
+                exact_days = 30
+            if month == 12:
+                chosen_month = 'December'
+                exact_days = 31
             break
         except ValueError:
             print(color.red + "Thats not a valid number. Please enter a "
@@ -221,7 +256,7 @@ def timeframe_summary():
     if month_or_day == "y":
         print(color.reset + 
               (f"\n{name}, So you are budgeting for" + color.yellow +
-               f" {chosen_month}," + color.reset + " which is approximately "
+               f" {chosen_month}," + color.reset + " which is "
                + color.yellow + str(exact_days) + color.reset + " days long."
                ))
     if month_or_day == "n":
@@ -254,7 +289,7 @@ def fund_calculate():
     '''
     Takes in data of the available funds plugged in
     '''
-    fund = (input(color.green + "\nPlease enter The name of your available"
+    fund = (input(color.green + "\nPlease enter the name of your available"
                   " fund: " + color.reset))
     try:
         # Validate that available fund name contains right amount of characters
@@ -264,7 +299,7 @@ def fund_calculate():
             raise ValueError("The available fund name has too many "
                              "characters.")
     except ValueError as e:
-        print(color.red + f'Invalid name. {e} Please provide your available'
+        print(color.red + f'Invalid name. {e} Please provide your\n available'
               'fund name again.' + color.reset)     
         return fund_calculate()
     # Validate if amount input is a number. 
@@ -352,8 +387,8 @@ def income_calculate():
         if len(income) >= 20:
             raise ValueError("The income name has too many characters.")
     except ValueError as e:
-        print(color.red + f'Invalid name. {e} Please provide your income name'
-              ' again.' + color.reset)   
+        print(color.red + f'Invalid name. {e} Please provide your\n income '
+              'name again.' + color.reset)   
         return income_calculate()
     # Validate if amount input is a number.   
     while True:
@@ -439,8 +474,8 @@ def expense_calculate():
         if len(expense) >= 20:
             raise ValueError("The expense name has too many characters.")
     except ValueError as e:
-        print(color.red + f'Invalid name. {e} Please provide your expense name'
-              ' again.' + color.reset)  
+        print(color.red + f'Invalid name. {e} Please provide your\n expense '
+              'name again.' + color.reset)  
         return expense_calculate()
     # Validate if amount input is a number.
     while True:
@@ -533,17 +568,17 @@ def result_calculations():
     day_result = surplus / calc_days
     round_day_result = round(day_result, 2)
     # Appends calculations to results_table for Results Page
-    results_table.rows.append(["Available Funds", color.yellow 
+    results_table.rows.append(["Available Funds", color.yellow
                                + str(fund_total)])
     results_table.rows.append(["Income", color.yellow + str(inco_total)])
     results_table.rows.append(["Expenses", color.yellow + str(expe_total)])
     results_table.rows.append(["Surplus", color.yellow + str(round_surplus)])
     results_table.rows.append(["Days", color.yellow + str(exact_days)])
-    results_table.rows.append(["Budget per day", color.yellow 
+    results_table.rows.append(["Budget per day", color.yellow
                                + str(round_day_result)])
 
 
-def results_page(): 
+def results_page():
     '''
    Displays all calculated results and results_table from info provided
     '''
@@ -557,26 +592,26 @@ def results_page():
               + f'{exact_days} days' + color.reset)
     # Print statements and results_table to be displayed on Results Page
     print(results_table)
-    print(color.blue + "Your available funds are " 
+    print(color.blue + "Your available funds are "
           + color.reset + str(fund_total))
-    print(color.blue + "Your total income is " 
+    print(color.blue + "Your total income is "
           + color.reset + str(inco_total))
-    print(color.blue + "Your total expense is " 
+    print(color.blue + "Your total expense is "
           + color.reset + str(expe_total))
-    print(color.blue + "Your surplus (amount left after expenses) will be " 
+    print(color.blue + "Your surplus (amount left after expenses) will be "
           + color.reset + str(round_surplus))
     print(color.blue + f"you will be able to spend "
           + color.reset + f"{round_day_result} per day")
     print()
     # Ending Message
-    print(color.reset + 
+    print(color.reset +
           textwrap.fill(f'Thanks {name}, for using Larrys Logbook, I hope I '
                         'have helped :) If you wish to start over just press '
                         'Run Program on top of the Terminal. See ya '
                         f'{name} ', 80))
 
 
-# ALL TABLES AND COLOR CLASS 
+# ALL TABLES AND COLOR CLASS
 
 color = Color()
 
@@ -593,7 +628,7 @@ expense_table.columns.header = ["expense", "amount", "total"]
 add_expense = []
 
 results_table = BeautifulTable()
-results_table.columns.header = ["", "",]
+results_table.columns.header = ["", ""]
 
 
 # CONDENSED FUNCTIONS
@@ -602,7 +637,7 @@ results_table.columns.header = ["", "",]
 def timeframe_questions():
     '''
     Condenses all of the timeframe functions into one functon.
-    ''' 
+    '''
     month_question()
     timeframe_summary()
     timeframe_re_enter()
@@ -614,7 +649,7 @@ def budget_questions():
     '''
     print(color.blue + "Available funds" + color.reset)
     print()
-    print(color.reset + 
+    print(color.reset +
           textwrap.fill('Now lets get cracking with the available'
                         ' funds :). By available funds I mean money that you'
                         ' already have on you that you are willing to use in'
@@ -634,7 +669,7 @@ def budget_questions():
     fund_calculate()
     print(color.blue + "Income" + color.reset)
     print()
-    print(color.reset + 
+    print(color.reset +
           textwrap.fill('Now lets get cracking with the Income :).'
                         'Im sure you know what an income is, but an income in '
                         'what I am asking for is any amount of money you will '
@@ -688,7 +723,7 @@ def main():
                         'see where it takes us.', 80))
     print()
     print(color.reset + 
-          textwrap.fill('first I am going to ask you about your '
+          textwrap.fill('First I am going to ask you about your '
                         'timeframe before we go on to the actual available '
                         'funds, incomes and expenditures. Whether you want '
                         'to budget for a given month or a particular amount '
