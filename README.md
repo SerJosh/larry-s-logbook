@@ -1,12 +1,12 @@
 # Larrys LogBook
 
-![Larrys LogBooks mockup image]()
+![Larrys LogBooks mockup image](assets/readme-images/larrys-logbook.png)
 
 Larrys Logbook is designed to help the user find out their budget for a given time, without having to do any mathematical equations.
 
 Larrys LogBooks works with the simple formula of Available Funds + Income - Expenses, all of which are inside a given timeframe of the user’s choosing.
 
-Visit the deployed application [here]().
+Visit the deployed application [here](https://larrys-logbook-ef06a242402b.herokuapp.com/).
 
 ## Table of Contents
 1. [User Experience (UX)](#user-experience-UX)
@@ -16,17 +16,14 @@ Visit the deployed application [here]().
     4. [Data Model](#data-model)
     5. [Flowchart](#flowchart)
 2. [Features](#features)
-    1. [User Information Input](#user-information-input)
-    2. [](#)
-    3. [](#)
-    4. [](#)
-    5. [](#)
-    6. [](#)
-    7. [](#)
-    8. [](#)
-    9. [](#)
-    10. [](#)
-    11. [](#)
+    1. [User Name input](#user-information-input)
+    2. [User Timeframe Input](#user-timeframe-input)
+    3. [User Available Fund Input](#user-available-fund-input)
+    4. [User Income Input](#user-income-input)
+    5. [User Expense Input](#user-expense-input)
+    6. [User Additional Input](#user-additional-input)
+    7. [User Data Confirmations](#user-data-confirmations)
+    8. [User Data Results](#user-data-results)
 3. [Technologies Used](#technologies-used)
     1. [Language Used](#language-used)
     2. [Frameworks, Libraries and Programs Used](#frameworks-libraries-and-programs-used)
@@ -90,67 +87,76 @@ Extra calculations are used with the data recieved to calculate the surplus, bud
 
 ### Flowchart
 
-The following flowchart was designed using []() in order to plan the logic to be implemented in the program.
+The following flowchart was designed using [Lucidchart](https://lucidchart.com/) in order to plan the logic to be implemented in the program.
 
-![Larrys LogBook Flowchart]()
+![Larrys LogBook Flowchart](assets/readme-images/flowchart.png)
 
-As shown in the flowchart, the original order of some functions has been changed during the development process in to follow a more intuitive logic and sequence of events but the main idea behind the process is still the same.
+As shown in the flowchart, the original order of functions have been altered/removed whilst in development of the project for conveniance and UX purposes, yet the main plan and idea is still the same.
 
 [Back to top ⇧](#larrys-logbook)
 
 ## Features
 
-### User Information Input
+### User Name input
 
-Collect the users information in order to use it in the program.
+Collets the users name.
 
-![User Information Input]()
+![User name input](assets/readme-images/larrys-logbook.png)
 
+### User Timeframe Input
 
-###
+Collect the users timeframe information in order to use it in the programs calculations.
 
-![]()
-
-### 
-
-![]()
-
-### 
-
-![]()
-
-### 
-
-![]()
-
-### 
-
-![]()
-![]()
-
-### 
-
-![]()
-
-###
-
-![]()
-
-### 
+![User Timeframe Days Input](assets/readme-images/timeframe-days.png)
+![User Timeframe Months Input](assets/readme-images/timeframe-months.png)
 
 
+### User Available Fund Input
 
-![]()
+Collect the users Available Fund information in order to use it in the programs calculations.
 
-### 
+![User Available Fund Input](assets/readme-images/fund-input.png)
 
-![]()
+### User Income Input
 
-###
+Collect the users Income information in order to use it in the programs calculations.
 
-![]()
+![User Income Input](assets/readme-images/income-input.png)
 
-### 
+### User Expense Input
+
+Collect the users Expense information in order to use it in the programs calculations.
+
+![User Expense Input](assets/readme-images/expense-input.png)
+
+### User Additional Input
+
+Gives the users the option to add extra Available Funds, Incomes and Expenses respectively.
+
+![User extra Available Fund option](assets/readme-images/extra-fund.png)
+![User extra Income option](assets/readme-images/extra-income.png)
+![User extra Expense option](assets/readme-images/extra-expense.png)
+
+### User Data Confirmations
+
+Gives the users the option to confirm their Data given.
+
+Name Confirmation
+![Name Confirmation](assets/readme-images/name-confirm.png)
+Timeframe Confirmation
+![Timeframe Confirmation](assets/readme-images/timeframe-confirm.png)
+Available Fund Confirmation
+![Available Fund Confirmation](assets/readme-images/fund-confirm.png)
+Income Confirmation
+![Income Confirmation](assets/readme-images/income-confirm.png)
+Expense Confirmation
+![Expense Confirmation](assets/readme-images/expense-confirm.png)
+
+### User Data Results
+
+Displayes the budget page of the results of all information given and the calculations of surplus and budget per day.
+
+![Budget Page](assets/readme-images/results.png)
 
 [Back to top ⇧](#larrys-logbook)
 
@@ -162,7 +168,7 @@ Collect the users information in order to use it in the program.
 
 ### Frameworks, Libraries and Programs Used
 
-* []() was used for writing code, committing, and then pushing to GitHub.
+* [Codeanywhere](https://app.codeanywhere.com/) was used for writing code, committing, and then pushing to GitHub.
 
 * [GitHub](https://github.com/) was used to store the project after pushing.
 
@@ -170,11 +176,11 @@ Collect the users information in order to use it in the program.
 
 * [PEP8 online check](http://pep8online.com/) was used to validate the Python code.
 
-* [BeautifulTable]() library was used to present the data in table format.
+* [BeautifulTable](https://pypi.org/project/beautifultable/) library was used to present the data in table format.
 
 * [Colorama](https://pypi.org/project/colorama/) library was used to apply color to the terminal text. 
 
-* []() was used to create the program flowchart.
+* [Lucidchart](https://lucidchart.com/) was used to create the program flowchart.
 
 [Back to top ⇧](#larrys-logbook)
 
@@ -182,19 +188,21 @@ Collect the users information in order to use it in the program.
 
 ### Testing User Stories
 
-* 
+* As a user, I want to be given information about the main objective and purpose of Larrys LogBook.
+
+    - Information about Larrys LogBook is given in the welcome message explaining what the application is and what it does.
 
     - 
 
-    - 
+* As a user, I want to easily understand what input is needed in each step.
 
-* 
+    - Each timeframe, available funds, incomes and expenses are explained before any input is given, to help me as a user understand what im putting in before I do.
 
-    - 
+    - An explaination of the y/n option has been explained clearly right at the beginning as it is used often.
 
-    - 
+    - Input question text is colored in light green to differenciate them from other information. 
 
-* 
+* As a user, I want to receive clear feedback in case I provide the wrong input.
 
     - 
 
