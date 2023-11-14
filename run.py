@@ -121,7 +121,26 @@ def name_confirmation():
         clear_terminal()
     if question_confirm == "n":
         clear_terminal()
+        return name_re_enter()
+
+
+def name_re_enter():
+    '''
+    Display and validate re-enter name question
+    '''
+    global name
+    name = str(input(color.green + "\nPlease enter your name: " + color.reset))
+    try:
+        # Validate that name contains the right amount of characters
+        if len(name) <= 0:
+            raise ValueError("The name can't be left empty.")
+        if len(name) >= 10:
+            raise ValueError("The name has too many characters.")
+    except ValueError as e:
+        print(color.red + f'Invalid name. {e} Please provide your name again.'
+              + color.reset)
         return name_question()
+    return name_confirmation()
 
 
 # TIMEFRAME FUNCTIONS
@@ -600,8 +619,12 @@ def results_page():
           + color.reset + str(expe_total))
     print(color.blue + "Your surplus (amount left after expenses) will be "
           + color.reset + str(round_surplus))
-    print(color.blue + f"you will be able to spend "
-          + color.reset + f"{round_day_result} per day")
+    if round_day_result >= 0:
+        print(color.blue + f"you will be able to spend "
+              + color.reset + f"{round_day_result} per day")
+    else:
+        print(color.blue + "Unfortunately there is not a daily budget "
+              "as it will be in negative :(.")
     print()
     # Ending Message
     print(color.reset +
