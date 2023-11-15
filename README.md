@@ -101,7 +101,7 @@ As shown in the flowchart, the original order of functions have been altered/rem
 
 Collets the users name.
 
-![User name input](assets/readme-images/larrys-logbook.png)
+![User name input](assets/readme-images/larrys-logbook-main.png)
 
 ### User Timeframe Input
 
@@ -164,7 +164,7 @@ Expense Confirmation
 
 Displayes the budget page of the results of all information given and the calculations of surplus and budget per day.
 
-![Budget Page](assets/readme-images/results.png)
+![Budget Page](assets/readme-images/result-page.png)
 
 [Back to top ⇧](#larrys-logbook)
 
@@ -288,7 +288,7 @@ PEP8 Code Validation After Fixes
         <td>Pass</td>
     </tr>
     <td>Validate if value is 0 or under</td>
-        <td><img src=assets/readme-images/month-0.png alt="value is 0"></td>
+        <td><img src=assets/readme-images/month-0.png alt="value is 0 or under"></td>
         <td>Pass</td>
     </tr>
     <td>Validate if value is over 12</td>
@@ -329,7 +329,7 @@ PEP8 Code Validation After Fixes
         <td>Pass</td>
     </tr>
         <td>Validate if value is too big</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/fund-name-big.png alt="value is too big"></td>
         <td>Pass</td>
     </tr>
     <tr>
@@ -339,7 +339,7 @@ PEP8 Code Validation After Fixes
         <td>Pass</td>
     </tr>
         <td>Validate if value is not a number</td>
-        <td><img src=assets/readme-images/fund-nonumber.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/fund-nonumber.png alt="value is not a number"></td>
         <td>Pass</td>
     </tr>
     <tr>
@@ -365,11 +365,11 @@ PEP8 Code Validation After Fixes
     <tr>
         <td rowspan=2>Income name Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/income-name-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is too big</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/income-name-big.png alt="value is too big"></td>
         <td>Pass</td>
     </tr>
     <tr>
@@ -379,17 +379,17 @@ PEP8 Code Validation After Fixes
         <td>Pass</td>
     </tr>
         <td>Validate if value is not a number</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/income-nonumber.png alt="value is not a number"></td>
         <td>Pass</td>
     </tr>
     <tr>
         <td rowspan=2>Income add Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/add-income-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is not y or n</td>
-        <td><img src=assets/readme-images/.png alt="y/n value is not y or n"></td>
+        <td><img src=assets/readme-images/add-income-wrong.png alt="y/n value is not y or n"></td>
         <td>Pass</td>
     </tr>
     <tr>
@@ -405,41 +405,51 @@ PEP8 Code Validation After Fixes
     <tr>
         <td rowspan=2>Expense name Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/expense-name-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is too big</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/expense-name-big.png alt="value is too big"></td>
         <td>Pass</td>
     </tr>
     <tr>
         <td rowspan=2>Expense Funds amount Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/add-expense-blank.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/expense-amount-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is not a number</td>
-        <td><img src=assets/readme-images/add-expense-wrong.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/expense-amount-wrong.png alt="value is not a number"></td>
         <td>Pass</td>
     </tr>
     <tr>
         <td rowspan=2>Expense add Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/add-expense-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is not y or n</td>
-        <td><img src=assets/readme-images/.png alt="y/n value is not y or n"></td>
+        <td><img src=assets/readme-images/add-expense-wrong.png alt="y/n value is not y or n"></td>
         <td>Pass</td>
     </tr>
     <tr>
         <td rowspan=2>Expense redo Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/expense-reenter-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is not y or n</td>
-        <td><img src=assets/readme-images/.png alt="y/n value is not y or n"></td>
+        <td><img src=assets/readme-images/expense-reenter-wrong.png alt="y/n value is not y or n"></td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td rowspan=2>Start over "s" input</td>
+        <td>Validate if value is empty</td>
+        <td><img src=assets/readme-images/start-over-blank.png alt="value is empty"></td>
+        <td>Pass</td>
+    </tr>
+        <td>Validate if value is not s</td>
+        <td><img src=assets/readme-images/start-over-wrong.png alt="s value is not s"></td>
         <td>Pass</td>
     </tr>
 
@@ -483,7 +493,7 @@ The project has been deployed using [Heroku](https://id.heroku.com/) by followin
 
 * codedamn used for how to go about float values for int/float inputs.
 
-* Some code ideas and structure of how to go about the readme file from [josswe26-macro-calculator](jhttps://josswe26-macro-calculato-n86n9ejynl.us2.codeanyapp.com/#/workspaces/macro-calculator). 
+* Some code ideas and structure of how to go about the readme file from [josswe26-macro-calculator](https://github.com/josswe26/macro-calculator). 
 
 
 [Back to top ⇧](#larrys-logbook)

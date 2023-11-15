@@ -570,6 +570,9 @@ def reset_expense_table():
     return expense_calculate()
 
 
+# RESULTS FUNCTIONS
+
+
 def result_calculations():
     '''
     Calculates data given and calculates results for results page
@@ -621,7 +624,7 @@ def results_page():
           + color.reset + str(inco_total))
     print(color.blue + "Your total expense is "
           + color.reset + str(expe_total))
-    print(color.blue + "Your surplus (amount left after expenses) will be "
+    print(color.blue + "Your surplus (amount left after expenses) is "
           + color.reset + str(round_surplus))
     if round_day_result >= 0:
         print(color.blue + f"you will be able to spend "
@@ -629,12 +632,12 @@ def results_page():
     else:
         print(color.blue + "Unfortunately there is not a daily budget "
               "as it will be in negative :(.")
-    print()
     # Ending Message
+    print()
     print(color.reset +
           textwrap.fill(f'Thanks {name}, for using Larrys Logbook, I hope I '
                         'have helped :) If you wish to start over just '
-                        'press s below to start over, or press Run Program'
+                        'press s below to do so, or press Run Program'
                         f' on top of the Terminal, See ya {name}', 80))
 
 
@@ -738,7 +741,7 @@ def budget_questions():
                         ' life savings account or anything of that sort, '
                         'maybe just leave that out ;). What I mean is money '
                         'in your current account, or an amount in it you are '
-                        'willing to give in your budget, same goes with  '
+                        'willing to give in your budget, same goes with '
                         'revolut or other institutions like that. Cash on '
                         'hand may be another one you want to put in here. '
                         'In the end its all up to you to decide what you want '
@@ -774,7 +777,7 @@ def budget_questions():
                         'away from you rather than recieve. There are loads '
                         'of expenses like rent, electricity, loan payments, '
                         'traveling expenses, groceries, anything that will '
-                        'cost you. But im oonly asking you for all expenses '
+                        'cost you. But im only asking you for all expenses '
                         'inside the timeframe you have given. Add as many '
                         'expenses as you wish and I will add the total up '
                         'for you as usual :) ', 80))
