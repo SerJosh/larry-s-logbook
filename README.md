@@ -452,6 +452,7 @@ PEP8 Code Validation After Fixes
         <td><img src=assets/readme-images/start-over-wrong.png alt="s value is not s"></td>
         <td>Pass</td>
     </tr>
+</table>
 
 [Back to top ⇧](#larrys-logbook)
 
