@@ -1,6 +1,6 @@
 # Larrys LogBook
 
-![Larrys LogBooks mockup image](assets/readme-images/larrys-logbook.png)
+![Larrys LogBooks mockup image](assets/readme-images/larrys-logbook-main.png)
 
 Larrys Logbook is designed to help the user find out their budget for a given time, without having to do any mathematical equations.
 
