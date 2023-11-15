@@ -318,7 +318,7 @@ def fund_calculate():
             raise ValueError("The Available Fund name has too many "
                              "characters.")
     except ValueError as e:
-        print(color.red + f'Invalid name. {e} Please provide your\n Available'
+        print(color.red + f'Invalid name. {e} Please\n provide your Available'
               'Fund name again.' + color.reset)
         return fund_calculate()
     # Validate if amount input is a number.
@@ -408,7 +408,7 @@ def income_calculate():
         if len(income) >= 20:
             raise ValueError("The Income name has too many characters.")
     except ValueError as e:
-        print(color.red + f'Invalid name. {e} Please provide your\n Income '
+        print(color.red + f'Invalid name. {e} Please\n provide your Income '
               'name again.' + color.reset)
         return income_calculate()
     # Validate if amount input is a number.
@@ -497,7 +497,7 @@ def expense_calculate():
         if len(expense) >= 20:
             raise ValueError("The Expense name has too many characters.")
     except ValueError as e:
-        print(color.red + f'Invalid name. {e} Please provide your\n Expense '
+        print(color.red + f'Invalid name. {e} Please\n provide your Expense '
               'name again.' + color.reset)
         return expense_calculate()
     # Validate if amount input is a number.
@@ -633,9 +633,15 @@ def results_page():
     # Ending Message
     print(color.reset +
           textwrap.fill(f'Thanks {name}, for using Larrys Logbook, I hope I '
-                        'have helped :) If you wish to start over just press '
-                        'Run Program on top of the Terminal, or press s '
-                        f'below to start over. See ya {name}', 80))
+                        'have helped :) If you wish to start over just '
+                        'press s below to start over, or press Run Program'
+                        f' on top of the Terminal, See ya {name}', 80))
+
+
+def start_again():
+    '''
+    Gives and validate the input of choosing to start over
+    '''
     start_over = (input(color.green + "Please enter s to start over: "
                   + color.reset).lower())
     # Validates y/n input questions.
@@ -650,8 +656,7 @@ def results_page():
     except ValueError as e:
         print(color.red + f'Invalid answer. {e} Please try again.' +
               color.reset)
-        clear_terminal()
-        return results_page()
+        return start_again()
     # Direct to functions on key "s"
     if start_over == 's':
         clear_terminal()
@@ -776,6 +781,7 @@ def budget_questions():
     expense_calculate()
     result_calculations()
     results_page()
+    start_again()
 
 
 def main():

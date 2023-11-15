@@ -325,7 +325,7 @@ PEP8 Code Validation After Fixes
     <tr>
         <td rowspan=2>Available Funds name Input</td>
         <td>Validate if value is empty</td>
-        <td><img src=assets/readme-images/.png alt="value is empty"></td>
+        <td><img src=assets/readme-images/fund-name-blank.png alt="value is empty"></td>
         <td>Pass</td>
     </tr>
         <td>Validate if value is too big</td>
